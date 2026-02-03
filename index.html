@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mantanex | Products & Services</title>
+  <meta name="description" content="Mantanex builds AI-inspired devices and delivers enterprise IT services, cloud, security, and staffing." />
+
+  <style>
+    :root{
+      /* Dell-like: clean, enterprise, simple */
+      --bg:#ffffff;
+      --surface:#f6f8fb;
+      --card:#ffffff;
+      --text:#0b1220;
+      --muted:#516079;
+      --line:#e4e9f2;
+      --accent:#0b63f6;      /* enterprise blue */
+      --accent2:#00a3ff;     /* light blue */
+      --radius:16px;
+      --max:1120px;
+      --shadow: 0 10px 26px rgba(10, 22, 42, .10);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background: var(--bg);
+    }
+
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px 0}
+
+    .brand{display:flex; align-items:center; gap:12px}
+    .brandLogo{
+      width:40px; height:40px;
+      border-radius:12px;
+      object-fit:contain;
+      background: var(--surface);
+      border:1px solid var(--line);
+      padding:6px;
+    }
+    .brandTitle{font-weight:900; letter-spacing:.4px}
+    .brandSub{font-size:11px; font-weight:750; color:var(--muted); letter-spacing:.8px; text-transform:uppercase}
+
+    .navlinks{display:flex; gap:14px; align-items:center; color:var(--muted)}
+    .navlinks a{padding:8px 10px; border-radius:10px}
+    .navlinks a:hover{background: var(--surface); color:var(--text)}
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: #fff;
+      font-weight:850;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); background: var(--surface); border-color:#d6deec}
+    .btn.primary{border:0; color:#fff; background: var(--accent)}
+    .btn.primary:hover{background:#0857da}
+
+    /* Hero */
+    .hero{
+      padding:48px 0 20px;
+      background:
+        radial-gradient(1200px 420px at 10% -10%, rgba(11,99,246,.10), transparent 55%),
+        radial-gradient(900px 360px at 80% -20%, rgba(0,163,255,.10), transparent 50%),
+        linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+      border-bottom: 1px solid var(--line);
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* Subtle AI/IoT motif overlay (lightweight SVG as background) */
+    .hero::after{
+      content:"";
+      position:absolute;
+      right:-220px; top:-160px;
+      width:720px; height:520px;
+      background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='650' viewBox='0 0 900 650'%3E%3Cg fill='none' stroke='%230b63f6' stroke-opacity='.10' stroke-width='2'%3E%3Cpath d='M120 140h220v120h140v-70h200'/%3E%3Cpath d='M190 420h210v-120h160v170h190'/%3E%3Cpath d='M90 300h240v-90h180v90h260'/%3E%3Cpath d='M150 520h250v-90h120v-120h230'/%3E%3C/g%3E%3Cg fill='%230b63f6' fill-opacity='.12'%3E%3Ccircle cx='120' cy='140' r='8'/%3E%3Ccircle cx='340' cy='140' r='8'/%3E%3Ccircle cx='340' cy='260' r='8'/%3E%3Ccircle cx='480' cy='260' r='8'/%3E%3Ccircle cx='680' cy='190' r='8'/%3E%3Ccircle cx='190' cy='420' r='8'/%3E%3Ccircle cx='400' cy='300' r='8'/%3E%3Ccircle cx='560' cy='470' r='8'/%3E%3Ccircle cx='750' cy='420' r='8'/%3E%3C/g%3E%3C/svg%3E")
+        no-repeat center / contain;
+      pointer-events:none;
+      transform: rotate(-6deg);
+    }
+
+    .heroGrid{display:grid; grid-template-columns: 1.1fr .9fr; gap:18px; align-items:stretch; position:relative; z-index:1}
+
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:7px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.75);
+      color: var(--muted);
+      font-weight:850;
+      letter-spacing:.4px;
+      font-size:12px;
+      width:fit-content;
+    }
+    .kdot{width:8px; height:8px; border-radius:50%; background: var(--accent)}
+
+    h1{margin:14px 0 10px; font-size: clamp(30px, 3.6vw, 48px); line-height:1.08; letter-spacing:-.7px; font-weight:950}
+    .subhero{margin:0; color:var(--muted); font-size:16px; max-width:70ch}
+
+    .heroActions{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px}
+
+    .panel{
+      border:1px solid var(--line);
+      background: var(--card);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+
+    .panelTitle{font-size:12px; font-weight:900; color:var(--muted); letter-spacing:.8px; text-transform:uppercase}
+
+    .pillRow{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+    .pill{padding:8px 10px; border-radius:999px; border:1px solid var(--line); background: var(--surface); font-weight:800; font-size:12px; color:var(--muted)}
+
+    /* Sections */
+    section{padding:34px 0}
+
+    .sectionHead{display:flex; justify-content:space-between; align-items:flex-end; gap:16px; flex-wrap:wrap; margin-bottom:14px}
+    .sectionHead h2{margin:0; font-size:20px; font-weight:950; letter-spacing:-.2px}
+    .sectionHead p{margin:0; color:var(--muted); max-width:78ch}
+
+    .cards{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    .card{
+      border:1px solid var(--line);
+      background: var(--card);
+      border-radius:var(--radius);
+      padding:16px;
+      box-shadow: 0 6px 16px rgba(10, 22, 42, .06);
+      min-height:150px;
+    }
+    .card:hover{border-color:#d6deec; box-shadow: 0 10px 26px rgba(10, 22, 42, .10)}
+
+    .label{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: var(--surface);
+      font-size:12px;
+      color: var(--muted);
+      font-weight:900;
+      width:fit-content;
+    }
+    .ldot{width:8px; height:8px; border-radius:50%; background: var(--accent)}
+
+    .card h3{margin:10px 0 8px; font-size:16px; font-weight:950}
+    .card p{margin:0; color:var(--muted); font-size:14px}
+
+    .two{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
+
+    /* Insights / newsletter */
+    .insightsGrid{display:grid; grid-template-columns: 1.2fr .8fr; gap:14px}
+    .newsList{display:grid; gap:10px; margin-top:12px}
+    .newsItem{
+      border:1px solid var(--line);
+      background: var(--surface);
+      border-radius:14px;
+      padding:12px;
+    }
+    .newsItem a{display:block}
+    .newsTitle{font-weight:900; margin:0 0 6px}
+    .newsMeta{font-size:12px; color:var(--muted); margin:0}
+    .newsEmpty{color:var(--muted); font-size:14px; margin-top:10px}
+
+    /* Contact */
+    label.field{display:block; font-size:12px; font-weight:900; letter-spacing:.8px; color:var(--muted); margin:12px 0 6px}
+    input,textarea{
+      width:100%; padding:12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: #fff;
+      color:var(--text);
+      outline:none;
+    }
+    input:focus, textarea:focus{border-color: rgba(11,99,246,.55); box-shadow: 0 0 0 4px rgba(11,99,246,.10)}
+    textarea{min-height:120px; resize:vertical}
+
+    footer{border-top:1px solid var(--line); padding:18px 0 28px; color:var(--muted); font-size:12px}
+    .foot{display:flex; gap:16px; justify-content:space-between; flex-wrap:wrap}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
+
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+      .two{grid-template-columns:1fr}
+      .insightsGrid{grid-template-columns:1fr}
+      .navlinks{display:none}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="Mantanex home">
+          <!-- Put mantanex.png next to index.html (same folder) -->
+          <img class="brandLogo" src="mantanex.png" alt="Mantanex logo" />
+          <div>
+            <div class="brandTitle">MANTANEX</div>
+            <div class="brandSub">Products • Services • AI • Cloud</div>
+          </div>
+        </a>
+
+        <nav class="navlinks" aria-label="Primary">
+          <a href="#products">Products</a>
+          <a href="#services">Services</a>
+          <a href="#insights">Insights</a>
+          <a href="#support">Support</a>
+          <a href="#staffing">Staffing</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div class="heroGrid">
+          <div>
+            <div class="kicker"><span class="kdot" aria-hidden="true"></span> Enterprise technology</div>
+            <h1>Products and services<br/>for modern IT.</h1>
+            <p class="subhero">
+              Mantanex builds AI-inspired devices and delivers enterprise IT services—cloud, security, automation, and managed support—
+              backed by trained professionals.
+            </p>
+
+            <div class="heroActions">
+              <a class="btn primary" href="#products">Explore products</a>
+              <a class="btn" href="#services">Services</a>
+              <a class="btn" href="#insights">AI & IoT insights</a>
+            </div>
+          </div>
+
+          <aside class="panel" aria-label="Highlights">
+            <div class="panelTitle">What we deliver</div>
+            <div style="margin-top:10px; color:var(--muted)">Clear scope. Secure execution. Production-ready outcomes.</div>
+
+            <div class="pillRow">
+              <span class="pill">AI automation</span>
+              <span class="pill">IoT & edge</span>
+              <span class="pill">Cloud engineering</span>
+              <span class="pill">Security hardening</span>
+              <span class="pill">Managed support</span>
+            </div>
+
+            <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
+              <a class="btn" href="#contact">Contact Mantanex</a>
+              <a class="btn" href="#support">Get support</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <h2>Products</h2>
+            <p>AI-inspired devices and platforms designed for monitoring, automation, and edge intelligence.</p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="label"><span class="ldot"></span> IoT</div>
+            <h3>Mantanex IoT Devices</h3>
+            <p>Connectivity-first devices for telemetry, smart monitoring, and operational visibility.</p>
+          </div>
+          <div class="card">
+            <div class="label"><span class="ldot"></span> Edge AI</div>
+            <h3>AI-Enabled Edge Devices</h3>
+            <p>On-site automation concepts for fast responses, reduced latency, and secure execution.</p>
+          </div>
+          <div class="card">
+            <div class="label"><span class="ldot"></span> Platform</div>
+            <h3>Automation Platform</h3>
+            <p>Integrations and tooling that connect systems, reduce manual work, and enforce controls.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:14px" class="panel">
+          <div class="panelTitle">Product approach</div>
+          <div style="margin-top:10px; color:var(--muted)">Security-first. Documentation-first. Built for operations.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <h2>Services</h2>
+            <p>Delivery across AI, cloud, automation, and security—structured for enterprise environments.</p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="label"><span class="ldot"></span> AI</div>
+            <h3>AI Automation</h3>
+            <p>Copilots, retrieval, workflow automation, evaluation, and safe deployment patterns.</p>
+          </div>
+          <div class="card">
+            <div class="label"><span class="ldot"></span> Data</div>
+            <h3>Data Engineering</h3>
+            <p>Pipelines, integrations, governance, and foundations for analytics and ML.</p>
+          </div>
+          <div class="card">
+            <div class="label"><span class="ldot"></span> Cloud</div>
+            <h3>Cloud & DevOps</h3>
+            <p>Infrastructure-as-Code, CI/CD, migrations, observability, and reliability engineering.</p>
+          </div>
+          <div class="card">
+            <div class="label"><span class="ldot"></span> Security</div>
+            <h3>Security Hardening</h3>
+            <p>Identity controls, secrets, patch strategy, audit-friendly logging, baseline hardening.</p>
+          </div>
+          <div class="card">
+            <div class="label"><span class="ldot"></span> Managed</div>
+            <h3>Managed Services</h3>
+            <p>Monitoring, alerting, performance tuning, and incident-response support options.</p>
+          </div>
+          <div class="card">
+            <div class="label"><span class="ldot"></span> Advisory</div>
+            <h3>Architecture & Roadmaps</h3>
+            <p>System reviews, modernization plans, and execution roadmaps aligned to outcomes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI / IoT “newsletter” section -->
+    <section id="insights">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <h2>AI & IoT insights</h2>
+            <p>
+              A short briefing panel for industry updates. This page uses a simple feed loader.
+              To make it work reliably (CORS), set a proxy URL below (example: Cloudflare Worker).
+            </p>
+          </div>
+        </div>
+
+        <div class="insightsGrid">
+          <div class="panel">
+            <div class="panelTitle">Latest headlines</div>
+            <div id="news" class="newsList"></div>
+            <div id="newsEmpty" class="newsEmpty" style="display:none"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panelTitle">Subscribe</div>
+            <p style="margin:10px 0 0; color:var(--muted)">
+              Get periodic updates on AI and IoT. (This demo uses email-to-mailto. For production, connect Zoho/CRM/webhook.)
+            </p>
+
+            <form onsubmit="return subscribe(event)" style="margin-top:12px">
+              <label class="field" for="subEmail">Email</label>
+              <input id="subEmail" name="subEmail" type="email" placeholder="you@company.com" required />
+              <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+                <button class="btn primary" type="submit">Subscribe</button>
+                <button class="btn" type="button" onclick="loadNews()">Refresh headlines</button>
+              </div>
+              <div style="margin-top:10px; color:var(--muted); font-size:12px">
+                You control which sources load by editing the FEEDS list in the script.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="support">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <h2>Support</h2>
+            <p>Simple, professional support options for products and services.</p>
+          </div>
+        </div>
+
+        <div class="two">
+          <div class="panel">
+            <div class="panelTitle">For customers</div>
+            <div style="margin-top:10px; color:var(--muted)">Create a support request and include product/service, environment, and urgency.</div>
+            <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
+              <a class="btn primary" href="#contact">Open a ticket</a>
+              <a class="btn" href="mailto:contact@mantanex.com?subject=Support%20Request">Email support</a>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panelTitle">What to include</div>
+            <div class="pillRow">
+              <span class="pill">Account / company</span>
+              <span class="pill">Product or service</span>
+              <span class="pill">Error / symptoms</span>
+              <span class="pill">Impact & urgency</span>
+              <span class="pill">Logs / screenshots</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="staffing">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <h2>Staffing</h2>
+            <p>Technical staffing for AI, cloud, and infrastructure initiatives.</p>
+          </div>
+        </div>
+
+        <div class="two">
+          <div class="panel">
+            <div class="panelTitle">Engagement models</div>
+            <div style="margin-top:10px; color:var(--muted)">Contract, contract-to-hire, direct hire, or pod teams.</div>
+            <div class="pillRow">
+              <span class="pill">Contract</span>
+              <span class="pill">Contract-to-hire</span>
+              <span class="pill">Direct hire</span>
+              <span class="pill">Pod teams</span>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panelTitle">Roles</div>
+            <div style="margin-top:10px; color:var(--muted)">AI engineers, cloud engineers, SRE/DevOps, data engineers, security engineers.</div>
+            <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
+              <a class="btn" href="#contact">Request staffing</a>
+              <a class="btn" href="#services">View services</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <h2>Contact</h2>
+            <p>Sales, support, and partnership inquiries.</p>
+          </div>
+        </div>
+
+        <div class="two">
+          <div class="panel">
+            <div class="panelTitle">Business address</div>
+            <div style="margin-top:10px" class="mono">
+              7901 4th St N, STE 300<br/>
+              St. Petersburg, FL 33702
+            </div>
+            <div style="margin-top:10px; color:var(--muted)">
+              Email: <span class="mono">contact@mantanex.com</span>
+            </div>
+
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+              <a class="btn primary" href="mailto:contact@mantanex.com?subject=Mantanex%20Request">Email Mantanex</a>
+              <button class="btn" onclick="copyEmail()" type="button">Copy email</button>
+            </div>
+            <div style="margin-top:14px; color:var(--muted); font-size:12px">Response time: within 1 business day.</div>
+          </div>
+
+          <div class="panel">
+            <div class="panelTitle">Request form</div>
+
+            <form onsubmit="return submitLead(event)">
+              <label class="field" for="name">Name</label>
+              <input id="name" name="name" autocomplete="name" placeholder="Your name" required />
+
+              <label class="field" for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required />
+
+              <label class="field" for="need">Topic</label>
+              <input id="need" name="need" placeholder="Products / Services / Support / Staffing" required />
+
+              <label class="field" for="msg">Details</label>
+              <textarea id="msg" name="msg" placeholder="What do you need? Include timeline and any constraints." required></textarea>
+
+              <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+                <button class="btn primary" type="submit">Send</button>
+                <button class="btn" type="button" onclick="fillExample()">Use example</button>
+              </div>
+
+              <div style="margin-top:10px; color:var(--muted); font-size:12px">
+                This form opens your email client (no server). For production, connect a hosted form endpoint.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>© <span id="year"></span> Mantanex LLC</div>
+        <div class="mono">PRODUCTS • SERVICES • INSIGHTS • SUPPORT • STAFFING</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* ===== Email: set to contact@mantanex.com ===== */
+    const COMPANY_EMAIL = 'contact@mantanex.com';
+
+    function copyEmail(){
+      navigator.clipboard?.writeText(COMPANY_EMAIL).then(() => {
+        alert('Copied: ' + COMPANY_EMAIL);
+      }).catch(() => {
+        prompt('Copy this email:', COMPANY_EMAIL);
+      });
+    }
+
+    function fillExample(){
+      document.getElementById('name').value = 'Kira';
+      document.getElementById('email').value = 'you@company.com';
+      document.getElementById('need').value = 'IoT + AI deployment';
+      document.getElementById('msg').value =
+        'We need an IoT monitoring solution with dashboards and alerting, plus AI automation for triage. ' +
+        'Timeline: 4–6 weeks. Please share approach and implementation plan.';
+    }
+
+    function submitLead(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const need = document.getElementById('need').value.trim();
+      const msg = document.getElementById('msg').value.trim();
+
+      const subject = encodeURIComponent('Mantanex Request — ' + need);
+      const body =
+        'Name: ' + name + '\\r\\n' +
+        'Email: ' + email + '\\r\\n' +
+        'Topic: ' + need + '\\r\\n\\r\\n' +
+        'Details:\\r\\n' + msg;
+
+      window.location.href = 'mailto:' + COMPANY_EMAIL + '?subject=' + subject + '&body=' + encodeURIComponent(body);
+      return false;
+    }
+
+    function subscribe(e){
+      e.preventDefault();
+      const sub = document.getElementById('subEmail').value.trim();
+      const subject = encodeURIComponent('Newsletter subscribe');
+      const body = encodeURIComponent('Please subscribe: ' + sub);
+      window.location.href = 'mailto:' + COMPANY_EMAIL + '?subject=' + subject + '&body=' + body;
+      return false;
+    }
+
+    /* ===== AI/IoT “newsletter” headlines =====
+       Browsers block many RSS feeds (CORS). Best practice:
+       - Create a tiny proxy endpoint you control (Cloudflare Worker / serverless)
+       - Set PROXY below to your endpoint
+       - Proxy should fetch the RSS URL and return JSON.
+
+       Expected proxy response format:
+       { "items": [ { "title": "...", "link": "...", "source": "...", "date": "..." }, ... ] }
+    */
+    const PROXY = ""; // <-- PUT YOUR PROXY URL HERE (example: https://your-worker.yourdomain.com/rss?url=...)
+
+    const FEEDS = [
+      { name: "AI",  url: "https://example.com/ai.rss"  },
+      { name: "IoT", url: "https://example.com/iot.rss" }
+    ];
+
+    async function loadNews(){
+      const list = document.getElementById('news');
+      const empty = document.getElementById('newsEmpty');
+      list.innerHTML = '';
+      empty.style.display = 'none';
+
+      if(!PROXY){
+        empty.style.display = 'block';
+        empty.textContent =
+          "To show live headlines, add a proxy URL in the script (PROXY variable). " +
+          "Browsers block most RSS feeds directly (CORS).";
+        return;
+      }
+
+      try{
+        const allItems = [];
+        for(const f of FEEDS){
+          const res = await fetch(PROXY + encodeURIComponent(f.url));
+          if(!res.ok) continue;
+          const data = await res.json();
+          const items = (data.items || []).slice(0, 4).map(x => ({
+            title: x.title || "Untitled",
+            link: x.link || "#",
+            source: x.source || f.name,
+            date: x.date || ""
+          }));
+          allItems.push(...items);
+        }
+
+        const top = allItems.slice(0, 8);
+        if(!top.length){
+          empty.style.display = 'block';
+          empty.textContent = "No items returned. Check your proxy and feed URLs.";
+          return;
+        }
+
+        for(const item of top){
+          const div = document.createElement('div');
+          div.className = 'newsItem';
+          div.innerHTML =
+            '<a href="' + item.link + '" target="_blank" rel="noopener noreferrer">' +
+              '<p class="newsTitle">' + escapeHtml(item.title) + '</p>' +
+              '<p class="newsMeta">' + escapeHtml(item.source) + (item.date ? ' • ' + escapeHtml(item.date) : '') + '</p>' +
+            '</a>';
+          list.appendChild(div);
+        }
+      }catch(err){
+        empty.style.display = 'block';
+        empty.textContent = "Could not load headlines. Check proxy URL and CORS.";
+      }
+    }
+
+    function escapeHtml(str){
+      return String(str).replace(/[&<>"']/g, (m) => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+      }[m]));
+    }
+
+    // Load once on page open (will show setup message until PROXY is set)
+    loadNews();
+  </script>
+</body>
+</html>
