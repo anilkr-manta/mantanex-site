@@ -1,6 +1,17 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <section class="clients">
+  <h3>Experience across enterprise ecosystems</h3>
+  <p>AMD • AT&T • Nokia • State Farm • Enterprise IT partners</p>
+
+  <div class="client-logos">
+    <img src="./amd.svg" alt="AMD logo">
+    <img src="./att.svg" alt="AT&T logo">
+    <img src="./nokia.svg" alt="Nokia logo">
+    <img src="./statefarm.svg" alt="State Farm logo">
+  </div>
+</section>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Mantanex — Enterprise Consulting, AI Engineering, Cloud & NAS</title>
@@ -763,6 +774,25 @@
           </div>
         </div>
       </div>
+.client-logos{
+  display:flex;
+  gap:40px;
+  align-items:center;
+  margin-top:20px;
+  flex-wrap:wrap;
+}
+
+.client-logos img{
+  height:36px;
+  opacity:0.85;
+  filter: grayscale(100%);
+  transition:.2s ease;
+}
+
+.client-logos img:hover{
+  opacity:1;
+  filter:none;
+}
 
       <script>
         function subscribe(){
@@ -839,3 +869,4 @@
 
 </body>
 </html>
+
