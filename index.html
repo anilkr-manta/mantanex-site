@@ -1,643 +1,726 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mantanex — Enterprise IT, AI & Consulting</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mantanex — Enterprise IT, AI & Consulting</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<style>
-  :root{
-    --text:#0b0c0f;
-    --muted:#5b6270;
-    --line:#e9edf3;
-    --bg:#ffffff;
-    --bg-soft:#f7f9fc;
-    --blue:#1a73e8;
-    --blue-dark:#145ec0;
-    --radius:14px;
-    --shadow: 0 10px 30px rgba(16,24,40,.08);
-  }
+  <style>
+    :root{
+      --text:#0b0c0f;
+      --muted:#5b6270;
+      --line:#e9edf3;
+      --bg:#ffffff;
+      --bg-soft:#f7f9fc;
+      --blue:#1a73e8;
+      --blue-dark:#145ec0;
+      --radius:14px;
+      --shadow: 0 10px 30px rgba(16,24,40,.08);
 
-  *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--bg);color:var(--text);}
+      /* NAV pills (your screenshot style) */
+      --nav-pill:#88d6ef;          /* light blue */
+      --nav-pill-text:#0b0c0f;
+      --nav-pill-hover:#72cdea;
+    }
 
-  /* NAV */
-  nav{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:16px 56px;border-bottom:1px solid var(--line);
-    background:rgba(255,255,255,.92);backdrop-filter: blur(10px);
-    position:sticky;top:0;z-index:1000;
-  }
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  text-decoration:none;
-  color:#111;
-}
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);}
 
-.brand img{
-  height:26px;
-  width:auto;
-}
+    /* NAV */
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:14px 56px;
+      border-bottom:1px solid var(--line);
+      background:rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      position:sticky;top:0;z-index:1000;
+    }
 
-.brand span{
-  font-size:17px;
-  font-weight:700;
-  letter-spacing:-0.02em;
-}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:#111;
+      white-space:nowrap;
+      flex:0 0 auto;
+      min-width: 190px; /* prevents brand “hiding” when nav grows */
+    }
+    .brand img{height:22px;width:auto;display:block;opacity:.95}
+    .brand .brandText{font-weight:800;font-size:20px;letter-spacing:-.02em;}
 
+    .navRight{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      flex:1 1 auto;
+      justify-content:flex-end;
+      min-width: 0;
+    }
 
-  .navlinks{
-    display:flex;
-    align-items:center;
-    gap:28px;
-    list-style:none;
-    margin:0;
-    padding:0;
-  }
+    .navlinks{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      list-style:none;
+      flex-wrap:nowrap;
+      overflow-x:auto; /* if many tabs, scroll instead of pushing logo away */
+      scrollbar-width: thin;
+      padding-bottom: 2px;
+    }
+    .navlinks::-webkit-scrollbar{height:6px;}
+    .navlinks::-webkit-scrollbar-thumb{background:#d7dbe3;border-radius:999px;}
 
-  /* NAV LINKS — highlighted tag style (your snipping tool look) */
-  .navlinks a{
-    color:#0b0c0f;
-    text-decoration:none;
-    font-weight:600;
-    font-size:14px;
-    padding:4px 12px;
-    border-radius:6px;
-    background:#7fd3ea;
-    transition: all .15s ease;
-    display:inline-block;
-  }
-  .navlinks a:hover{
-    background:#55c1df;
-    color:#000;
-  }
-  .navlinks a:active{
-    background:#39b3d6;
-  }
+    .navlinks a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 16px;
+      border-radius:12px;
+      background:var(--nav-pill);
+      color:var(--nav-pill-text);
+      text-decoration:none;
+      font-weight:700;
+      font-size:14px;
+      line-height:1;
+      white-space:nowrap;
+      border:1px solid rgba(0,0,0,.04);
+      transition: background .15s ease, transform .05s ease;
+    }
+    .navlinks a:hover{background:var(--nav-pill-hover);}
+    .navlinks a:active{transform: translateY(1px);}
 
-  .navcta{display:flex;align-items:center;gap:10px;margin-left:18px;}
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;gap:10px;
-    padding:11px 16px;border-radius:12px;font-weight:700;
-    text-decoration:none;font-size:14px;line-height:1;
-    border:1px solid transparent;
-    cursor:pointer;
-  }
-  .btn.primary{background:var(--blue);color:#fff;}
-  .btn.primary:hover{background:var(--blue-dark);}
-  .btn.ghost{border-color:var(--line);color:#0b0c0f;background:#fff;}
-  .btn.ghost:hover{background:var(--bg-soft);}
+    .navcta{display:flex;align-items:center;gap:10px;flex:0 0 auto;}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:11px 16px;border-radius:12px;
+      font-weight:800;font-size:14px;line-height:1;
+      text-decoration:none;border:1px solid transparent;
+      cursor:pointer;white-space:nowrap;
+    }
+    .btn.primary{background:var(--blue);color:#fff;}
+    .btn.primary:hover{background:var(--blue-dark);}
+    .btn.ghost{border-color:var(--line);color:#0b0c0f;background:#fff;}
+    .btn.ghost:hover{background:var(--bg-soft);}
 
-  /* LAYOUT */
-  .wrap{max-width:1200px;margin:0 auto;padding:0 56px;}
-  section{scroll-margin-top:90px;}
+    /* LAYOUT */
+    .wrap{max-width:1200px;margin:0 auto;padding:0 56px;}
+    section{scroll-margin-top:90px;}
 
-  /* HERO */
-  .hero{padding:88px 0 56px;}
-  .pill{
-    display:inline-flex;align-items:center;gap:10px;
-    padding:8px 12px;border:1px solid var(--line);
-    border-radius:999px;background:#fff;color:var(--blue);
-    font-weight:700;font-size:12px;
-  }
-  .hero h1{
-    font-size:56px;line-height:1.06;margin:18px 0 14px;
-    letter-spacing:-.03em;font-weight:900;
-  }
-  .hero p{
-    color:var(--muted);font-size:18px;line-height:1.7;
-    max-width:820px;
-  }
-  .heroActions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;}
+    /* HERO */
+    .hero{padding:70px 0 56px;}
+    .pill{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:8px 12px;border:1px solid var(--line);
+      border-radius:999px;background:#fff;color:var(--blue);
+      font-weight:800;font-size:12px;
+    }
+    .hero h1{
+      font-size:56px;line-height:1.06;margin:18px 0 14px;
+      letter-spacing:-.03em;font-weight:900;
+    }
+    .hero p{
+      color:var(--muted);font-size:18px;line-height:1.7;
+      max-width:820px;
+    }
+    .heroActions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;}
 
-  .heroGrid{
-    margin-top:34px;
-    display:grid;grid-template-columns: 1.2fr .8fr;gap:22px;
-    align-items:stretch;
-  }
-  .heroCard{
-    border:1px solid var(--line);border-radius:var(--radius);
-    background:linear-gradient(180deg,#fff 0%,#fbfcff 100%);
-    padding:22px;box-shadow:var(--shadow);
-  }
-  .heroCard h3{font-size:14px;color:#2b3240;margin-bottom:10px;letter-spacing:.06em;text-transform:uppercase;}
-  .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;}
-  .tag{
-    border:1px solid var(--line);background:#fff;border-radius:999px;
-    padding:9px 12px;font-weight:700;font-size:12px;color:#2b3240;
-  }
-  .bullets{margin-top:10px;display:grid;gap:10px;}
-  .bullet{display:flex;gap:10px;align-items:flex-start;color:#2b3240;font-size:14px;line-height:1.5;}
-  .dot{height:10px;width:10px;border-radius:50%;background:var(--blue);margin-top:4px;flex:0 0 10px;}
+    .heroGrid{
+      margin-top:34px;
+      display:grid;grid-template-columns: 1.2fr .8fr;gap:22px;
+      align-items:stretch;
+    }
+    .heroCard{
+      border:1px solid var(--line);border-radius:var(--radius);
+      background:linear-gradient(180deg,#fff 0%,#fbfcff 100%);
+      padding:22px;box-shadow:var(--shadow);
+    }
+    .heroCard h3{font-size:14px;color:#2b3240;margin-bottom:10px;letter-spacing:.06em;text-transform:uppercase;}
+    .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;}
+    .tag{
+      border:1px solid var(--line);background:#fff;border-radius:999px;
+      padding:9px 12px;font-weight:800;font-size:12px;color:#2b3240;
+    }
+    .bullets{margin-top:10px;display:grid;gap:10px;}
+    .bullet{display:flex;gap:10px;align-items:flex-start;color:#2b3240;font-size:14px;line-height:1.5;}
+    .dot{height:10px;width:10px;border-radius:50%;background:var(--blue);margin-top:4px;flex:0 0 10px;}
+    .fine{color:#7a8394;font-size:13px;line-height:1.6;margin-top:10px;}
 
-  /* CLIENTS */
-  .clientsBand{
-    padding:30px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-    background:#fff;
-  }
-  .clientsTitle{
-    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
-    color:#7a8394;font-weight:800;margin-bottom:14px;text-align:center;
-  }
-  .logos{
-    display:flex;justify-content:center;align-items:center;gap:42px;
-    flex-wrap:wrap;
-  }
-  .logos img{
-    height:26px;width:auto;max-width:140px;
-    opacity:.75;filter:grayscale(100%);
-    transition: .2s ease;
-  }
-  .logos img:hover{opacity:1;filter:none;}
+    /* CLIENTS */
+    .clientsBand{
+      padding:30px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+      background:#fff;
+    }
+    .clientsTitle{
+      font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+      color:#7a8394;font-weight:900;margin-bottom:14px;text-align:center;
+    }
+    .logos{
+      display:flex;justify-content:center;align-items:center;gap:42px;
+      flex-wrap:wrap;
+    }
+    .logos img{
+      height:26px;width:auto;max-width:140px;
+      opacity:.78;filter:grayscale(100%);
+      transition: .2s ease;
+    }
+    .logos img:hover{opacity:1;filter:none;}
 
-  /* SECTIONS */
-  .section{padding:76px 0;}
-  .sectionHeader{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:24px;}
-  .sectionHeader h2{font-size:38px;letter-spacing:-.02em;}
-  .sectionHeader p{color:var(--muted);max-width:680px;line-height:1.7;}
+    /* SECTIONS */
+    .section{padding:76px 0;}
+    .sectionHeader{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:24px;}
+    .sectionHeader h2{font-size:38px;letter-spacing:-.02em;}
+    .sectionHeader p{color:var(--muted);max-width:680px;line-height:1.7;}
 
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-  .card{
-    border:1px solid var(--line);border-radius:var(--radius);background:#fff;
-    padding:22px;box-shadow: 0 8px 20px rgba(16,24,40,.05);
-  }
-  .card h4{font-size:16px;margin-bottom:8px;letter-spacing:-.01em;}
-  .card p{color:var(--muted);font-size:14px;line-height:1.7;}
-  .card .mini{margin-top:14px;color:#2b3240;font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+    .card{
+      border:1px solid var(--line);border-radius:var(--radius);background:#fff;
+      padding:22px;box-shadow: 0 8px 20px rgba(16,24,40,.05);
+    }
+    .card h4{font-size:16px;margin-bottom:8px;letter-spacing:-.01em;}
+    .card p{color:var(--muted);font-size:14px;line-height:1.7;}
+    .card .mini{margin-top:14px;color:#2b3240;font-weight:900;font-size:12px;letter-spacing:.06em;text-transform:uppercase;}
 
-  /* INSIGHTS */
-  .insightsBox{
-    border:1px solid var(--line);border-radius:var(--radius);
-    background:var(--bg-soft);padding:22px;
-    display:flex;align-items:center;justify-content:space-between;gap:16px;
-  }
-  .insightsBox p{color:var(--muted);line-height:1.6;font-size:14px;max-width:760px;}
-  .insightsBox strong{color:#0b0c0f;}
-  .inlineLinks{display:flex;gap:10px;flex-wrap:wrap;}
-  .inlineLinks a{font-weight:800;text-decoration:none;color:var(--blue);padding:10px 12px;border-radius:12px;background:#fff;border:1px solid var(--line);}
-  .inlineLinks a:hover{background:#f0f5ff;border-color:#d8e6ff;}
+    /* INSIGHTS */
+    .insightsBox{
+      border:1px solid var(--line);border-radius:var(--radius);
+      background:var(--bg-soft);padding:22px;
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+    }
+    .insightsBox p{color:var(--muted);line-height:1.6;font-size:14px;max-width:760px;}
+    .insightsBox strong{color:#0b0c0f;}
+    .inlineLinks{display:flex;gap:10px;flex-wrap:wrap;}
+    .inlineLinks a{
+      font-weight:900;text-decoration:none;color:var(--blue);
+      padding:10px 12px;border-radius:12px;background:#fff;border:1px solid var(--line);
+    }
+    .inlineLinks a:hover{background:#f0f5ff;border-color:#d8e6ff;}
 
-  /* CONTACT */
-  .contact{background:var(--bg-soft);border-top:1px solid var(--line);}
-  .contactGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px;}
-  .info{
-    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-    padding:18px;
-  }
-  .info b{display:block;margin-bottom:6px;}
-  .info a{color:var(--blue);text-decoration:none;font-weight:700;}
-  .info a:hover{text-decoration:underline;}
-  .fine{color:#7a8394;font-size:13px;line-height:1.6;margin-top:10px;}
+    /* CONTACT */
+    .contact{background:var(--bg-soft);border-top:1px solid var(--line);}
+    .contactGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px;}
+    .info{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;}
+    .info b{display:block;margin-bottom:6px;}
+    .info a{color:var(--blue);text-decoration:none;font-weight:900;}
+    .info a:hover{text-decoration:underline;}
 
-  /* FORM */
-  .formWrap{
-    margin-top:16px;
-    background:#fff;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:18px;
-    box-shadow: 0 8px 20px rgba(16,24,40,.05);
-  }
-  .formGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px;}
-  .formGrid .full{grid-column:1/-1;}
-  label{display:block;font-weight:700;font-size:13px;color:#2b3240;margin-bottom:8px;}
-  input, select, textarea{
-    width:100%;
-    padding:12px 12px;
-    border:1px solid #d9dee7;
-    border-radius:12px;
-    background:#fff;
-    font-size:14px;
-    outline:none;
-  }
-  textarea{min-height:140px;resize:vertical;}
-  input:focus, select:focus, textarea:focus{
-    border-color: rgba(26,115,232,.55);
-    box-shadow: 0 0 0 4px rgba(26,115,232,.12);
-  }
-  .formActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center;}
-  .hint{color:#7a8394;font-size:13px;line-height:1.6;}
-  .hp{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;}
+    /* MAP */
+    .mapWrap{
+      margin-top:16px;
+      grid-column: 1 / -1;
+      width:100%;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:#fff;
+      box-shadow: 0 8px 20px rgba(16,24,40,.05);
+    }
+    .mapWrap iframe{display:block;width:100%;height:320px;border:0;}
 
-  footer{
-    padding:34px 0;text-align:center;color:#7a8394;font-size:13px;
-    border-top:1px solid var(--line);background:#fff;
-  }
+    /* FORM */
+    .formWrap{
+      margin-top:16px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow: 0 8px 20px rgba(16,24,40,.05);
+    }
+    .formGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px;}
+    .formGrid .full{grid-column:1/-1;}
+    label{display:block;font-weight:900;font-size:13px;color:#2b3240;margin-bottom:8px;}
+    input, select, textarea{
+      width:100%;
+      padding:12px 12px;
+      border:1px solid #d9dee7;
+      border-radius:12px;
+      background:#fff;
+      font-size:14px;
+      outline:none;
+    }
+    textarea{min-height:140px;resize:vertical;}
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(26,115,232,.55);
+      box-shadow: 0 0 0 4px rgba(26,115,232,.12);
+    }
+    .formActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center;}
+    .hint{color:#7a8394;font-size:13px;line-height:1.6;}
+    .status{margin-top:10px;font-size:13px;font-weight:900;color:#7a8394;}
+    .status.err{color:#b42318;}
+    .status.ok{color:#067647;}
+    .hp{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;}
 
-  @media(max-width: 980px){
-    nav{padding:14px 18px;}
-    .wrap{padding:0 18px;}
-    .navlinks{gap:10px;flex-wrap:wrap;}
-    .hero h1{font-size:40px;}
-    .heroGrid{grid-template-columns:1fr;}
-    .grid{grid-template-columns:1fr;}
-    .contactGrid{grid-template-columns:1fr;}
-    .formGrid{grid-template-columns:1fr;}
-    .navcta{display:none;}
-  }
+    footer{
+      padding:34px 0;text-align:center;color:#7a8394;font-size:13px;
+      border-top:1px solid var(--line);background:#fff;
+    }
 
-  .mapWrap{
-    margin-top:16px;
-    grid-column: 1 / -1;
-    width:100%;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    overflow:hidden;
-    background:#fff;
-    box-shadow: 0 8px 20px rgba(16,24,40,.05);
-  }
-  .mapWrap iframe{
-    display:block;
-    width:100%;
-    height:320px;
-    border:0;
-  }
-</style>
+    @media(max-width: 980px){
+      nav{padding:12px 14px;}
+      .wrap{padding:0 18px;}
+      .brand{min-width: 0;}
+      .brand .brandText{font-size:18px;}
+      .navcta{display:none;}
+      .hero h1{font-size:40px;}
+      .heroGrid{grid-template-columns:1fr;}
+      .grid{grid-template-columns:1fr;}
+      .contactGrid{grid-template-columns:1fr;}
+      .formGrid{grid-template-columns:1fr;}
+    }
+  </style>
 </head>
 
 <body>
 
-<nav>
-  <a class="brand" href="/mantanex.html"
- aria-label="Mantanex Home">
-    <img src="logo.png" alt="Mantanex logo">
-    <span>Mantanex</span>
-  </a>
+  <nav>
+    <!-- IMPORTANT: brand points to mantanex.html (your separate page) -->
+    <a class="brand" href="/mantanex.html" aria-label="Mantanex Home">
+      <img src="logo.png" alt="Mantanex">
+      <span class="brandText">Mantanex</span>
+    </a>
 
-  <div style="display:flex;align-items:center;gap:14px;">
-    <ul class="navlinks">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#products">Products</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#insights">Insights</a></li>
-      <li><a href="#partners">Partners</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#payroll">Payroll</a></li>
-    </ul>
+    <div class="navRight">
+      <ul class="navlinks" aria-label="Site navigation">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#insights">Insights</a></li>
+        <li><a href="#partners">Partners</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <!-- Payroll can be internal or external. For external, replace href with ADP/Gusto link. -->
+        <li><a href="#payroll">Payroll</a></li>
+      </ul>
 
-    <div class="navcta">
-      <a class="btn ghost" href="#insights">AI newsletter</a>
-      <a class="btn primary" href="#contact">Start a project</a>
-    </div>
-  </div>
-</nav>
-
-<div id="top"></div>
-
-<header class="wrap hero">
-  <div class="pill">Enterprise consulting • staffing • product engineering</div>
-
-  <h1>Products and services for modern IT.</h1>
-
-  <p>
-    Mantanex LLC supports enterprise delivery standards across cloud engineering, DevOps, security hardening, and automation.
-    We also build new AI initiatives and reliable NAS storage systems as focused product tracks.
-  </p>
-
-  <div class="heroActions">
-    <a class="btn primary" href="#contact">Start a project</a>
-    <a class="btn ghost" href="#services">Explore services</a>
-  </div>
-
-  <div class="heroGrid">
-    <div class="heroCard">
-      <h3>What we deliver</h3>
-      <div class="tags">
-        <span class="tag">Cloud engineering</span>
-        <span class="tag">DevOps automation</span>
-        <span class="tag">Security hardening</span>
-        <span class="tag">AI initiatives</span>
-        <span class="tag">Managed support</span>
-      </div>
-      <div class="bullets">
-        <div class="bullet"><span class="dot"></span><span>Clear scope, milestones, and ownership.</span></div>
-        <div class="bullet"><span class="dot"></span><span>Production-ready delivery with documentation.</span></div>
-        <div class="bullet"><span class="dot"></span><span>Consulting + staffing models depending on need.</span></div>
+      <div class="navcta">
+        <a class="btn ghost" href="#insights">AI newsletter</a>
+        <a class="btn primary" href="#contact">Start a project</a>
       </div>
     </div>
+  </nav>
 
-    <div class="heroCard">
-      <h3>Engagement model</h3>
-      <div class="bullets">
-        <div class="bullet"><span class="dot"></span><span><b>Discovery</b> call + short assessment</span></div>
-        <div class="bullet"><span class="dot"></span><span><b>Plan</b> roadmap + architecture + estimate</span></div>
-        <div class="bullet"><span class="dot"></span><span><b>Build</b> delivery sprints + handoff</span></div>
-      </div>
-      <div class="fine">Typical: 2–6 weeks for an initial phase. Longer programs supported.</div>
-    </div>
-  </div>
-</header>
+  <div id="top"></div>
 
-<section class="clientsBand">
-  <div class="wrap">
-    <div class="clientsTitle">Experience across enterprise ecosystems</div>
-    <div class="logos" aria-label="Client logos">
-      <img src="amd.svg" alt="AMD">
-      <img src="att.svg" alt="AT&T">
-      <img src="nokia.svg" alt="Nokia">
-      <img src="statefarm.svg" alt="State Farm">
-    </div>
-  </div>
-</section>
+  <header class="wrap hero">
+    <div class="pill">Enterprise consulting • staffing • product engineering</div>
 
-<section id="services" class="wrap section">
-  <div class="sectionHeader">
-    <div>
-      <h2>Services</h2>
-      <p>Consulting + delivery that matches enterprise standards and staffing-driven speed. Built for real environments, not demos.</p>
-    </div>
-  </div>
+    <h1>Products and services for modern IT.</h1>
 
-  <div class="grid">
-    <div class="card">
-      <h4>Enterprise IT consulting</h4>
-      <p>Architecture, modernization, reliability, and execution support across enterprise platforms.</p>
-      <div class="mini">Programs</div>
-      <p>Assessments • roadmaps • delivery sprints • documentation</p>
-    </div>
-
-    <div class="card">
-      <h4>Cloud & platform engineering</h4>
-      <p>Kubernetes, IaC, CI/CD, observability, and secure cloud operations built for scale.</p>
-      <div class="mini">Platforms</div>
-      <p>AWS/Azure • containers • automation • SRE practices</p>
-    </div>
-
-    <div class="card">
-      <h4>Security hardening</h4>
-      <p>Baseline hardening, access controls, secrets management, and secure delivery processes.</p>
-      <div class="mini">Security</div>
-      <p>Policies • controls • audits • response readiness</p>
-    </div>
-
-    <div class="card">
-      <h4>IT staffing & delivery teams</h4>
-      <p>Specialized engineering placement and project teams aligned to your priorities and timelines.</p>
-      <div class="mini">Hiring models</div>
-      <p>Contract • contract-to-hire • project delivery</p>
-    </div>
-
-    <div class="card">
-      <h4>Managed support</h4>
-      <p>Operational support, incident response, and continuous improvements for key systems.</p>
-      <div class="mini">Operations</div>
-      <p>On-call • runbooks • SLA/SLO alignment</p>
-    </div>
-
-    <div class="card">
-      <h4>AI initiatives</h4>
-      <p>Applied AI prototypes to production: tooling, integration, evaluation, and safe rollout.</p>
-      <div class="mini">AI delivery</div>
-      <p>Prototypes • pipelines • governance • deployment</p>
-    </div>
-  </div>
-</section>
-
-<section id="products" class="wrap section">
-  <div class="sectionHeader">
-    <div>
-      <h2>Products</h2>
-      <p>Focused product tracks that complement consulting delivery: NAS builds and AI systems for modern teams.</p>
-    </div>
-  </div>
-
-  <div class="grid">
-    <div class="card">
-      <h4>Mantanex NAS infrastructure</h4>
-      <p>Custom-assembled network storage systems designed, configured, and deployed for reliability, performance, and enterprise-grade data management.</p>
-
-      <div class="mini">Architecture</div>
-      <p>Drive selection • RAID/ZFS planning • redundancy strategy • performance tuning</p>
-
-      <div class="mini">Software stack</div>
-      <p>TrueNAS • ZFS • encryption • snapshots • replication • access controls</p>
-
-      <div class="mini">Deployment</div>
-      <p>Installation • network integration • monitoring • documentation • handoff</p>
-
-      <div class="mini">Use cases</div>
-      <p>Enterprise backup • AI datasets • engineering storage • media pipelines • SMB infrastructure</p>
-    </div>
-
-    <div class="card">
-      <h4>AI automation tools</h4>
-      <p>Internal tools that reduce manual work and improve operational throughput.</p>
-      <div class="mini">Capabilities</div>
-      <p>Workflows • analysis • reporting • integrations</p>
-    </div>
-
-    <div class="card">
-      <h4>Platform components</h4>
-      <p>Reusable building blocks for enterprise delivery: templates, pipelines, and observability modules.</p>
-      <div class="mini">Acceleration</div>
-      <p>IaC templates • CI/CD • monitoring • standards</p>
-    </div>
-  </div>
-</section>
-
-<section id="experience" class="wrap section">
-  <div class="sectionHeader">
-    <div>
-      <h2>Experience</h2>
-      <p>Delivery exposure across enterprise environments and large-scale engineering partners.</p>
-    </div>
-  </div>
-
-  <div class="grid">
-    <div class="card">
-      <h4>Enterprise ecosystems</h4>
-      <p>AMD • AT&amp;T • Nokia • State Farm • and enterprise IT partners.</p>
-      <div class="mini">Focus</div>
-      <p>Secure delivery • automation • reliability • cloud operations</p>
-    </div>
-
-    <div class="card">
-      <h4>Consulting-style execution</h4>
-      <p>Clear scope, professional communication, and documented handoff — aligned with enterprise standards.</p>
-      <div class="mini">Deliverables</div>
-      <p>Plans • architecture • runbooks • training • transition</p>
-    </div>
-
-    <div class="card">
-      <h4>Hybrid model</h4>
-      <p>Consulting + staffing + product engineering. Pick the engagement model that fits the timeline.</p>
-      <div class="mini">Options</div>
-      <p>Project phases • dedicated resources • delivery teams</p>
-    </div>
-  </div>
-</section>
-<section id="partners" class="wrap section">
-  <div class="sectionHeader">
-    <div>
-      <h2>Partner ecosystem</h2>
-      <p>Mantanex collaborates with staffing, infrastructure, and platform partners to execute enterprise programs at scale.</p>
-    </div>
-  </div>
-
-  <div class="grid">
-
-    <div class="card">
-      <h4>Staffing & delivery partners</h4>
-      <p>TekSystems • Kforce • Apex Systems • Randstad Technologies</p>
-      <div class="mini">Focus</div>
-      <p>Enterprise staffing • augmentation • program delivery</p>
-    </div>
-
-    <div class="card">
-      <h4>Cloud & platform ecosystem</h4>
-      <p>AWS • Azure • Kubernetes delivery partners</p>
-      <div class="mini">Focus</div>
-      <p>Infrastructure • DevOps • automation • security</p>
-    </div>
-
-    <div class="card">
-      <h4>Infrastructure & NAS vendors</h4>
-      <p>Compute vendors • storage ecosystems • network platforms</p>
-      <div class="mini">Focus</div>
-      <p>Deployment • integration • lifecycle support</p>
-    </div>
-
-  </div>
-</section>
-
-<section id="insights" class="wrap section">
-  <div class="sectionHeader">
-    <div>
-      <h2>Insights</h2>
-      <p>Newsletter-style reading list for AI, automation, and engineering leaders.</p>
-    </div>
-  </div>
-
-  <div class="insightsBox">
-    <p><strong>References:</strong> Superhuman + The Batch style newsletter formats.</p>
-    <div class="inlineLinks">
-      <a href="https://www.joinsuperhuman.io/" target="_blank" rel="noopener noreferrer">Superhuman</a>
-      <a href="https://www.deeplearning.ai/the-batch/" target="_blank" rel="noopener noreferrer">The Batch</a>
-    </div>
-  </div>
-</section>
-
-<section id="payroll" class="wrap section">
-  <div class="sectionHeader">
-    <div>
-      <h2>Payroll</h2>
-      <p>Employee payroll portal access (for Mantanex team members).</p>
-    </div>
-  </div>
-
-  <div class="insightsBox">
     <p>
-      <strong>Employee access:</strong> Use the payroll provider login to view paystubs, tax forms, and direct deposit details.
-      (Link will open in a new tab.)
+      Mantanex LLC supports enterprise delivery standards across cloud engineering, DevOps, security hardening, and automation.
+      We also build new AI initiatives and reliable NAS storage systems as focused product tracks.
     </p>
-    <div class="inlineLinks">
-      <!-- Replace with your real provider link later (Gusto, ADP, Paychex, etc.) -->
-      <a href="https://gusto.com/login" target="_blank" rel="noopener noreferrer">Payroll Login</a>
-    </div>
-  </div>
-</section>
 
-<section id="contact" class="contact">
-  <div class="wrap section">
+    <div class="heroActions">
+      <a class="btn primary" href="#contact">Start a project</a>
+      <a class="btn ghost" href="#services">Explore services</a>
+    </div>
+
+    <div class="heroGrid">
+      <div class="heroCard">
+        <h3>What we deliver</h3>
+        <div class="tags">
+          <span class="tag">Cloud engineering</span>
+          <span class="tag">DevOps automation</span>
+          <span class="tag">Security hardening</span>
+          <span class="tag">AI initiatives</span>
+          <span class="tag">Managed support</span>
+        </div>
+        <div class="bullets">
+          <div class="bullet"><span class="dot"></span><span>Clear scope, milestones, and ownership.</span></div>
+          <div class="bullet"><span class="dot"></span><span>Production-ready delivery with documentation.</span></div>
+          <div class="bullet"><span class="dot"></span><span>Consulting + staffing models depending on need.</span></div>
+        </div>
+      </div>
+
+      <div class="heroCard">
+        <h3>Engagement model</h3>
+        <div class="bullets">
+          <div class="bullet"><span class="dot"></span><span><b>Discovery</b> call + short assessment</span></div>
+          <div class="bullet"><span class="dot"></span><span><b>Plan</b> roadmap + architecture + estimate</span></div>
+          <div class="bullet"><span class="dot"></span><span><b>Build</b> delivery sprints + handoff</span></div>
+        </div>
+        <div class="fine">Typical: 2–6 weeks for an initial phase. Longer programs supported.</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="clientsBand">
+    <div class="wrap">
+      <div class="clientsTitle">Experience across enterprise ecosystems</div>
+      <div class="logos" aria-label="Client logos">
+        <img src="amd.svg" alt="AMD">
+        <img src="att.svg" alt="AT&T">
+        <img src="nokia.svg" alt="Nokia">
+        <img src="statefarm.svg" alt="State Farm">
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="wrap section">
     <div class="sectionHeader">
       <div>
-        <h2>Contact</h2>
-        <p>Consulting inquiries, staffing requests, enterprise programs, and AI or NAS initiatives.</p>
+        <h2>Services</h2>
+        <p>Consulting + delivery that matches enterprise standards and staffing-driven speed. Built for real environments, not demos.</p>
       </div>
     </div>
 
-    <div class="contactGrid">
-      <div class="info">
-        <b>Email</b>
-        <a href="mailto:support@mantanex.com">support@mantanex.com</a>
-        <div class="fine">Best for project scope and staffing requests.</div>
+    <div class="grid">
+      <div class="card">
+        <h4>Enterprise IT consulting</h4>
+        <p>Architecture, modernization, reliability, and execution support across enterprise platforms.</p>
+        <div class="mini">Programs</div>
+        <p>Assessments • roadmaps • delivery sprints • documentation</p>
       </div>
 
-      <div class="info">
-        <b>Phone</b>
-        <a href="tel:+13527601132">+1 (352) 760-1132</a>
-        <div class="fine">Weekdays 9am–6pm ET.</div>
+      <div class="card">
+        <h4>Cloud & platform engineering</h4>
+        <p>Kubernetes, IaC, CI/CD, observability, and secure cloud operations built for scale.</p>
+        <div class="mini">Platforms</div>
+        <p>AWS/Azure • containers • automation • SRE practices</p>
       </div>
 
-      <div class="info">
-        <b>Address</b>
-        Mantanex LLC<br>
-       Timberlin Park Blvd<br>
-Jacksonville, FL 32256 (By appointment)<br>
+      <div class="card">
+        <h4>Security hardening</h4>
+        <p>Baseline hardening, access controls, secrets management, and secure delivery processes.</p>
+        <div class="mini">Security</div>
+        <p>Policies • controls • audits • response readiness</p>
+      </div>
+
+      <div class="card">
+        <h4>IT staffing & delivery teams</h4>
+        <p>Specialized engineering placement and project teams aligned to your priorities and timelines.</p>
+        <div class="mini">Hiring models</div>
+        <p>Contract • contract-to-hire • project delivery</p>
+      </div>
+
+      <div class="card">
+        <h4>Managed support</h4>
+        <p>Operational support, incident response, and continuous improvements for key systems.</p>
+        <div class="mini">Operations</div>
+        <p>On-call • runbooks • SLA/SLO alignment</p>
+      </div>
+
+      <div class="card">
+        <h4>AI initiatives</h4>
+        <p>Applied AI prototypes to production: tooling, integration, evaluation, and safe rollout.</p>
+        <div class="mini">AI delivery</div>
+        <p>Prototypes • pipelines • governance • deployment</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="products" class="wrap section">
+    <div class="sectionHeader">
+      <div>
+        <h2>Products</h2>
+        <p>Focused product tracks that complement consulting delivery: NAS builds and AI systems for modern teams.</p>
       </div>
     </div>
 
-    <div class="mapWrap" aria-label="Map to Mantanex location">
-      <iframe
-        src="https://www.google.com/maps?q=Timberlin+Park+Jacksonville+FL&output=embed"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        allowfullscreen>
-      </iframe>
-    </div>
-
-    <div class="formWrap" aria-label="Contact form">
-      <div class="formGrid">
-        <div>
-          <label for="name">Full name</label>
-          <input id="name" name="name" type="text" placeholder="Your name" maxlength="80" autocomplete="name">
-        </div>
-
-        <div>
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="Email address" maxlength="120" autocomplete="email">
-        </div>
-
-        <div>
-          <label for="company">Company</label>
-          <input id="company" name="company" type="text" placeholder="Company / client" maxlength="120" autocomplete="organization">
-        </div>
-
-        <div>
-          <label for="topic">Topic</label>
-          <select id="topic" name="topic">
-            <option value="" selected disabled>Select</option>
-            <option>Consulting</option>
-            <option>Staffing</option>
-            <option>AI project</option>
-            <option>NAS build</option>
-            <option>Partnership</option>
-            <option>Other</option>
-          </select>
-        </div>
-
-        <div class="full">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Scope, timeline, constraints, and what success looks like…" maxlength="2500" autocomplete="off"></textarea>
-        </div>
+    <div class="grid">
+      <div class="card">
+        <h4>Mantanex NAS infrastructure</h4>
+        <p>Custom-assembled NAS systems configured for reliability, performance, and secure data management.</p>
+        <div class="mini">Software stack</div>
+        <p>TrueNAS • ZFS • encryption • snapshots • replication • access controls</p>
+        <div class="mini">Use cases</div>
+        <p>Backup • AI datasets • engineering storage • media pipelines • SMB infrastructure</p>
       </div>
 
-      <div class="formActions">
-        <a class="btn primary" href="mailto:support@mantanex.com?subject=Mantanex%20Inquiry">Email us</a>
-        <a class="btn ghost" href="mailto:support@mantanex.com">Open mail</a>
-        <span class="hint">No marketing lists. This goes to support@mantanex.com.</span>
+      <div class="card">
+        <h4>AI automation tools</h4>
+        <p>Internal tools that reduce manual work and improve operational throughput.</p>
+        <div class="mini">Capabilities</div>
+        <p>Workflows • analysis • reporting • integrations</p>
+      </div>
+
+      <div class="card">
+        <h4>Platform components</h4>
+        <p>Reusable building blocks for enterprise delivery: templates, pipelines, and observability modules.</p>
+        <div class="mini">Acceleration</div>
+        <p>IaC templates • CI/CD • monitoring • standards</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="wrap section">
+    <div class="sectionHeader">
+      <div>
+        <h2>Experience</h2>
+        <p>Delivery exposure across enterprise environments and large-scale engineering partners.</p>
       </div>
     </div>
 
-  </div>
-</section>
+    <div class="grid">
+      <div class="card">
+        <h4>Enterprise ecosystems</h4>
+        <p>AMD • AT&amp;T • Nokia • State Farm • and enterprise IT partners.</p>
+        <div class="mini">Focus</div>
+        <p>Secure delivery • automation • reliability • cloud operations</p>
+      </div>
 
-<footer>
-  © Mantanex LLC — support@mantanex.com • +1 (352) 760-1132
-  <div class="fine">Unauthorized reuse of Mantanex branding, content, or assets is not permitted.</div>
-</footer>
+      <div class="card">
+        <h4>Consulting-style execution</h4>
+        <p>Clear scope, professional communication, and documented handoff — aligned with enterprise standards.</p>
+        <div class="mini">Deliverables</div>
+        <p>Plans • architecture • runbooks • training • transition</p>
+      </div>
+
+      <div class="card">
+        <h4>Hybrid model</h4>
+        <p>Consulting + staffing + product engineering. Pick the engagement model that fits the timeline.</p>
+        <div class="mini">Options</div>
+        <p>Project phases • dedicated resources • delivery teams</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners / Vendors -->
+  <section id="partners" class="wrap section">
+    <div class="sectionHeader">
+      <div>
+        <h2>Partners</h2>
+        <p>Mantanex collaborates with staffing, infrastructure, and platform partners to execute enterprise programs at scale.</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h4>Staffing & delivery partners</h4>
+        <p>TekSystems • Kforce • Apex Systems • Randstad Technologies</p>
+        <div class="mini">Focus</div>
+        <p>Enterprise staffing • augmentation • program delivery</p>
+      </div>
+
+      <div class="card">
+        <h4>Cloud & platform ecosystem</h4>
+        <p>AWS • Azure • Kubernetes delivery partners</p>
+        <div class="mini">Focus</div>
+        <p>Infrastructure • DevOps • automation • security</p>
+      </div>
+
+      <div class="card">
+        <h4>Infrastructure & NAS vendors</h4>
+        <p>Compute vendors • storage ecosystems • network platforms</p>
+        <div class="mini">Focus</div>
+        <p>Deployment • integration • lifecycle support</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="insights" class="wrap section">
+    <div class="sectionHeader">
+      <div>
+        <h2>Insights</h2>
+        <p>Newsletter-style reading list for AI, automation, and engineering leaders.</p>
+      </div>
+    </div>
+
+    <div class="insightsBox">
+      <p><strong>References:</strong> Superhuman + The Batch style newsletter formats.</p>
+      <div class="inlineLinks">
+        <a href="https://www.joinsuperhuman.io/" target="_blank" rel="noopener noreferrer">Superhuman</a>
+        <a href="https://www.deeplearning.ai/the-batch/" target="_blank" rel="noopener noreferrer">The Batch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Payroll (simple + professional) -->
+  <section id="payroll" class="wrap section">
+    <div class="sectionHeader">
+      <div>
+        <h2>Payroll</h2>
+        <p>Employee payroll access is provided through the payroll provider portal.</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h4>Employee portal</h4>
+        <p>Employees can log in to view payslips, tax forms, and payroll history.</p>
+        <div class="mini">Link</div>
+        <!-- Replace this href with your real portal link later -->
+        <p><a href="https://workforcenow.adp.com/" target="_blank" rel="noopener noreferrer" style="color:var(--blue);font-weight:900;text-decoration:none;">Open payroll portal</a></p>
+      </div>
+
+      <div class="card">
+        <h4>Support</h4>
+        <p>If you have issues accessing the payroll portal, contact HR.</p>
+        <div class="mini">Email</div>
+        <p><a href="mailto:hr@mantanex.com" style="color:var(--blue);font-weight:900;text-decoration:none;">hr@mantanex.com</a></p>
+      </div>
+
+      <div class="card">
+        <h4>Notes</h4>
+        <p>Mantanex does not store employee payroll credentials on this website.</p>
+        <div class="mini">Security</div>
+        <p>Portal-only login • provider-managed authentication</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap section">
+      <div class="sectionHeader">
+        <div>
+          <h2>Contact</h2>
+          <p>Consulting inquiries, staffing requests, enterprise programs, and AI or NAS initiatives.</p>
+        </div>
+      </div>
+
+      <div class="contactGrid">
+        <div class="info">
+          <b>Email</b>
+          <a href="mailto:support@mantanex.com">support@mantanex.com</a>
+          <div class="fine">Best for project scope and staffing requests.</div>
+        </div>
+
+        <div class="info">
+          <b>Phone</b>
+          <a href="tel:+13527601132">+1 (352) 760-1132</a>
+          <div class="fine">Weekdays 9am–6pm ET.</div>
+        </div>
+
+        <div class="info">
+          <b>Area</b>
+          Mantanex LLC<br>
+          Southside / Deerwood, Jacksonville, FL 32256<br>
+          <span class="fine">(By appointment)</span>
+        </div>
+      </div>
+
+      <!-- Map (area-based, not your exact address) -->
+      <div class="mapWrap" aria-label="Map to Mantanex area (Southside / Deerwood)">
+        <iframe
+          src="https://www.google.com/maps?q=Deerwood+Jacksonville+FL+32256&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- CONTACT FORM (mailto) -->
+      <div class="formWrap" aria-label="Contact form">
+        <form id="contactForm" novalidate>
+          <div class="hp">
+            <label>Website</label>
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="formGrid">
+            <div>
+              <label for="name">Full name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required maxlength="80" autocomplete="name">
+            </div>
+
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="Email address" required maxlength="120" autocomplete="email">
+            </div>
+
+            <div>
+              <label for="company">Company</label>
+              <input id="company" name="company" type="text" placeholder="Company / client" maxlength="120" autocomplete="organization">
+            </div>
+
+            <div>
+              <label for="topic">Topic</label>
+              <select id="topic" name="topic" required>
+                <option value="" selected disabled>Select</option>
+                <option>Consulting</option>
+                <option>Staffing</option>
+                <option>AI project</option>
+                <option>NAS build</option>
+                <option>Partnership</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="full">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Scope, timeline, constraints, and what success looks like…" required maxlength="2500"></textarea>
+            </div>
+          </div>
+
+          <div class="formActions">
+            <button class="btn primary" type="submit">Send</button>
+            <a class="btn ghost" href="mailto:support@mantanex.com">Email instead</a>
+            <span class="hint">No marketing lists. This goes to support@mantanex.com.</span>
+          </div>
+
+          <div id="status" class="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © Mantanex LLC — support@mantanex.com • +1 (352) 760-1132
+    <div class="fine">Unauthorized reuse of Mantanex branding, content, or assets is not permitted.</div>
+  </footer>
+
+  <script>
+    (function(){
+      const form = document.getElementById('contactForm');
+      const status = document.getElementById('status');
+      const KEY = "mx_last_submit_ts";
+
+      function setStatus(msg, cls){
+        status.className = "status " + (cls || "");
+        status.textContent = msg;
+      }
+      function encode(s){ return encodeURIComponent(s).replace(/%0A/g, "%0D%0A"); }
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+
+        const hp = (form.elements["website"].value || "").trim();
+        if(hp){ setStatus("Submission blocked.", "err"); return; }
+
+        const now = Date.now();
+        const last = parseInt(localStorage.getItem(KEY) || "0", 10);
+        if(now - last < 60000){
+          setStatus("Please wait a moment before sending again.", "err");
+          return;
+        }
+
+        if(!form.checkValidity()){
+          setStatus("Please complete the required fields.", "err");
+          return;
+        }
+
+        const name = form.elements["name"].value.trim();
+        const email = form.elements["email"].value.trim();
+        const company = form.elements["company"].value.trim();
+        const topic = form.elements["topic"].value;
+        const message = form.elements["message"].value.trim();
+
+        const subject = `[Mantanex] ${topic} inquiry — ${name}`;
+        const body =
+`Name: ${name}
+Email: ${email}
+Company: ${company || "-"}
+Topic: ${topic}
+
+Message:
+${message}
+`;
+
+        localStorage.setItem(KEY, String(now));
+        setStatus("Opening your email client…", "ok");
+
+        window.location.href =
+          `mailto:support@mantanex.com?subject=${encode(subject)}&body=${encode(body)}`;
+      });
+    })();
+  </script>
 
 </body>
 </html>
-
-
-
-
-
