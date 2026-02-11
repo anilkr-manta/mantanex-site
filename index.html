@@ -26,25 +26,47 @@
   html{scroll-behavior:smooth;}
   body{background:var(--bg);color:var(--text);}
 
-  /* NAV */
+  /* NAV — Apple-style, fixed layout */
   nav{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:16px 56px;border-bottom:1px solid var(--line);
-    background:rgba(255,255,255,.92);backdrop-filter: blur(10px);
-    position:sticky;top:0;z-index:1000;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 56px;
+    border-bottom:1px solid var(--line);
+    background:rgba(255,255,255,.92);
+    backdrop-filter: blur(10px);
+    position:sticky;
+    top:0;
+    z-index:1000;
   }
   .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);}
   .brand img{height:34px;width:auto;display:block}
   .brand span{font-weight:800;font-size:18px;letter-spacing:-.02em}
 
-.navlinks a{
-  color:#6e6e73;
-  text-decoration:none;
-  font-weight:500;
-  font-size:14px;
-  padding:8px 10px;
-  border-radius:10px;
-  transition: all .18s eas
+  .navlinks{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .navlinks a{
+    color:#6e6e73;
+    text-decoration:none;
+    font-weight:500;
+    font-size:14px;
+    padding:8px 10px;
+    border-radius:10px;
+    transition: all .18s ease;
+  }
+  .navlinks a:hover{
+    color:#1d1d1f;
+    background:#f5f5f7;
+  }
+  .navlinks a:active{background:#ececf0;}
+  .navlinks a[href*="payroll"]{font-weight:600;}
+
   .navcta{display:flex;align-items:center;gap:10px;margin-left:18px;}
   .btn{
     display:inline-flex;align-items:center;justify-content:center;gap:10px;
@@ -186,9 +208,7 @@
     box-shadow: 0 0 0 4px rgba(26,115,232,.12);
   }
   .formActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center;}
-  .status{margin-top:10px;font-size:13px;font-weight:700;color:#7a8394;}
-  .status.err{color:#b42318;}
-  .status.ok{color:#067647;}
+  .hint{color:#7a8394;font-size:13px;line-height:1.6;}
   .hp{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;}
 
   footer{
@@ -199,7 +219,7 @@
   @media(max-width: 980px){
     nav{padding:14px 18px;}
     .wrap{padding:0 18px;}
-    .navlinks{gap:10px;}
+    .navlinks{gap:10px;flex-wrap:wrap;}
     .hero h1{font-size:40px;}
     .heroGrid{grid-template-columns:1fr;}
     .grid{grid-template-columns:1fr;}
@@ -207,7 +227,8 @@
     .formGrid{grid-template-columns:1fr;}
     .navcta{display:none;}
   }
-    .mapWrap{
+
+  .mapWrap{
     margin-top:16px;
     grid-column: 1 / -1;
     width:100%;
@@ -241,7 +262,7 @@
       <li><a href="#experience">Experience</a></li>
       <li><a href="#insights">Insights</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="https://app.gusto.com/login" target="_blank" rel="noopener noreferrer">Payroll</a></li>
+      <li><a href="#payroll">Payroll</a></li>
     </ul>
 
     <div class="navcta">
@@ -372,10 +393,20 @@
 
   <div class="grid">
     <div class="card">
-      <h4>NAS boxes</h4>
-      <p>Custom NAS systems designed for reliability, backup strategy, and predictable performance.</p>
+      <h4>Mantanex NAS infrastructure</h4>
+      <p>Custom-assembled network storage systems designed, configured, and deployed for reliability, performance, and enterprise-grade data management.</p>
+
+      <div class="mini">Architecture</div>
+      <p>Drive selection • RAID/ZFS planning • redundancy strategy • performance tuning</p>
+
+      <div class="mini">Software stack</div>
+      <p>TrueNAS • ZFS • encryption • snapshots • replication • access controls</p>
+
+      <div class="mini">Deployment</div>
+      <p>Installation • network integration • monitoring • documentation • handoff</p>
+
       <div class="mini">Use cases</div>
-      <p>Home lab • SMB • media • backup • archival</p>
+      <p>Enterprise backup • AI datasets • engineering storage • media pipelines • SMB infrastructure</p>
     </div>
 
     <div class="card">
@@ -405,7 +436,7 @@
   <div class="grid">
     <div class="card">
       <h4>Enterprise ecosystems</h4>
-      <p>AMD • AT&amp;T • Nokia • State Farm • and enterprise IT partners.</p>
+      <p>AMD • AT&T • Nokia • State Farm • and enterprise IT partners.</p>
       <div class="mini">Focus</div>
       <p>Secure delivery • automation • reliability • cloud operations</p>
     </div>
@@ -474,67 +505,58 @@
         Jacksonville, FL 32256
       </div>
     </div>
-<div class="mapWrap" aria-label="Map to Mantanex location">
-  <iframe
-    src="https://www.google.com/maps?q=Baymeadows+Business+Center+Jacksonville+FL&output=embed"
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"
-    allowfullscreen>
-  </iframe>
-</div>
 
-    <!-- FORM (this was missing before) -->
+    <div class="mapWrap" aria-label="Map to Mantanex location">
+      <iframe
+        src="https://www.google.com/maps?q=Baymeadows+Business+Center+Jacksonville+FL&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen>
+      </iframe>
+    </div>
+
     <div class="formWrap" aria-label="Contact form">
-      <form id="contactForm" novalidate>
-        <!-- honeypot (bots fill this; humans won't) -->
-        <div class="hp">
-          <label>Website</label>
-          <input type="text" name="website" tabindex="-1" autocomplete="off">
+      <!-- simple mailto (no JS) -->
+      <div class="formGrid">
+        <div>
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" maxlength="80" autocomplete="name">
         </div>
 
-        <div class="formGrid">
-          <div>
-            <label for="name">Full name</label>
-            <input id="name" name="name" type="text" placeholder="Your name" required maxlength="80" autocomplete="name">
-          </div>
-
-          <div>
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="Email address" required maxlength="120" autocomplete="email">
-          </div>
-
-          <div>
-            <label for="company">Company</label>
-            <input id="company" name="company" type="text" placeholder="Company / client" maxlength="120" autocomplete="organization">
-          </div>
-
-          <div>
-            <label for="topic">Topic</label>
-            <select id="topic" name="topic" required>
-              <option value="" selected disabled>Select</option>
-              <option>Consulting</option>
-              <option>Staffing</option>
-              <option>AI project</option>
-              <option>NAS build</option>
-              <option>Partnership</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <div class="full">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Scope, timeline, constraints, and what success looks like…" required maxlength="2500" autocomplete="off"></textarea>
-          </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="Email address" maxlength="120" autocomplete="email">
         </div>
 
-        <div class="formActions">
-          <a class="btn primary" href="mailto:support@mantanex.com?subject=Mantanex%20Inquiry">Send</a>
-          <a class="btn ghost" href="mailto:support@mantanex.com">Email instead</a>
-          <span class="hint">No marketing lists. This goes to support@mantanex.com.</span>
+        <div>
+          <label for="company">Company</label>
+          <input id="company" name="company" type="text" placeholder="Company / client" maxlength="120" autocomplete="organization">
         </div>
 
-        <div id="status" class="status" aria-live="polite"></div>
-      </form>
+        <div>
+          <label for="topic">Topic</label>
+          <select id="topic" name="topic">
+            <option value="" selected disabled>Select</option>
+            <option>Consulting</option>
+            <option>Staffing</option>
+            <option>AI project</option>
+            <option>NAS build</option>
+            <option>Partnership</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="full">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Scope, timeline, constraints, and what success looks like…" maxlength="2500" autocomplete="off"></textarea>
+        </div>
+      </div>
+
+      <div class="formActions">
+        <a class="btn primary" href="mailto:support@mantanex.com?subject=Mantanex%20Inquiry">Email us</a>
+        <a class="btn ghost" href="mailto:support@mantanex.com">Open mail</a>
+        <span class="hint">No marketing lists. This goes to support@mantanex.com.</span>
+      </div>
     </div>
 
   </div>
@@ -547,83 +569,5 @@
   </div>
 </footer>
 
-
-<script>
-  (function(){
-    const form = document.getElementById('contactForm');
-    const status = document.getElementById('status');
-
-    // client-side rate limit (basic): 1 submit per 60s
-    const KEY = "mx_last_submit_ts";
-
-    function setStatus(msg, cls){
-      status.className = "status " + (cls || "");
-      status.textContent = msg;
-    }
-
-    function encode(s){ return encodeURIComponent(s).replace(/%0A/g, "%0D%0A"); }
-
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-
-      // honeypot
-      const hp = (form.elements["website"].value || "").trim();
-      if(hp){
-        setStatus("Submission blocked.", "err");
-        return;
-      }
-
-      const now = Date.now();
-      const last = parseInt(localStorage.getItem(KEY) || "0", 10);
-      if(now - last < 60000){
-        setStatus("Please wait a moment before sending again.", "err");
-        return;
-      }
-
-      // validation
-      if(!form.checkValidity()){
-        setStatus("Please complete the required fields.", "err");
-        return;
-      }
-
-      const name = form.elements["name"].value.trim();
-      const email = form.elements["email"].value.trim();
-      const company = form.elements["company"].value.trim();
-      const topic = form.elements["topic"].value;
-      const message = form.elements["message"].value.trim();
-
-      const subject = `[Mantanex] ${topic} inquiry — ${name}`;
-      const body =
-`Name: ${name}
-Email: ${email}
-Company: ${company || "-"}
-Topic: ${topic}
-
-Message:
-${message}
-`;
-
-      localStorage.setItem(KEY, String(now));
-      setStatus("Opening your email client…", "ok");
-
-      window.location.href =
-        `mailto:support@mantanex.com?subject=${encode(subject)}&body=${encode(body)}`;
-    });
-  })();
-</script>
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
