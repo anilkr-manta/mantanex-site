@@ -26,18 +26,12 @@
   html{scroll-behavior:smooth;}
   body{background:var(--bg);color:var(--text);}
 
-  /* NAV — Apple-style, fixed layout */
+  /* NAV */
   nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:16px 56px;
-    border-bottom:1px solid var(--line);
-    background:rgba(255,255,255,.92);
-    backdrop-filter: blur(10px);
-    position:sticky;
-    top:0;
-    z-index:1000;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 56px;border-bottom:1px solid var(--line);
+    background:rgba(255,255,255,.92);backdrop-filter: blur(10px);
+    position:sticky;top:0;z-index:1000;
   }
   .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);}
   .brand img{height:34px;width:auto;display:block}
@@ -51,24 +45,26 @@
     margin:0;
     padding:0;
   }
- .navlinks a{
-  color:#6e6e73;
-  text-decoration:none;
-  font-weight:500;
-  font-size:14px;
-  padding:8px 10px;
-  border-radius:10px;
-  transition: all .18s ease;
-}
 
-.navlinks a:hover{
-  color:#1d1d1f;
-  background:#f5f5f7;
-}
-
-.navlinks a:active{background:#ececf0;}
-.navlinks a[href*="payroll"]{font-weight:600;}
-
+  /* NAV LINKS — highlighted tag style (your snipping tool look) */
+  .navlinks a{
+    color:#0b0c0f;
+    text-decoration:none;
+    font-weight:600;
+    font-size:14px;
+    padding:4px 12px;
+    border-radius:6px;
+    background:#7fd3ea;
+    transition: all .15s ease;
+    display:inline-block;
+  }
+  .navlinks a:hover{
+    background:#55c1df;
+    color:#000;
+  }
+  .navlinks a:active{
+    background:#39b3d6;
+  }
 
   .navcta{display:flex;align-items:center;gap:10px;margin-left:18px;}
   .btn{
@@ -439,7 +435,7 @@
   <div class="grid">
     <div class="card">
       <h4>Enterprise ecosystems</h4>
-      <p>AMD • AT&T • Nokia • State Farm • and enterprise IT partners.</p>
+      <p>AMD • AT&amp;T • Nokia • State Farm • and enterprise IT partners.</p>
       <div class="mini">Focus</div>
       <p>Secure delivery • automation • reliability • cloud operations</p>
     </div>
@@ -469,12 +465,30 @@
   </div>
 
   <div class="insightsBox">
-    <p>
-      <strong>References:</strong> Superhuman + The Batch style newsletter formats.
-    </p>
+    <p><strong>References:</strong> Superhuman + The Batch style newsletter formats.</p>
     <div class="inlineLinks">
       <a href="https://www.joinsuperhuman.io/" target="_blank" rel="noopener noreferrer">Superhuman</a>
       <a href="https://www.deeplearning.ai/the-batch/" target="_blank" rel="noopener noreferrer">The Batch</a>
+    </div>
+  </div>
+</section>
+
+<section id="payroll" class="wrap section">
+  <div class="sectionHeader">
+    <div>
+      <h2>Payroll</h2>
+      <p>Employee payroll portal access (for Mantanex team members).</p>
+    </div>
+  </div>
+
+  <div class="insightsBox">
+    <p>
+      <strong>Employee access:</strong> Use the payroll provider login to view paystubs, tax forms, and direct deposit details.
+      (Link will open in a new tab.)
+    </p>
+    <div class="inlineLinks">
+      <!-- Replace with your real provider link later (Gusto, ADP, Paychex, etc.) -->
+      <a href="https://gusto.com/login" target="_blank" rel="noopener noreferrer">Payroll Login</a>
     </div>
   </div>
 </section>
@@ -519,7 +533,6 @@
     </div>
 
     <div class="formWrap" aria-label="Contact form">
-      <!-- simple mailto (no JS) -->
       <div class="formGrid">
         <div>
           <label for="name">Full name</label>
@@ -567,11 +580,8 @@
 
 <footer>
   © Mantanex LLC — support@mantanex.com • +1 (352) 760-1132
-  <div class="fine">
-    Unauthorized reuse of Mantanex branding, content, or assets is not permitted.
-  </div>
+  <div class="fine">Unauthorized reuse of Mantanex branding, content, or assets is not permitted.</div>
 </footer>
 
 </body>
 </html>
-
