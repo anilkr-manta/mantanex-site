@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mantanex</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:Inter,system-ui;
+  background:#fff;
+  color:#111;
+}
+
+/* Minimal header */
+nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 60px;
+  border-bottom:1px solid #eee;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+  font-size:18px;
+}
+
+.brand img{height:28px}
+
+/* Hero */
+.hero{
+  max-width:900px;
+  margin:120px auto;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:64px;
+  margin:0 0 18px;
+  letter-spacing:-0.03em;
+}
+
+.hero p{
+  font-size:20px;
+  color:#6b7280;
+  line-height:1.6;
+}
+
+.cta{
+  margin-top:36px;
+  display:flex;
+  justify-content:center;
+  gap:14px;
+}
+
+.btn{
+  padding:14px 22px;
+  border-radius:12px;
+  font-weight:600;
+  text-decoration:none;
+}
+
+.btn.primary{
+  background:#111;
+  color:#fff;
+}
+
+.btn.ghost{
+  border:1px solid #ddd;
+  color:#111;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="brand">
+    <img src="logo.png">
+    Mantanex
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Mantanex</h1>
+  <p>
+    Enterprise staffing, cloud engineering, AI systems, and infrastructure delivery.
+  </p>
+
+  <div class="cta">
+    <a class="btn primary" href="/index.html">Enter site</a>
+    <a class="btn ghost" href="#contact">Contact</a>
+  </div>
+</section>
+
+</body>
+</html>
