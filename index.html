@@ -1,322 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mantanex — Enterprise IT, AI & Consulting</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mantanex — IT Staffing & Enterprise Consulting</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<style>
-  :root{
-    --text:#0b0c0f;
-    --muted:#5b6270;
-    --line:#e9edf3;
-    --bg:#ffffff;
-    --bg-soft:#f7f9fc;
-    --blue:#1a73e8;
-    --blue-dark:#145ec0;
-    --radius:14px;
-    --shadow: 0 10px 30px rgba(16,24,40,.08);
-  }
+  <style>
+    :root{
+      --text:#0b0c0f;
+      --muted:#5b6270;
+      --line:#e9edf3;
+      --bg:#ffffff;
+      --bg-soft:#f7f9fc;
 
-  *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--bg);color:var(--text);}
+      --brand:#1a73e8;
+      --brand-dark:#145ec0;
 
-  /* NAV */
-  nav{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:16px 56px;border-bottom:1px solid var(--line);
-    background:rgba(255,255,255,.92);backdrop-filter: blur(10px);
-    position:sticky;top:0;z-index:1000;
-  }
-  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);}
-  .brand img{height:34px;width:auto;display:block}
-  .brand span{font-weight:800;font-size:18px;letter-spacing:-.02em}
+      --radius:16px;
+      --shadow: 0 10px 30px rgba(16,24,40,.08);
+    }
 
-  /* pill-style nav buttons (your screenshot style) */
-  .navlinks{
-    display:flex;align-items:center;gap:18px;
-    list-style:none;margin:0;padding:0;
-  }
-  .navlinks a{
-    display:inline-flex;align-items:center;justify-content:center;
-    padding:10px 18px;
-    border-radius:12px;
-    background:rgba(26,115,232,.18);
-    color:#0b0c0f;
-    text-decoration:none;
-    font-weight:800;
-    font-size:14px;
-    line-height:1;
-    transition: .18s ease;
-    border:1px solid rgba(26,115,232,.12);
-  }
-  .navlinks a:hover{
-    background:rgba(26,115,232,.26);
-    transform: translateY(-1px);
-  }
-  .navlinks a:active{transform: translateY(0);}
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);}
+    a{color:inherit}
 
-  .navcta{display:flex;align-items:center;gap:10px;margin-left:18px;}
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;gap:10px;
-    padding:11px 16px;border-radius:12px;font-weight:700;
-    text-decoration:none;font-size:14px;line-height:1;
-    border:1px solid transparent;
-    cursor:pointer;
-    white-space:nowrap;
-  }
-  .btn.primary{background:var(--blue);color:#fff;}
-  .btn.primary:hover{background:var(--blue-dark);}
-  .btn.ghost{border-color:var(--line);color:#0b0c0f;background:#fff;}
-  .btn.ghost:hover{background:var(--bg-soft);}
+    .wrap{max-width:1180px;margin:0 auto;padding:0 56px;}
+    section{scroll-margin-top:90px;}
 
-  /* LAYOUT */
-  .wrap{max-width:1200px;margin:0 auto;padding:0 56px;}
-  section{scroll-margin-top:90px;}
+    /* NAV (simple, professional; logo never hidden) */
+    nav{
+      position:sticky;top:0;z-index:1000;
+      background:rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .navRow{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 0;
+      gap:18px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;text-decoration:none;
+      min-width:220px;
+    }
+    .brand img{height:34px;width:auto;display:block}
+    .brand span{font-weight:900;font-size:18px;letter-spacing:-.02em}
+    .navLinks{
+      display:flex;align-items:center;gap:18px;list-style:none;flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .navLinks a{
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+      color:#2b3240;
+      padding:8px 10px;
+      border-radius:10px;
+      transition: .15s ease;
+    }
+    .navLinks a:hover{background:var(--bg-soft);}
+    .navCtas{display:flex;align-items:center;gap:10px;margin-left:10px;flex:0 0 auto;}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:10px 14px;border-radius:12px;font-weight:800;
+      text-decoration:none;font-size:14px;line-height:1;
+      border:1px solid transparent;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    .btn.primary{background:var(--brand);color:#fff;}
+    .btn.primary:hover{background:var(--brand-dark);}
+    .btn.ghost{border-color:var(--line);background:#fff;color:#0b0c0f;}
+    .btn.ghost:hover{background:var(--bg-soft);}
 
-  /* HERO */
-  .hero{padding:88px 0 56px;}
-  .pill{
-    display:inline-flex;align-items:center;gap:10px;
-    padding:10px 16px;border:1px solid var(--line);
-    border-radius:999px;background:#fff;color:var(--blue);
-    font-weight:800;font-size:13px;
-  }
-  .hero h1{
-    font-size:56px;line-height:1.06;margin:18px 0 14px;
-    letter-spacing:-.03em;font-weight:900;
-  }
-  .hero p{
-    color:var(--muted);font-size:18px;line-height:1.7;
-    max-width:860px;
-  }
-  .heroActions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;}
+    /* HERO */
+    .hero{
+      padding:58px 0 34px;
+      background:
+        linear-gradient(180deg, rgba(247,249,252,.85) 0%, rgba(255,255,255,1) 60%),
+        radial-gradient(900px 380px at 18% 0%, rgba(26,115,232,.14), rgba(26,115,232,0) 60%),
+        radial-gradient(900px 380px at 80% 10%, rgba(20,94,192,.10), rgba(20,94,192,0) 60%);
+      border-bottom:1px solid var(--line);
+    }
+    .kicker{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:8px 12px;border:1px solid var(--line);
+      border-radius:999px;background:#fff;color:var(--brand);
+      font-weight:800;font-size:12px;
+    }
+    .hero h1{
+      margin-top:16px;
+      font-size:52px;
+      line-height:1.06;
+      letter-spacing:-.03em;
+      font-weight:900;
+      max-width:980px;
+    }
+    .hero p{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.7;
+      max-width:860px;
+    }
+    .heroActions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;}
 
-  .heroGrid{
-    margin-top:34px;
-    display:grid;grid-template-columns: 1.2fr .8fr;gap:22px;
-    align-items:stretch;
-  }
-  .heroCard{
-    border:1px solid var(--line);border-radius:var(--radius);
-    background:linear-gradient(180deg,#fff 0%,#fbfcff 100%);
-    padding:22px;box-shadow:var(--shadow);
-  }
-  .heroCard h3{font-size:14px;color:#2b3240;margin-bottom:10px;letter-spacing:.06em;text-transform:uppercase;}
-  .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;}
-  .tag{
-    border:1px solid var(--line);background:#fff;border-radius:999px;
-    padding:9px 12px;font-weight:700;font-size:12px;color:#2b3240;
-  }
-  .bullets{margin-top:10px;display:grid;gap:10px;}
-  .bullet{display:flex;gap:10px;align-items:flex-start;color:#2b3240;font-size:14px;line-height:1.5;}
-  .dot{height:10px;width:10px;border-radius:50%;background:var(--blue);margin-top:4px;flex:0 0 10px;}
-  .fine{color:#7a8394;font-size:13px;line-height:1.6;margin-top:10px;}
+    .heroGrid{
+      margin-top:26px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    .heroCard{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#fff;
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .heroCard h3{
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:#7a8394;
+      font-weight:900;
+      margin-bottom:10px;
+    }
+    .bullets{display:grid;gap:10px;}
+    .bullet{display:flex;gap:10px;align-items:flex-start;color:#2b3240;font-size:14px;line-height:1.55;}
+    .dot{height:10px;width:10px;border-radius:50%;background:var(--brand);margin-top:5px;flex:0 0 10px;}
 
-  /* CLIENTS */
-  .clientsBand{
-    padding:30px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-    background:#fff;
-  }
-  .clientsTitle{
-    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
-    color:#7a8394;font-weight:800;margin-bottom:14px;text-align:center;
-  }
-  .logos{
-    display:flex;justify-content:center;align-items:center;gap:42px;
-    flex-wrap:wrap;
-  }
-  .logos img{
-    height:26px;width:auto;max-width:140px;
-    opacity:.75;filter:grayscale(100%);
-    transition: .2s ease;
-  }
-  .logos img:hover{opacity:1;filter:none;}
+    /* SECTIONS */
+    .section{padding:70px 0;}
+    .sectionHeader{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:22px;}
+    .sectionHeader h2{font-size:36px;letter-spacing:-.02em;}
+    .sectionHeader p{color:var(--muted);max-width:720px;line-height:1.7;}
 
-  /* SECTIONS */
-  .section{padding:76px 0;}
-  .sectionHeader{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:24px;}
-  .sectionHeader h2{font-size:38px;letter-spacing:-.02em;}
-  .sectionHeader p{color:var(--muted);max-width:700px;line-height:1.7;}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#fff;
+      padding:20px;
+      box-shadow: 0 8px 20px rgba(16,24,40,.05);
+    }
+    .card h4{font-size:16px;margin-bottom:8px;letter-spacing:-.01em;}
+    .card p{color:var(--muted);font-size:14px;line-height:1.7;}
+    .mini{margin-top:12px;color:#2b3240;font-weight:900;font-size:12px;letter-spacing:.12em;text-transform:uppercase;}
 
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-  .card{
-    border:1px solid var(--line);border-radius:var(--radius);background:#fff;
-    padding:22px;box-shadow: 0 8px 20px rgba(16,24,40,.05);
-  }
-  .card h4{font-size:16px;margin-bottom:8px;letter-spacing:-.01em;}
-  .card p{color:var(--muted);font-size:14px;line-height:1.7;}
-  .card .mini{margin-top:14px;color:#2b3240;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;}
+    /* LOGOS */
+    .logosBand{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:#fff;
+      padding:26px 0;
+    }
+    .logosTitle{
+      font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+      color:#7a8394;font-weight:900;margin-bottom:14px;text-align:center;
+    }
+    .logos{
+      display:flex;justify-content:center;align-items:center;gap:42px;
+      flex-wrap:wrap;
+    }
+    .logos img{
+      height:26px;width:auto;max-width:140px;
+      opacity:.8;filter:grayscale(100%);
+      transition: .2s ease;
+    }
+    .logos img:hover{opacity:1;filter:none;}
 
-  /* INSIGHTS */
-  .insightsBox{
-    border:1px solid var(--line);border-radius:var(--radius);
-    background:var(--bg-soft);padding:22px;
-    display:flex;align-items:center;justify-content:space-between;gap:16px;
-  }
-  .insightsBox p{color:var(--muted);line-height:1.6;font-size:14px;max-width:760px;}
-  .insightsBox strong{color:#0b0c0f;}
-  .inlineLinks{display:flex;gap:10px;flex-wrap:wrap;}
-  .inlineLinks a{font-weight:800;text-decoration:none;color:var(--blue);padding:10px 12px;border-radius:12px;background:#fff;border:1px solid var(--line);}
-  .inlineLinks a:hover{background:#f0f5ff;border-color:#d8e6ff;}
+    /* PARTNERS LIST */
+    .pillList{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;}
+    .pill{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:999px;
+      padding:9px 12px;
+      font-weight:800;
+      font-size:12px;
+      color:#2b3240;
+    }
 
-  /* CONTACT */
-  .contact{background:var(--bg-soft);border-top:1px solid var(--line);}
-  .contactGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px;}
-  .info{
-    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-    padding:18px;
-  }
-  .info b{display:block;margin-bottom:6px;}
-  .info a{color:var(--blue);text-decoration:none;font-weight:800;}
-  .info a:hover{text-decoration:underline;}
+    /* CONTACT */
+    .contact{background:var(--bg-soft);border-top:1px solid var(--line);}
+    .contactGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px;}
+    .info{
+      background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+      padding:18px;
+    }
+    .info b{display:block;margin-bottom:6px;}
+    .info a{color:var(--brand);text-decoration:none;font-weight:800;}
+    .info a:hover{text-decoration:underline;}
+    .fine{color:#7a8394;font-size:13px;line-height:1.6;margin-top:10px;}
 
-  /* MAP */
-  .mapWrap{
-    margin-top:16px;
-    grid-column: 1 / -1;
-    width:100%;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    overflow:hidden;
-    background:#fff;
-    box-shadow: 0 8px 20px rgba(16,24,40,.05);
-  }
-  .mapWrap iframe{
-    display:block;
-    width:100%;
-    height:320px;
-    border:0;
-  }
+    .mapWrap{
+      margin-top:16px;
+      grid-column: 1 / -1;
+      width:100%;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:#fff;
+      box-shadow: 0 8px 20px rgba(16,24,40,.05);
+    }
+    .mapWrap iframe{display:block;width:100%;height:320px;border:0;}
 
-  /* FORM */
-  .formWrap{
-    margin-top:16px;
-    background:#fff;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:18px;
-    box-shadow: 0 8px 20px rgba(16,24,40,.05);
-  }
-  .formGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px;}
-  .formGrid .full{grid-column:1/-1;}
-  label{display:block;font-weight:800;font-size:13px;color:#2b3240;margin-bottom:8px;}
-  input, select, textarea{
-    width:100%;
-    padding:12px 12px;
-    border:1px solid #d9dee7;
-    border-radius:12px;
-    background:#fff;
-    font-size:14px;
-    outline:none;
-  }
-  textarea{min-height:140px;resize:vertical;}
-  input:focus, select:focus, textarea:focus{
-    border-color: rgba(26,115,232,.55);
-    box-shadow: 0 0 0 4px rgba(26,115,232,.12);
-  }
-  .formActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center;}
-  .hint{color:#7a8394;font-size:13px;line-height:1.6;}
+    /* SIMPLE CONTACT FORM (mailto) */
+    .formWrap{
+      margin-top:16px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow: 0 8px 20px rgba(16,24,40,.05);
+    }
+    .formGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px;}
+    .formGrid .full{grid-column:1/-1;}
+    label{display:block;font-weight:800;font-size:13px;color:#2b3240;margin-bottom:8px;}
+    input, select, textarea{
+      width:100%;
+      padding:12px 12px;
+      border:1px solid #d9dee7;
+      border-radius:12px;
+      background:#fff;
+      font-size:14px;
+      outline:none;
+    }
+    textarea{min-height:140px;resize:vertical;}
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(26,115,232,.55);
+      box-shadow: 0 0 0 4px rgba(26,115,232,.12);
+    }
+    .formActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center;}
+    .hint{color:#7a8394;font-size:13px;line-height:1.6;}
 
-  footer{
-    padding:34px 0;text-align:center;color:#7a8394;font-size:13px;
-    border-top:1px solid var(--line);background:#fff;
-  }
+    footer{
+      padding:30px 0;text-align:center;color:#7a8394;font-size:13px;
+      border-top:1px solid var(--line);background:#fff;
+    }
 
-  @media(max-width: 980px){
-    nav{padding:14px 18px;gap:12px;}
-    .wrap{padding:0 18px;}
-    .navlinks{gap:10px;flex-wrap:wrap;}
-    .hero h1{font-size:40px;}
-    .heroGrid{grid-template-columns:1fr;}
-    .grid{grid-template-columns:1fr;}
-    .contactGrid{grid-template-columns:1fr;}
-    .formGrid{grid-template-columns:1fr;}
-    .navcta{display:none;}
-  }
-</style>
+    @media(max-width: 980px){
+      .wrap{padding:0 18px;}
+      .brand{min-width:auto;}
+      .hero h1{font-size:40px;}
+      .heroGrid{grid-template-columns:1fr;}
+      .grid{grid-template-columns:1fr;}
+      .contactGrid{grid-template-columns:1fr;}
+      .formGrid{grid-template-columns:1fr;}
+      .navCtas{display:none;}
+    }
+  </style>
 </head>
 
 <body>
 
 <nav>
-  <a class="brand" href="mantanex.html" aria-label="Mantanex Home">
-    <img src="logo.png" alt="Mantanex logo">
-    <span>Mantanex</span>
-  </a>
+  <div class="wrap navRow">
+    <a class="brand" href="#top" aria-label="Mantanex Home">
+      <img src="logo.png" alt="Mantanex logo">
+      <span>Mantanex</span>
+    </a>
 
-  <div style="display:flex;align-items:center;gap:14px;">
-    <ul class="navlinks">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#products">Products</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#insights">Insights</a></li>
-      <li><a href="#partners">Partners</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#payroll">Payroll</a></li>
-    </ul>
+    <div style="display:flex;align-items:center;gap:12px;justify-content:flex-end;flex:1;">
+      <ul class="navLinks" aria-label="Primary navigation">
+        <li><a href="#clients">For Clients</a></li>
+        <li><a href="#candidates">For Job Seekers</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#partners">Partners</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://app.gusto.com/login" target="_blank" rel="noopener noreferrer">Payroll</a></li>
+      </ul>
 
-    <div class="navcta">
-      <a class="btn ghost" href="#insights">AI newsletter</a>
-      <a class="btn primary" href="#contact">Start a project</a>
+      <div class="navCtas">
+        <a class="btn ghost" href="#candidates">View roles</a>
+        <a class="btn primary" href="#contact">Request talent</a>
+      </div>
     </div>
   </div>
 </nav>
 
 <div id="top"></div>
 
-<header class="wrap hero">
-  <div class="pill">Enterprise consulting • staffing • product engineering</div>
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">IT staffing • enterprise consulting • delivery support</div>
 
-  <h1>Products and services for modern IT.</h1>
+    <h1>Specialized IT talent for enterprise teams.</h1>
 
-  <p>
-    Mantanex LLC supports enterprise delivery standards across cloud engineering, DevOps, security hardening, and automation.
-    We also support applied AI initiatives as a focused delivery track.
-  </p>
+    <p>
+      Mantanex supports clients with contract staffing, contract-to-hire, and delivery teams across cloud, DevOps,
+      software engineering, data, and security. We focus on quality screening, fast turnaround, and professional consultant care.
+    </p>
 
-  <div class="heroActions">
-    <a class="btn primary" href="#contact">Start a project</a>
-    <a class="btn ghost" href="#services">Explore services</a>
-  </div>
-
-  <div class="heroGrid">
-    <div class="heroCard">
-      <h3>What we deliver</h3>
-      <div class="tags">
-        <span class="tag">Cloud engineering</span>
-        <span class="tag">DevOps automation</span>
-        <span class="tag">Security hardening</span>
-        <span class="tag">AI initiatives</span>
-        <span class="tag">Managed support</span>
-      </div>
-      <div class="bullets">
-        <div class="bullet"><span class="dot"></span><span>Clear scope, milestones, and ownership.</span></div>
-        <div class="bullet"><span class="dot"></span><span>Production-ready delivery with documentation.</span></div>
-        <div class="bullet"><span class="dot"></span><span>Consulting + staffing models depending on need.</span></div>
-      </div>
+    <div class="heroActions">
+      <a class="btn primary" href="#contact">Build your team</a>
+      <a class="btn ghost" href="#services">Explore services</a>
     </div>
 
-    <div class="heroCard">
-      <h3>Engagement model</h3>
-      <div class="bullets">
-        <div class="bullet"><span class="dot"></span><span><b>Discovery</b> call + short assessment</span></div>
-        <div class="bullet"><span class="dot"></span><span><b>Plan</b> roadmap + architecture + estimate</span></div>
-        <div class="bullet"><span class="dot"></span><span><b>Build</b> delivery sprints + handoff</span></div>
+    <div class="heroGrid">
+      <div class="heroCard">
+        <h3>What we deliver</h3>
+        <div class="bullets">
+          <div class="bullet"><span class="dot"></span><span><b>Hard-to-find skill sets</b> with structured screening and role alignment.</span></div>
+          <div class="bullet"><span class="dot"></span><span><b>Transparent communication</b> from kickoff through placement and handoff.</span></div>
+          <div class="bullet"><span class="dot"></span><span><b>Enterprise-ready delivery</b> with documentation, reliability mindset, and accountability.</span></div>
+        </div>
       </div>
-      <div class="fine">Typical: 2–6 weeks for an initial phase. Longer programs supported.</div>
+
+      <div class="heroCard">
+        <h3>Engagement options</h3>
+        <div class="bullets">
+          <div class="bullet"><span class="dot"></span><span><b>Contract</b> staffing for immediate delivery needs</span></div>
+          <div class="bullet"><span class="dot"></span><span><b>Contract-to-hire</b> for risk-reduced conversions</span></div>
+          <div class="bullet"><span class="dot"></span><span><b>Statement of work</b> for scoped outcomes and milestones</span></div>
+        </div>
+        <div class="fine">Fast turnaround when requirements are clear. Nationwide support.</div>
+      </div>
     </div>
   </div>
 </header>
 
-<section class="clientsBand">
+<section class="logosBand" id="clients">
   <div class="wrap">
-    <div class="clientsTitle">Experience across enterprise ecosystems</div>
+    <div class="logosTitle">Experience across enterprise ecosystems</div>
     <div class="logos" aria-label="Client logos">
       <img src="amd.svg" alt="AMD">
       <img src="att.svg" alt="AT&T">
@@ -330,134 +345,83 @@
   <div class="sectionHeader">
     <div>
       <h2>Services</h2>
-      <p>Consulting + delivery that matches enterprise standards and staffing-driven speed. Built for real environments, not demos.</p>
+      <p>Staffing-first, enterprise-aligned. Built to support modern delivery teams with speed, accountability, and clear communication.</p>
     </div>
   </div>
 
   <div class="grid">
-    <div class="card">
-      <h4>Enterprise IT consulting</h4>
-      <p>Architecture, modernization, reliability, and execution support across enterprise platforms.</p>
-      <div class="mini">Programs</div>
-      <p>Assessments • roadmaps • delivery sprints • documentation</p>
-    </div>
-
-    <div class="card">
-      <h4>Cloud & platform engineering</h4>
-      <p>Kubernetes, IaC, CI/CD, observability, and secure cloud operations built for scale.</p>
-      <div class="mini">Platforms</div>
-      <p>AWS/Azure • containers • automation • SRE practices</p>
-    </div>
-
-    <div class="card">
-      <h4>Security hardening</h4>
-      <p>Baseline hardening, access controls, secrets management, and secure delivery processes.</p>
-      <div class="mini">Security</div>
-      <p>Policies • controls • audits • response readiness</p>
-    </div>
-
     <div class="card">
       <h4>IT staffing</h4>
-      <p>Specialized engineering placement and project teams aligned to your priorities and timelines.</p>
-      <div class="mini">Hiring models</div>
-      <p>Contract • contract-to-hire • project delivery</p>
+      <p>Contract staffing and augmentation across enterprise environments—aligned to your stack, delivery model, and timelines.</p>
+      <div class="mini">Models</div>
+      <p>Contract • contract-to-hire • direct hire support</p>
     </div>
 
     <div class="card">
-      <h4>Managed support</h4>
-      <p>Operational support, incident response, and continuous improvements for key systems.</p>
-      <div class="mini">Operations</div>
-      <p>On-call • runbooks • SLA/SLO alignment</p>
+      <h4>Delivery teams</h4>
+      <p>Small, focused teams for project delivery and operational support with clear scope, milestones, and reporting.</p>
+      <div class="mini">Delivery</div>
+      <p>Sprints • runbooks • handoff documentation</p>
     </div>
 
     <div class="card">
-      <h4>AI initiatives</h4>
-      <p>Applied AI prototypes to production: tooling, integration, evaluation, and safe rollout.</p>
-      <div class="mini">AI delivery</div>
-      <p>Prototypes • pipelines • governance • deployment</p>
-    </div>
-  </div>
-</section>
-
-<section id="products" class="wrap section">
-  <div class="sectionHeader">
-    <div>
-      <h2>Products</h2>
-      <p>Tools and templates that complement delivery: automation utilities and reusable platform components.</p>
-    </div>
-  </div>
-
-  <div class="grid">
-    <div class="card">
-      <h4>AI automation tools</h4>
-      <p>Internal tools that reduce manual work and improve operational throughput.</p>
-      <div class="mini">Capabilities</div>
-      <p>Workflows • analysis • reporting • integrations</p>
-    </div>
-
-    <div class="card">
-      <h4>Platform components</h4>
-      <p>Reusable building blocks for enterprise delivery: templates, pipelines, and observability modules.</p>
-      <div class="mini">Acceleration</div>
-      <p>IaC templates • CI/CD • monitoring • standards</p>
-    </div>
-
-    <div class="card">
-      <h4>Delivery templates</h4>
-      <p>Clean, practical templates used in real projects: runbooks, onboarding checklists, and system hardening baselines.</p>
-      <div class="mini">Includes</div>
-      <p>Runbooks • SOPs • onboarding • security baselines</p>
-    </div>
-  </div>
-</section>
-
-<section id="experience" class="wrap section">
-  <div class="sectionHeader">
-    <div>
-      <h2>Experience</h2>
-      <p>Delivery exposure across enterprise environments and large-scale engineering partners.</p>
-    </div>
-  </div>
-
-  <div class="grid">
-    <div class="card">
-      <h4>Enterprise ecosystems</h4>
-      <p>AMD • AT&amp;T • Nokia • State Farm • and enterprise IT partners.</p>
+      <h4>Consulting support</h4>
+      <p>Architecture and modernization support across cloud, DevOps, and platform reliability—pragmatic and production-minded.</p>
       <div class="mini">Focus</div>
-      <p>Secure delivery • automation • reliability • cloud operations</p>
-    </div>
-
-    <div class="card">
-      <h4>Consulting-style execution</h4>
-      <p>Clear scope, professional communication, and documented handoff — aligned with enterprise standards.</p>
-      <div class="mini">Deliverables</div>
-      <p>Plans • architecture • runbooks • training • transition</p>
-    </div>
-
-    <div class="card">
-      <h4>Hybrid model</h4>
-      <p>Consulting + staffing + product engineering. Pick the engagement model that fits the timeline.</p>
-      <div class="mini">Options</div>
-      <p>Project phases • dedicated resources • delivery teams</p>
+      <p>Modernization • reliability • secure delivery</p>
     </div>
   </div>
 </section>
 
-<section id="insights" class="wrap section">
+<section id="expertise" class="wrap section">
   <div class="sectionHeader">
     <div>
-      <h2>Insights</h2>
-      <p>Newsletter-style reading list for AI, automation, and engineering leaders.</p>
+      <h2>Our expertise</h2>
+      <p>Coverage across key enterprise skill areas—focused on the roles clients struggle to hire quickly and confidently.</p>
     </div>
   </div>
 
-  <div class="insightsBox">
-    <p>
-      <strong>References:</strong> Superhuman + The Batch style newsletter formats.
-    </p>
-    <div class="inlineLinks">
-      <a href="https://www.joinsuperhuman.io/" target="_blank" rel="noopener noreferrer">Superhuman</a>
-      <a href="https://www.deeplearning.ai/the-batch/" target="_blank" rel="noopener noreferrer">The Batch</a>
+  <div class="grid">
+    <div class="card">
+      <h4>AI (interest track)</h4>
+      <p>ML / data roles aligned to real-world delivery and governance expectations.</p>
+      <div class="mini">Roles</div>
+      <p>ML Engineer • Data Scientist • AI Developer • AI Security</p>
+    </div>
+
+    <div class="card">
+      <h4>Cloud</h4>
+      <p>Engineers and architects supporting AWS, Azure, and GCP programs.</p>
+      <div class="mini">Skills</div>
+      <p>Cloud engineering • platform ops • modernization</p>
+    </div>
+
+    <div class="card">
+      <h4>Software development</h4>
+      <p>Backend, frontend, and full-stack engineers built for production environments.</p>
+      <div class="mini">Stacks</div>
+      <p>Java • .NET • Python • Web • Mobile • QA</p>
+    </div>
+
+    <div class="card">
+      <h4>DevOps & SRE</h4>
+      <p>Automation, CI/CD, reliability engineering, and operational excellence.</p>
+      <div class="mini">Focus</div>
+      <p>CI/CD • IaC • observability • incident response</p>
+    </div>
+
+    <div class="card">
+      <h4>Data</h4>
+      <p>Data engineers and analysts supporting analytics and platform initiatives.</p>
+      <div class="mini">Roles</div>
+      <p>Data Engineer • Data Analyst • Data Architect</p>
+    </div>
+
+    <div class="card">
+      <h4>Cybersecurity</h4>
+      <p>Security talent aligned to enterprise controls, audits, and modern defensive practices.</p>
+      <div class="mini">Roles</div>
+      <p>Security Analyst • Engineer • Architect • GRC</p>
     </div>
   </div>
 </section>
@@ -465,31 +429,84 @@
 <section id="partners" class="wrap section">
   <div class="sectionHeader">
     <div>
-      <h2>Partner ecosystem</h2>
-      <p>Mantanex collaborates with staffing, infrastructure, and platform partners to execute enterprise programs at scale.</p>
+      <h2>Partners</h2>
+      <p>We collaborate with staffing and delivery partners to support enterprise programs at scale.</p>
     </div>
   </div>
 
   <div class="grid">
     <div class="card">
-      <h4>Staffing & delivery partners</h4>
-      <p>TekSystems • Kforce • Apex Systems • Randstad Technologies</p>
-      <div class="mini">Focus</div>
-      <p>Enterprise staffing • augmentation • program delivery</p>
-    </div>
-
-    <div class="card">
-      <h4>Client environments</h4>
-      <p>Enterprise IT ecosystems where projects are delivered and supported.</p>
-      <div class="mini">Areas</div>
-      <p>Cloud operations • security • automation • reliability</p>
-    </div>
-
-    <div class="card">
-      <h4>Vendor relationships</h4>
-      <p>We coordinate with vendors and procurement channels as needed for delivery and staffing workflows.</p>
+      <h4>Staffing partners</h4>
+      <p>Partner ecosystem for candidate flow, delivery alignment, and enterprise procurement support.</p>
       <div class="mini">Examples</div>
-      <p>Background checks • onboarding • payroll vendors • tooling</p>
+      <div class="pillList" aria-label="Staffing partner examples">
+        <span class="pill">TekSystems</span>
+        <span class="pill">Kforce</span>
+        <span class="pill">Apex Systems</span>
+        <span class="pill">Randstad Technologies</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h4>Compliance-ready workflow</h4>
+      <p>Structured intake, documentation-first communication, and clean handoffs for enterprise teams.</p>
+      <div class="mini">Ops</div>
+      <p>Role intake • screening notes • interview coordination • onboarding support</p>
+    </div>
+
+    <div class="card">
+      <h4>Tech-forward mindset</h4>
+      <p>Staffing first, with ongoing investment in automation and internal tooling for speed and quality.</p>
+      <div class="mini">Focus</div>
+      <p>Process automation • structured templates • delivery standards</p>
+    </div>
+  </div>
+</section>
+
+<section id="candidates" class="wrap section">
+  <div class="sectionHeader">
+    <div>
+      <h2>For job seekers</h2>
+      <p>We focus on clear expectations, responsive communication, and roles that match your skills and goals.</p>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h4>Fast feedback</h4>
+      <p>Clear next steps and consistent follow-ups—no guessing where you stand.</p>
+    </div>
+    <div class="card">
+      <h4>Role alignment</h4>
+      <p>We prioritize matching skill set, environment, and delivery expectations.</p>
+    </div>
+    <div class="card">
+      <h4>Consultant care</h4>
+      <p>Professional support through onboarding and throughout the engagement.</p>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="wrap section">
+  <div class="sectionHeader">
+    <div>
+      <h2>About</h2>
+      <p>Mantanex is building a staffing-led services company with an enterprise delivery standard—reliability, documentation, and strong communication.</p>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h4>People-centric</h4>
+      <p>We treat consultants and clients like long-term relationships, not transactions.</p>
+    </div>
+    <div class="card">
+      <h4>Enterprise expectations</h4>
+      <p>We understand delivery standards, stakeholder communication, and clean handoffs.</p>
+    </div>
+    <div class="card">
+      <h4>Long-term vision</h4>
+      <p>Staffing today; continuing investment in AI and modern tooling as a tech-forward company.</p>
     </div>
   </div>
 </section>
@@ -499,7 +516,7 @@
     <div class="sectionHeader">
       <div>
         <h2>Contact</h2>
-        <p>Consulting inquiries, staffing requests, and enterprise programs.</p>
+        <p>Client requests, staffing inquiries, and partnerships. For payroll support, email HR.</p>
       </div>
     </div>
 
@@ -507,7 +524,7 @@
       <div class="info">
         <b>Email</b>
         <a href="mailto:support@mantanex.com">support@mantanex.com</a>
-        <div class="fine">Best for project scope and staffing requests.</div>
+        <div class="fine">Best for client requests and staffing inquiries.</div>
       </div>
 
       <div class="info">
@@ -517,123 +534,93 @@
       </div>
 
       <div class="info">
-        <b>Address</b>
+        <b>Location</b>
         Mantanex LLC<br>
-        Southside / Deerwood, Jacksonville, FL 32256<br>
-        <span class="fine">(By appointment)</span>
+        Timberlin Park Blvd (Southside / Deerwood)<br>
+        Jacksonville, FL 32256 <span style="color:#7a8394;">(By appointment)</span>
+      </div>
+
+      <div class="mapWrap" aria-label="Map to Mantanex location">
+        <iframe
+          src="https://www.google.com/maps?q=Timberlin%20Park%20Blvd%20Jacksonville%20FL%2032256&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
 
-    <div class="mapWrap" aria-label="Map to Mantanex area">
-      <iframe
-        src="https://www.google.com/maps?q=Deerwood+Jacksonville+FL+32256&output=embed"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        allowfullscreen>
-      </iframe>
-    </div>
-
     <div class="formWrap" aria-label="Contact form">
-      <form id="contactForm" novalidate>
-        <div class="formGrid">
-          <div>
-            <label for="name">Full name</label>
-            <input id="name" name="name" type="text" placeholder="Your name" required maxlength="80" autocomplete="name">
-          </div>
+      <div class="fine">This form opens your email client (no data is stored on the website).</div>
 
-          <div>
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="Email address" required maxlength="120" autocomplete="email">
-          </div>
-
-          <div>
-            <label for="company">Company</label>
-            <input id="company" name="company" type="text" placeholder="Company / client" maxlength="120" autocomplete="organization">
-          </div>
-
-          <div>
-            <label for="topic">Topic</label>
-            <select id="topic" name="topic" required>
-              <option value="" selected disabled>Select</option>
-              <option>Consulting</option>
-              <option>Staffing</option>
-              <option>AI project</option>
-              <option>Partnership</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <div class="full">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Scope, timeline, constraints, and what success looks like…" required maxlength="2500" autocomplete="off"></textarea>
-          </div>
+      <form id="mxForm" class="formGrid" style="margin-top:10px;">
+        <div>
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" maxlength="80" autocomplete="name" required>
         </div>
 
-        <div class="formActions">
-          <button class="btn primary" type="submit">Send</button>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="Email address" maxlength="120" autocomplete="email" required>
+        </div>
+
+        <div>
+          <label for="company">Company</label>
+          <input id="company" name="company" type="text" placeholder="Company / client" maxlength="120" autocomplete="organization">
+        </div>
+
+        <div>
+          <label for="topic">Topic</label>
+          <select id="topic" name="topic" required>
+            <option value="" selected disabled>Select</option>
+            <option>Client request</option>
+            <option>Staffing</option>
+            <option>Partnership</option>
+            <option>Candidate inquiry</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="full">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Role details, skill requirements, timeline, location, and interview process…" maxlength="2500" required></textarea>
+        </div>
+
+        <div class="full formActions">
+          <button class="btn primary" type="submit">Send message</button>
           <a class="btn ghost" href="mailto:support@mantanex.com">Email instead</a>
-          <span class="hint">No marketing lists. This goes to support@mantanex.com.</span>
+          <span class="hint">HR: <a href="mailto:hr@mantanex.com" style="color:var(--brand);text-decoration:none;font-weight:800;">hr@mantanex.com</a></span>
         </div>
-
-        <div id="status" class="hint" aria-live="polite"></div>
       </form>
     </div>
-
-  </div>
-</section>
-
-<section id="payroll" class="wrap section">
-  <div class="sectionHeader">
-    <div>
-      <h2>Payroll</h2>
-      <p>Employees can access payroll, pay statements, and tax documents through our payroll provider.</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <h4>Payroll portal</h4>
-    <p>
-      Use the payroll portal link provided by HR. If you need access or a reset, email
-      <a href="mailto:hr@mantanex.com">hr@mantanex.com</a>.
-    </p>
-    <div class="mini">Note</div>
-    <p>For a small team (&lt;5 employees), a provider portal is the most secure way to handle pay stubs and tax forms.</p>
   </div>
 </section>
 
 <footer>
-  © Mantanex LLC — support@mantanex.com • +1 (352) 760-1132
-  <div class="fine">
-    Unauthorized reuse of Mantanex branding, content, or assets is not permitted.
-  </div>
+  © Mantanex LLC — <a href="mailto:support@mantanex.com" style="text-decoration:none;color:inherit;">support@mantanex.com</a> •
+  <a href="tel:+13527601132" style="text-decoration:none;color:inherit;">+1 (352) 760-1132</a>
 </footer>
 
 <script>
   (function(){
-    const form = document.getElementById('contactForm');
-    const status = document.getElementById('status');
-
-    function setStatus(msg){
-      status.textContent = msg;
-    }
-
-    function encode(s){ return encodeURIComponent(s).replace(/%0A/g, "%0D%0A"); }
+    const form = document.getElementById('mxForm');
+    function enc(s){ return encodeURIComponent(s).replace(/%0A/g, "%0D%0A"); }
 
     form.addEventListener('submit', function(e){
       e.preventDefault();
 
       if(!form.checkValidity()){
-        setStatus("Please complete the required fields.");
+        form.reportValidity();
         return;
       }
 
-      const name = form.elements["name"].value.trim();
-      const email = form.elements["email"].value.trim();
-      const company = form.elements["company"].value.trim();
-      const topic = form.elements["topic"].value;
-      const message = form.elements["message"].value.trim();
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const company = form.company.value.trim();
+      const topic = form.topic.value;
+      const message = form.message.value.trim();
 
-      const subject = `[Mantanex] ${topic} inquiry — ${name}`;
+      const subject = `[Mantanex] ${topic} — ${name}`;
       const body =
 `Name: ${name}
 Email: ${email}
@@ -644,10 +631,7 @@ Message:
 ${message}
 `;
 
-      setStatus("Opening your email client…");
-
-      window.location.href =
-        `mailto:support@mantanex.com?subject=${encode(subject)}&body=${encode(body)}`;
+      window.location.href = `mailto:support@mantanex.com?subject=${enc(subject)}&body=${enc(body)}`;
     });
   })();
 </script>
