@@ -1,304 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Mantanex | Consulting • AI • Cloud • NAS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Mantanex — Consulting • AI • Cloud • NAS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
-body{background:#0b1220;color:#e6edf7}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+}
 
-.container{width:92%;max-width:1200px;margin:auto}
+body{
+  background:#ffffff;
+  color:#0f172a;
+}
 
 /* NAV */
 nav{
-position:fixed;
-top:0;
-width:100%;
-background:#0b1220cc;
-backdrop-filter:blur(8px);
-border-bottom:1px solid #1c2538;
-z-index:999
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 60px;
+  border-bottom:1px solid #e5e7eb;
+  background:#ffffff;
 }
-.navWrap{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:16px 0
-}
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
-font-weight:600;
-font-size:18px
-}
-.logo img{height:32px}
 
-.navLinks{
-display:flex;
-gap:28px;
-font-size:14px;
-opacity:.9
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:20px;
+  font-weight:700;
+}
+
+.logo img{
+  height:38px;
+}
+
+nav ul{
+  display:flex;
+  gap:30px;
+  list-style:none;
+}
+
+nav a{
+  text-decoration:none;
+  color:#334155;
+  font-weight:500;
+}
+
+nav a:hover{
+  color:#000;
 }
 
 /* HERO */
 .hero{
-padding-top:120px;
-padding-bottom:90px;
-background:linear-gradient(180deg,#0b1220 0%,#111a2e 100%)
+  padding:90px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:60px;
 }
 
-.heroGrid{
-display:grid;
-grid-template-columns:1.2fr 1fr;
-gap:60px;
-align-items:center
+.hero-left{
+  max-width:650px;
 }
 
-.kicker{
-color:#4da3ff;
-font-size:13px;
-margin-bottom:10px
+.hero-tag{
+  color:#2563eb;
+  font-weight:600;
+  margin-bottom:15px;
 }
 
 .hero h1{
-font-size:52px;
-line-height:1.1;
-margin-bottom:18px
+  font-size:56px;
+  line-height:1.1;
+  margin-bottom:20px;
 }
 
 .hero p{
-opacity:.75;
-font-size:17px;
-line-height:1.6;
-margin-bottom:30px
+  color:#475569;
+  font-size:18px;
+  margin-bottom:30px;
 }
 
 .btn{
-padding:14px 22px;
-border-radius:10px;
-text-decoration:none;
-font-weight:600;
-display:inline-block
+  padding:14px 26px;
+  border-radius:10px;
+  font-weight:600;
+  text-decoration:none;
 }
 
-.btnPrimary{
-background:#2563eb;
-color:#fff
+.btn-primary{
+  background:#2563eb;
+  color:#fff;
 }
 
-.btnOutline{
-border:1px solid #2b3a55;
-color:#fff;
-margin-left:10px
+.btn-outline{
+  border:1px solid #cbd5e1;
+  color:#0f172a;
 }
 
-/* SERVICES */
+/* WHAT WE DELIVER */
+.deliver{
+  background:#f8fafc;
+  padding:60px;
+  border-radius:20px;
+  max-width:420px;
+}
+
+.deliver h3{
+  margin-bottom:20px;
+}
+
+.deliver li{
+  list-style:none;
+  margin-bottom:14px;
+  color:#334155;
+}
+
+/* SECTIONS */
 .section{
-padding:80px 0
+  padding:80px 60px;
 }
 
 .section h2{
-font-size:34px;
-margin-bottom:14px
+  font-size:36px;
+  margin-bottom:20px;
 }
 
 .cards{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:26px;
-margin-top:40px
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+  margin-top:40px;
 }
 
 .card{
-background:#0f172a;
-padding:28px;
-border-radius:16px;
-border:1px solid #1c2538
+  background:#ffffff;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  padding:28px;
 }
 
-.card h3{margin-bottom:10px}
+.card h3{
+  margin-bottom:10px;
+}
+
+.card p{
+  color:#475569;
+}
 
 /* EXPERIENCE */
 .logos{
-display:flex;
-gap:40px;
-flex-wrap:wrap;
-opacity:.8;
-margin-top:30px;
-font-weight:600;
-letter-spacing:.5px
+  display:flex;
+  gap:60px;
+  margin-top:30px;
+  flex-wrap:wrap;
+  align-items:center;
+  opacity:0.8;
+}
+
+.logos img{
+  height:40px;
 }
 
 /* CONTACT */
 .contact{
-background:#0f172a;
-padding:60px;
-border-radius:20px;
-border:1px solid #1c2538;
-margin-top:50px
+  background:#f8fafc;
+  border-radius:20px;
+  padding:50px;
 }
 
-.contactActions{
-margin-top:24px
+.contact h2{
+  margin-bottom:20px;
+}
+
+.contact p{
+  margin-bottom:20px;
 }
 
 /* FOOTER */
 footer{
-background:#060c18;
-padding:60px 0;
-margin-top:80px;
-border-top:1px solid #1c2538
+  margin-top:60px;
+  padding:40px 60px;
+  border-top:1px solid #e5e7eb;
+  background:#ffffff;
 }
 
-.footerGrid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:40px
+.footer-grid{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:30px;
 }
 
-.footer h4{margin-bottom:10px}
+.footer-col{
+  max-width:320px;
+}
 
-.footer p{opacity:.7;margin-bottom:6px}
+.footer-col h4{
+  margin-bottom:10px;
+}
 
-.footerLogo{height:40px;margin-bottom:10px}
+.footer-col p{
+  color:#475569;
+  margin-bottom:6px;
+}
 
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav>
-<div class="container navWrap">
-<div class="logo">
-<img src="assets/mantanex-logo.png">
-Mant an ex
-</div>
+  <div class="logo">
+    <img src="logo.png">
+    Mantanex
+  </div>
 
-<div class="navLinks">
-<div>Services</div>
-<div>Products</div>
-<div>Experience</div>
-<div>Insights</div>
-<div>Contact</div>
-</div>
-</div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
 
-
+<!-- HERO -->
 <section class="hero">
-<div class="container heroGrid">
+  <div class="hero-left">
+    <div class="hero-tag">Enterprise technology</div>
+    <h1>Products and services for modern IT.</h1>
+    <p>
+      Mantanex builds AI systems and delivers enterprise IT services —
+      cloud, DevOps, automation, security, and NAS engineering.
+    </p>
 
-<div>
-<div class="kicker">Enterprise technology</div>
-<h1>Products and services for modern IT.</h1>
-<p>
-Mant an ex builds AI-inspired systems and delivers enterprise IT services —
-cloud, DevOps, automation, and managed engineering backed by real delivery experience.
-</p>
+    <a class="btn btn-primary" href="#contact">Start a project</a>
+    <a class="btn btn-outline" href="#services">Explore services</a>
+  </div>
 
-<a class="btn btnPrimary">Start a project</a>
-<a class="btn btnOutline">Explore services</a>
-</div>
-
-<div class="card">
-<h3>What we deliver</h3>
-<p>Clear scope. Secure execution. Production-ready outcomes.</p>
-<br>
-<p>AI automation</p>
-<p>Cloud engineering</p>
-<p>IoT & edge systems</p>
-<p>Security hardening</p>
-<p>Managed support</p>
-</div>
-
-</div>
+  <div class="deliver">
+    <h3>What we deliver</h3>
+    <ul>
+      <li>AI automation</li>
+      <li>Cloud engineering</li>
+      <li>IoT & edge systems</li>
+      <li>Security hardening</li>
+      <li>Managed support</li>
+    </ul>
+  </div>
 </section>
 
+<!-- SERVICES -->
+<section class="section" id="services">
+  <h2>Services</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Cloud & DevOps</h3>
+      <p>Architecture, automation pipelines, platform reliability.</p>
+    </div>
 
-<section class="section container">
-<h2>Services</h2>
-<p>Consulting, engineering, and product development across enterprise ecosystems.</p>
+    <div class="card">
+      <h3>AI Engineering</h3>
+      <p>Prototypes → production systems for enterprise use cases.</p>
+    </div>
 
-<div class="cards">
-<div class="card">
-<h3>Cloud & DevOps</h3>
-<p>Architecture, automation, CI/CD, platform reliability.</p>
-</div>
-
-<div class="card">
-<h3>AI initiatives</h3>
-<p>Prototype → production AI systems and internal tooling.</p>
-</div>
-
-<div class="card">
-<h3>NAS & edge systems</h3>
-<p>High-reliability storage, compute nodes, and on-site intelligence.</p>
-</div>
-</div>
+    <div class="card">
+      <h3>Security</h3>
+      <p>Hardening, monitoring, and compliance frameworks.</p>
+    </div>
+  </div>
 </section>
 
+<!-- PRODUCTS -->
+<section class="section" id="products">
+  <h2>Products</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>NAS Systems</h3>
+      <p>Reliable storage platforms and enterprise backup solutions.</p>
+    </div>
 
-<section class="section container">
-<h2>Experience across enterprise ecosystems</h2>
+    <div class="card">
+      <h3>AI Platforms</h3>
+      <p>Automation engines and enterprise intelligence systems.</p>
+    </div>
 
-<div class="logos">
-<span>AMD</span>
-<span>AT&T</span>
-<span>Nokia</span>
-<span>StateFarm</span>
-<span>Enterprise IT partners</span>
-</div>
+    <div class="card">
+      <h3>Edge Devices</h3>
+      <p>IoT-ready monitoring and field deployment hardware.</p>
+    </div>
+  </div>
 </section>
 
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <h2>Enterprise experience</h2>
+  <p>AMD • AT&T • Nokia • StateFarm • Enterprise IT partners</p>
 
-<section class="section container">
-<div class="contact">
-<h2>Reach Mantanex</h2>
-<p>Consulting inquiries, AI projects, cloud engineering, and NAS builds.</p>
-
-<div class="contactActions">
-<a class="btn btnPrimary" href="mailto:support@mantanex.com">Email support</a>
-<a class="btn btnOutline" href="tel:+13527601132">Call +1 352 760 1132</a>
-</div>
-</div>
+  <div class="logos">
+    <img src="amd.png">
+    <img src="att.png">
+    <img src="nokia.png">
+    <img src="statefarm.png">
+  </div>
 </section>
 
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="contact">
+    <h2>Contact Mantanex</h2>
+    <p>Consulting inquiries, AI projects, cloud engineering, and NAS builds.</p>
 
+    <a class="btn btn-primary" href="mailto:support@mantanex.com">Email support</a>
+    <a class="btn btn-outline" href="tel:+13527601132">Call +1 352 760 1132</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-<div class="container footerGrid">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Mantanex</h4>
+      <p>Consulting • AI • Cloud • NAS</p>
+    </div>
 
-<div>
-<img src="assets/mantanex-logo.png" class="footerLogo">
-<p>Consulting • AI • Cloud • NAS</p>
-</div>
-
-<div>
-<h4>Company</h4>
-<p>Mantanex LLC</p>
-<p>7701 Timberlin Pkwy</p>
-<p>Jacksonville, FL 32256</p>
-</div>
-
-<div>
-<h4>Contact</h4>
-<p>support@mantanex.com</p>
-<p>+1 352 760 1132</p>
-</div>
-
-<div>
-<h4>Focus</h4>
-<p>Enterprise consulting</p>
-<p>AI projects</p>
-<p>Cloud engineering</p>
-<p>NAS builds</p>
-</div>
-
-</div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Email: support@mantanex.com</p>
+      <p>Phone: +1 352 760 1132</p>
+      <p>Address: Mantanex LLC, 7701 Timberlin Pkwy, Jacksonville, FL 32256</p>
+    </div>
+  </div>
 </footer>
 
 </body>
