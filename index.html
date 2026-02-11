@@ -1,206 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mantanex — Enterprise IT, AI, Cloud, Staffing</title>
+  <meta name="description" content="Mantanex LLC delivers enterprise IT consulting, cloud engineering, AI initiatives, staffing, and product engineering (including NAS systems)." />
 
-<title>Mantanex — Enterprise IT, AI, Cloud, Staffing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#ffffff;
+      --surface:#fbfbfc;
+      --surface2:#f5f6f8;
+      --text:#0b0f18;
+      --muted:#586174;
+      --line:#e7eaf0;
+      --blue:#0b5cff;
+      --blue2:#0847c6;
+      --shadow: 0 18px 40px rgba(11,15,24,.08);
+      --radius: 18px;
+      --radius2: 14px;
+      --max: 1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Manrope, Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.35;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 22px;}
+    .topbar{
+      position:sticky; top:0; z-index:40;
+      background:rgba(255,255,255,.88);
+      backdrop-filter:saturate(160%) blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      text-decoration:none;
+      min-width:220px;
+    }
+    .brand img{
+      width:38px; height:38px; object-fit:contain;
+      border-radius:10px;
+      background:#fff;
+      border:1px solid var(--line);
+      padding:6px;
+    }
+    .brand .name{
+      font-weight:800; letter-spacing:-.02em;
+      font-size:20px;
+    }
+    .brand .tag{
+      margin-top:2px;
+      font-size:12px;
+      color:var(--muted);
+      font-weight:600;
+      letter-spacing:.02em;
+    }
 
-<style>
-body{
-  margin:0;
-  font-family:'Inter',sans-serif;
-  background:#ffffff;
-  color:#111;
-}
-.container{max-width:1200px;margin:auto;padding:40px 20px}
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 40px;
-  border-bottom:1px solid #eee;
-}
-.logo{display:flex;align-items:center;font-weight:700;font-size:20px}
-.logo img{height:32px;margin-right:10px}
-nav a{
-  margin:0 14px;
-  text-decoration:none;
-  color:#444;
-  font-weight:500;
-}
-.hero{
-  padding:80px 20px;
-}
-.hero h1{
-  font-size:54px;
-  margin-bottom:10px;
-}
-.hero p{
-  color:#666;
-  font-size:18px;
-}
-.section{padding:70px 20px}
-.card{
-  border:1px solid #eaeaea;
-  border-radius:16px;
-  padding:30px;
-  background:#fafafa;
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:20px;
-}
-.full{grid-column:1/-1}
-input,select,textarea{
-  width:100%;
-  padding:12px;
-  border-radius:10px;
-  border:1px solid #ddd;
-  font-size:14px;
-}
-textarea{resize:vertical}
-button{
-  padding:14px 24px;
-  border:none;
-  background:#0b5cff;
-  color:#fff;
-  font-weight:600;
-  border-radius:10px;
-  cursor:pointer;
-}
-button:hover{background:#0844c4}
-footer{
-  padding:40px;
-  border-top:1px solid #eee;
-  text-align:center;
-  color:#777;
-}
-.hp{display:none}
-</style>
+    .navlinks{
+      display:flex; align-items:center; gap:18px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .navlinks a{
+      text-decoration:none;
+      color:#334055;
+      font-weight:700;
+      font-size:14px;
+      padding:10px 10px;
+      border-radius:10px;
+    }
+    .navlinks a:hover{background:var(--surface2)}
+    .ctaRow{display:flex; gap:10px; align-items:center;}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-weight:800;
+      font-size:14px;
+      text-decoration:none;
+      white-space:nowrap;
+    }
+    .btn.primary{
+      background:var(--blue);
+      border-color:transparent;
+      color:#fff;
+      box-shadow: 0 14px 30px rgba(11,92,255,.20);
+    }
+    .btn.primary:hover{background:var(--blue2)}
+    .btn:hover{background:var(--surface2)}
+
+    .hero{
+      padding:70px 0 26px;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:26px;
+      align-items:stretch;
+    }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      background:var(--surface2);
+      border:1px solid var(--line);
+      color:#2c3a52;
+      font-weight:800;
+      font-size:13px;
+      letter-spacing:.01em;
+      width:fit-content;
+    }
+    .dot{width:10px;height:10px;border-radius:50%; background:var(--blue)}
+    h1{
+      margin:14px 0 10px;
+      font-size:54px;
+      line-height:1.02;
+      letter-spacing:-.03em;
+    }
+    .sub{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:18px;
+      max-width:60ch;
+      font-weight:600;
+    }
+    .heroActions{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px;}
+    .panel{
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, #ffffff 0%, #fbfbfd 100%);
+      border:1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding:22px;
+      min-height: 100%;
+    }
+    .panel h3{
+      margin:0 0 8px;
+      letter-spacing:-.02em;
+      font-size:18px;
+    }
+    .panel p{margin:0; color:var(--muted); font-weight:600}
+    .pillRow{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .pill{
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-weight:800;
+      font-size:13px;
+      color:#2d3b55;
+    }
+    .miniGrid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:16px;
+    }
+    .mini{
+      border:1px solid var(--line);
+      border-radius:var(--radius2);
+      padding:14px;
+      background:var(--surface);
+    }
+    .mini .t{font-weight:900; font-size:13px; color:#2c3a52}
+    .mini .d{margin-top:6px; color:var(--muted); font-weight:650; font-size:13px}
+
+    .section{padding:46px 0}
+    .sectionHead{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:16px; flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+    .sectionHead h2{
+      margin:0;
+      font-size:30px;
+      letter-spacing:-.02em;
+    }
+    .sectionHead .note{
+      color:var(--muted);
+      font-weight:650;
+      max-width:58ch;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      background:#fff;
+      box-shadow: 0 12px 30px rgba(11,15,24,.06);
+    }
+    .card .title{font-weight:900; letter-spacing:-.01em; font-size:16px}
+    .card .desc{margin-top:8px; color:var(--muted); font-weight:650; font-size:14px}
+    .card ul{
+      margin:12px 0 0;
+      padding-left:18px;
+      color:#3a475d;
+      font-weight:650;
+      line-height:1.55;
+      font-size:14px;
+    }
+
+    .logos{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      align-items:center;
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--surface);
+    }
+    .logos img{
+      height:26px;
+      width:auto;
+      max-width:120px;
+      object-fit:contain;
+      filter: grayscale(1);
+      opacity:.75;
+    }
+    .logos img:hover{filter:grayscale(0); opacity:1}
+
+    .insightsGrid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    .insightCard{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      background:#fff;
+      box-shadow: 0 12px 30px rgba(11,15,24,.06);
+    }
+    .insightCard .k{font-weight:900; font-size:12px; letter-spacing:.08em; color:#51607a}
+    .insightCard h3{margin:10px 0 8px; font-size:18px; letter-spacing:-.01em}
+    .insightCard p{margin:0; color:var(--muted); font-weight:650}
+    .insightList{margin-top:14px; display:flex; flex-direction:column; gap:10px}
+    .insightItem{
+      display:flex; justify-content:space-between; gap:14px; align-items:flex-start;
+      padding:12px 12px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:var(--surface);
+      text-decoration:none;
+    }
+    .insightItem .t{font-weight:900; font-size:14px; color:#24314a}
+    .insightItem .s{color:var(--muted); font-weight:650; font-size:12px; margin-top:4px}
+    .insightItem .go{color:var(--blue); font-weight:900}
+
+    .contactGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+      align-items:stretch;
+    }
+
+    form .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    label{
+      display:block;
+      font-weight:800;
+      font-size:13px;
+      color:#2b3952;
+      margin-bottom:8px;
+    }
+    input, select, textarea{
+      width:100%;
+      padding:12px 12px;
+      border:1px solid #dfe4ee;
+      border-radius:12px;
+      font-family:inherit;
+      font-size:14px;
+      outline:none;
+      background:#fff;
+    }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(11,92,255,.55);
+      box-shadow: 0 0 0 4px rgba(11,92,255,.10);
+    }
+    textarea{min-height:140px; resize:vertical}
+    .formActions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; align-items:center}
+    .hint{color:var(--muted); font-weight:650; font-size:13px}
+    .error{color:#b42318; font-weight:800; font-size:13px; margin-top:10px; display:none}
+    .success{color:#067647; font-weight:900; font-size:13px; margin-top:10px; display:none}
+    .hp{display:none !important}
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:28px 0;
+      color:var(--muted);
+      font-weight:650;
+      font-size:13px;
+    }
+
+    @media (max-width: 980px){
+      .heroGrid, .insightsGrid, .contactGrid{grid-template-columns:1fr}
+      h1{font-size:42px}
+      .cards{grid-template-columns:1fr}
+      form .row{grid-template-columns:1fr}
+      .brand{min-width:auto}
+    }
+  </style>
 </head>
 
 <body>
+  <div class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Mantanex Home">
+        <img src="logo.png" alt="Mantanex logo" />
+        <div>
+          <div class="name">Mantanex</div>
+          <div class="tag">Consulting • AI • Cloud • Staffing • Product Engineering</div>
+        </div>
+      </a>
 
-<header>
-  <div class="logo">
-    <img src="logo.png">
-    Mantanex
+      <div class="navlinks" role="navigation" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#products">Products</a>
+        <a href="#experience">Experience</a>
+        <a href="#insights">Insights</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="ctaRow">
+        <a class="btn" href="#insights">AI newsletter</a>
+        <a class="btn primary" href="#contact">Start a project</a>
+      </div>
+    </div>
   </div>
-  <nav>
-    <a href="#services">Services</a>
-    <a href="#products">Products</a>
-    <a href="#experience">Experience</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
 
-<section class="hero container">
-  <h1>Enterprise IT. AI. Cloud. Staffing.</h1>
-  <p>Consulting, product engineering, and enterprise delivery for modern technology organizations.</p>
-</section>
+  <main id="top" class="wrap">
+    <section class="hero">
+      <div class="heroGrid">
+        <div>
+          <div class="kicker"><span class="dot"></span> Enterprise technology</div>
+          <h1>Products and services for modern IT.</h1>
+          <p class="sub">
+            Mantanex LLC supports enterprise delivery standards while building new AI initiatives and
+            storage-focused products (NAS systems and reliability-first builds).
+          </p>
 
-<section id="services" class="section container">
-  <h2>Services</h2>
-  <div class="card">
-    Cloud engineering • DevOps • Automation • AI initiatives • Enterprise delivery • Staffing
-  </div>
-</section>
+          <div class="heroActions">
+            <a class="btn primary" href="#contact">Start a project</a>
+            <a class="btn" href="#services">Explore services</a>
+          </div>
+        </div>
 
-<section id="experience" class="section container">
-  <h2>Enterprise experience</h2>
-  <div class="card">
-    AMD • AT&T • Nokia • StateFarm • Enterprise IT partners
-  </div>
-</section>
-
-<section id="contact" class="section container">
-  <h2>Work with Mantanex</h2>
-  <p>Consulting inquiries, staffing requests, AI projects, and NAS initiatives.</p>
-
-  <div class="card">
-
-<form id="contactForm">
-
-<div class="hp">
-<input type="text" name="website">
-</div>
-
-<div class="grid">
-<div>
-<label>Name</label>
-<input type="text" id="name" required>
-</div>
-
-<div>
-<label>Email</label>
-<input type="email" id="email" required>
-</div>
-
-<div>
-<label>Company</label>
-<input type="text" id="company">
-</div>
-
-<div>
-<label>Topic</label>
-<select id="topic">
-<option>Consulting</option>
-<option>Staffing</option>
-<option>AI project</option>
-<option>NAS build</option>
-<option>Other</option>
-</select>
-</div>
-
-<div class="full">
-<label>Message</label>
-<textarea id="message" rows="6" required></textarea>
-</div>
-</div>
-
-<br>
-<button type="submit">Send message</button>
-
-</form>
-
-  </div>
-</section>
-
-<footer>
-support@mantanex.com • +1 352 760 1132<br>
-© Mantanex LLC — Enterprise IT Website
-</footer>
-
-<script>
-document.getElementById("contactForm").addEventListener("submit", function(e){
-e.preventDefault()
-
-// honeypot spam check
-if(document.querySelector('input[name="website"]').value !== ""){
-alert("Spam blocked")
-return
-}
-
-let name=document.getElementById("name").value
-let email=document.getElementById("email").value
-let company=document.getElementById("company").value
-let topic=document.getElementById("topic").value
-let message=document.getElementById("message").value
-
-let mailto=`mailto:support@mantanex.com?subject=${topic} inquiry from ${name}&body=
-Name: ${name}
-Email: ${email}
-Company: ${company}
-
-${message}`
-
-window.location.href=mailto
-})
-</script>
-
-</body>
-</html>
+        <div class="panel" aria-label="What we deliver">
+          <h3>What we deliver</h3>
