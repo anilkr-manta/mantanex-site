@@ -1,813 +1,310 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Mantanex — consulting, cloud, security, automation, AI projects, and NAS systems." />
-  <title>Mantanex — Products & Services • AI • Cloud</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mantanex — AI • Cloud • Engineering</title>
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- SEO -->
+  <meta name="description" content="Mantanex — Enterprise consulting, AI engineering, NAS systems, cloud, DevOps, and automation.">
 
   <style>
     :root{
-      --bg: #0a0c10;
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.04);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.66);
-      --muted2: rgba(255,255,255,.46);
-      --line: rgba(255,255,255,.12);
-      --accent: #4aa3ff;
-      --accent2:#7c5cff;
-      --ok:#34d399;
-      --warn:#fbbf24;
-      --shadow: 0 20px 60px rgba(0,0,0,.55);
-      --r: 18px;
-      --r2: 28px;
-      --max: 1140px;
+      --bg:#0b1220;
+      --card:#121a2b;
+      --accent:#2563eb;
+      --text:#ffffff;
+      --muted:#9aa4b2;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{margin:0;padding:0;box-sizing:border-box}
     body{
-      margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(1200px 700px at 18% 12%, rgba(74,163,255,.18), transparent 60%),
-        radial-gradient(900px 700px at 80% 22%, rgba(124,92,255,.14), transparent 58%),
-        radial-gradient(900px 700px at 50% 95%, rgba(74,163,255,.08), transparent 55%),
-        var(--bg);
-      color:var(--text);
-      letter-spacing: -0.01em;
-    }
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 22px}
-    .topbar{
-      position:sticky; top:0; z-index:20;
-      backdrop-filter: blur(14px);
-      background: rgba(10,12,16,.72);
-      border-bottom:1px solid var(--line);
-    }
-    .topbar .row{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:16px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px; min-width:220px;
-    }
-    .brand img{height:34px; width:auto; display:block; border-radius:10px}
-    .brand .name{
-      font-weight:700; letter-spacing:-0.02em;
-      line-height:1.05;
-    }
-    .brand .tag{font-size:12px; color:var(--muted2); margin-top:2px}
-    nav{
-      display:flex; align-items:center; gap:18px;
-      color:var(--muted);
-      font-weight:500;
-      font-size:14px;
-    }
-    nav a{padding:8px 10px; border-radius:12px}
-    nav a:hover{background:rgba(255,255,255,.06); color:var(--text)}
-    .ctaRow{display:flex; gap:10px; align-items:center}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color:var(--text);
-      font-weight:600;
-      font-size:14px;
-      gap:10px;
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-      user-select:none;
-      white-space:nowrap;
-    }
-    .btn:hover{background:rgba(255,255,255,.07); transform: translateY(-1px); border-color: rgba(255,255,255,.18)}
-    .btnPrimary{
-      background: linear-gradient(135deg, rgba(74,163,255,.95), rgba(124,92,255,.92));
-      border-color: rgba(255,255,255,.14);
-      color:#071018;
-    }
-    .btnPrimary:hover{filter:brightness(1.05)}
-    .btnGhost{background:rgba(255,255,255,.03)}
-
-    /* Hero */
-    .hero{padding:54px 0 24px}
-    .heroGrid{
-      display:grid; grid-template-columns: 1.25fr .9fr; gap:18px;
-      align-items:stretch;
-    }
-    .heroCard{
-      border:1px solid var(--line);
-      border-radius: var(--r2);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .heroCard .pad{padding:34px}
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
-      color:var(--muted);
-      font-weight:600;
-      font-size:12px;
-    }
-    .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 4px rgba(74,163,255,.16);
-    }
-    h1{
-      margin:16px 0 10px;
-      font-size:48px;
-      line-height:1.02;
-      letter-spacing:-0.04em;
-    }
-    .sub{
-      margin:0;
-      color:var(--muted);
-      font-size:16px;
-      line-height:1.6;
-      max-width:58ch;
-    }
-    .heroActions{display:flex; gap:12px; margin-top:18px; flex-wrap:wrap}
-    .miniRow{
-      display:flex; gap:14px; margin-top:18px; flex-wrap:wrap;
-      color:var(--muted2);
-      font-size:13px;
-    }
-    .miniRow span{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 10px;
-      border-radius: 12px;
-      background: rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.10);
-    }
-    .miniBadge{
-      width:18px; height:18px; border-radius:999px;
-      display:inline-flex; align-items:center; justify-content:center;
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.05);
-      font-size:11px;
-      color:rgba(255,255,255,.74);
+      font-family:'Inter',system-ui;
+      background:linear-gradient(180deg,#0b1220,#05070f);
+      color:white;
     }
 
-    /* Right panel */
-    .sideCard{height:100%}
-    .sideCard .pad{padding:22px}
-    .sideTitle{font-size:13px; color:var(--muted2); font-weight:700; letter-spacing:.08em; text-transform:uppercase}
-    .sideH{
-      margin:10px 0 10px;
-      font-size:18px;
-      font-weight:800;
-      letter-spacing:-0.02em;
-    }
-    .chipGrid{
-      display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;
-    }
-    .chip{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
-      color:rgba(255,255,255,.82);
-      font-weight:600;
-      font-size:13px;
-    }
-    .chip i{
-      width:8px; height:8px; border-radius:999px;
-      background: rgba(74,163,255,.85);
-      box-shadow: 0 0 0 4px rgba(74,163,255,.12);
-      display:inline-block;
-    }
-    .sideActions{display:flex; gap:12px; margin-top:14px; flex-wrap:wrap}
+    a{text-decoration:none;color:inherit}
 
-    /* Sections */
-    section{padding:26px 0}
-    .secHead{display:flex; align-items:flex-end; justify-content:space-between; gap:18px; margin-bottom:14px}
-    .secHead h2{
-      margin:0;
-      font-size:22px;
-      letter-spacing:-0.02em;
-    }
-    .secHead p{margin:0; color:var(--muted); font-size:14px; max-width:70ch}
-    .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
-    .grid2{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
-    .card{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      border-radius: var(--r);
-      overflow:hidden;
-    }
-    .card .pad{padding:18px}
-    .kicker{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:10px;
-      color:var(--muted2);
-      font-size:12px;
-      font-weight:700;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-    .card h3{margin:10px 0 8px; font-size:16px; letter-spacing:-0.02em}
-    .card p{margin:0; color:var(--muted); font-size:14px; line-height:1.6}
-    .list{margin:12px 0 0; padding:0; list-style:none; display:grid; gap:8px}
-    .list li{
-      display:flex; gap:10px; align-items:flex-start;
-      color:rgba(255,255,255,.78);
-      font-size:13px;
-      line-height:1.55;
-    }
-    .tick{
-      width:18px; height:18px; border-radius:6px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.04);
-      display:inline-flex; align-items:center; justify-content:center;
-      color: rgba(52,211,153,.95);
-      flex:0 0 auto;
-      margin-top:1px;
-      font-weight:900;
-      font-size:12px;
-    }
-
-    /* Client strip */
-    .strip{
-      display:flex; gap:10px; flex-wrap:wrap;
-    }
-    .logoPill{
-      padding:10px 12px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
-      color:rgba(255,255,255,.78);
-      font-weight:600;
-      font-size:13px;
-    }
-
-    /* Insights */
-    .insights{
-      border-radius: var(--r2);
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
-      overflow:hidden;
-    }
-    .insightsTop{
-      padding:18px;
-      border-bottom:1px solid rgba(255,255,255,.10);
-      display:flex; gap:14px; align-items:center; justify-content:space-between; flex-wrap:wrap;
-    }
-    .insightsTop .left{
-      display:flex; flex-direction:column; gap:6px;
-    }
-    .insightsTop .title{
-      font-weight:800;
-      letter-spacing:-0.02em;
-      font-size:18px;
-      margin:0;
-    }
-    .insightsTop .desc{margin:0; color:var(--muted); font-size:13px}
-    .insightsTop .right{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
-    .input{
-      display:flex; align-items:center; gap:10px;
-      padding:10px 12px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.18);
-      min-width:min(460px, 92vw);
-    }
-    .input input{
-      width:100%;
-      background:transparent;
-      border:none;
-      outline:none;
-      color:var(--text);
-      font-size:14px;
-    }
-    .insightGrid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; padding:18px}
-    .newsItem{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
-      border-radius: 16px;
-      padding:14px;
+    /* NAV */
+    .nav{
       display:flex;
-      flex-direction:column;
-      gap:10px;
-      min-height:140px;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 40px;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      position:sticky;
+      top:0;
+      backdrop-filter: blur(10px);
     }
-    .newsItem a{display:block}
-    .newsTitle{margin:0; font-size:14px; font-weight:800; letter-spacing:-0.02em}
-    .newsMeta{margin:0; color:var(--muted2); font-size:12px}
-    .newsTagRow{display:flex; gap:8px; flex-wrap:wrap; margin-top:auto}
-    .tag{
-      font-size:12px;
-      color: rgba(255,255,255,.74);
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
-      padding:7px 10px;
-      border-radius: 999px;
+
+    .nav-logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+      font-size:20px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:25px;
+      font-size:14px;
+      opacity:.85;
+    }
+
+    /* HERO */
+    .hero{
+      max-width:1200px;
+      margin:auto;
+      padding:100px 20px 60px;
+      display:flex;
+      gap:60px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .hero h1{
+      font-size:58px;
+      line-height:1.1;
+      margin-bottom:20px;
+    }
+
+    .hero p{
+      color:var(--muted);
+      max-width:550px;
+      margin-bottom:30px;
+    }
+
+    .btn{
+      padding:14px 20px;
+      border-radius:10px;
+      font-weight:600;
+      display:inline-block;
+      margin-right:10px;
+    }
+
+    .btn-primary{
+      background:var(--accent);
+    }
+
+    .btn-outline{
+      border:1px solid rgba(255,255,255,.2);
+    }
+
+    /* SECTION */
+    .section{
+      max-width:1200px;
+      margin:auto;
+      padding:80px 20px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:25px;
+      margin-top:30px;
+    }
+
+    .card{
+      background:var(--card);
+      padding:28px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.05);
+    }
+
+    .card h3{margin-bottom:10px}
+    .card p{color:var(--muted)}
+
+    /* CLIENTS */
+    .clients{
+      display:flex;
+      flex-wrap:wrap;
+      gap:25px;
+      margin-top:25px;
+      opacity:.7;
       font-weight:600;
     }
 
-    /* Footer */
-    footer{
-      margin-top:18px;
-      padding:28px 0 42px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      font-size:13px;
+    /* NEWS */
+    .news-item{
+      padding:18px;
+      border-bottom:1px solid rgba(255,255,255,.05);
     }
-    .footGrid{display:grid; grid-template-columns:1.1fr .9fr; gap:16px; align-items:start}
-    .footCard{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.02);
-      border-radius: var(--r);
-      padding:16px;
-    }
-    .footCard h4{margin:0 0 10px; color:rgba(255,255,255,.86); font-size:14px}
-    .footCard p{margin:0; line-height:1.7}
-    .smallLinks{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
-    .smallLinks a{padding:8px 10px; border-radius: 12px; border:1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.02)}
-    .smallLinks a:hover{background: rgba(255,255,255,.05)}
 
-    /* Mobile */
-    .menuBtn{display:none}
-    @media (max-width: 980px){
-      .heroGrid{grid-template-columns:1fr; }
-      h1{font-size:40px}
-      nav{display:none}
-      .menuBtn{display:inline-flex}
-      .grid3{grid-template-columns:1fr}
-      .grid2{grid-template-columns:1fr}
-      .insightGrid{grid-template-columns:1fr}
-      .brand{min-width:auto}
-      .input{min-width:min(560px, 92vw)}
-      .footGrid{grid-template-columns:1fr}
+    .news-title{
+      font-weight:600;
+      margin-bottom:5px;
+    }
+
+    .news-meta{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* CONTACT */
+    .contact{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+    }
+
+    .footer{
+      text-align:center;
+      padding:40px;
+      color:var(--muted);
+      font-size:14px;
     }
   </style>
 </head>
 
 <body>
-  <!-- Top bar -->
-  <div class="topbar">
-    <div class="wrap">
-      <div class="row">
-        <a class="brand" href="#top">
-          <!-- Put your logo file at: /logo.png in the repo root -->
-          <img src="logo.png" alt="Mantanex logo" onerror="this.style.display='none';" />
-          <div>
-            <div class="name">Mantanex</div>
-            <div class="tag">Products • Services • AI • Cloud</div>
-          </div>
-        </a>
 
-        <nav aria-label="Primary">
-          <a href="#services">Services</a>
-          <a href="#products">Products</a>
-          <a href="#insights">Insights</a>
-          <a href="#clients">Clients</a>
-          <a href="#contact">Contact</a>
-        </nav>
-
-        <div class="ctaRow">
-          <a class="btn btnGhost menuBtn" href="#services">Menu</a>
-          <a class="btn" href="#insights">AI newsletter</a>
-          <a class="btn btnPrimary" href="#contact">Contact Mantanex</a>
-        </div>
-      </div>
-    </div>
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-logo">
+    <img src="logo.png" width="36"/>
+    Mantanex
   </div>
 
-  <!-- Hero -->
-  <div id="top" class="hero">
-    <div class="wrap">
-      <div class="heroGrid">
-        <div class="heroCard">
-          <div class="pad">
-            <div class="pill"><span class="dot"></span> Enterprise consulting + product engineering</div>
-            <h1>Modern IT consulting, built for secure execution.</h1>
-            <p class="sub">
-              Mantanex delivers cloud engineering, security hardening, automation, and managed support—
-              and we also build new AI initiatives and NAS systems for performance, reliability, and scale.
-            </p>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#products">Products</a>
+    <a href="#clients">Clients</a>
+    <a href="#news">AI News</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div>
 
-            <div class="heroActions">
-              <a class="btn btnPrimary" href="#services">Explore services</a>
-              <a class="btn" href="#products">AI projects & NAS</a>
-              <a class="btn btnGhost" href="#clients">Trusted experience</a>
-            </div>
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>Engineering modern IT, AI, and cloud systems.</h1>
+    <p>
+      Mantanex is a consulting and engineering company delivering enterprise cloud,
+      DevOps, AI, security, and infrastructure solutions. We also build AI products
+      and high-performance NAS platforms.
+    </p>
 
-            <div class="miniRow" aria-label="Highlights">
-              <span><span class="miniBadge">01</span> Cloud & DevOps delivery</span>
-              <span><span class="miniBadge">02</span> Security-first architecture</span>
-              <span><span class="miniBadge">03</span> AI + automation initiatives</span>
-              <span><span class="miniBadge">04</span> NAS boxes & edge systems</span>
-            </div>
-          </div>
-        </div>
+    <a class="btn btn-primary" href="#contact">Start engagement</a>
+    <a class="btn btn-outline" href="#services">Explore services</a>
+  </div>
+</section>
 
-        <div class="heroCard sideCard">
-          <div class="pad">
-            <div class="sideTitle">What we deliver</div>
-            <div class="sideH">Clear scope. Secure execution. Production-ready outcomes.</div>
+<!-- SERVICES -->
+<section id="services" class="section">
+  <h2>Services</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Cloud Engineering</h3>
+      <p>AWS, Azure, GCP architecture, migration, cost optimization.</p>
+    </div>
 
-            <div class="chipGrid" aria-label="Capabilities">
-              <span class="chip"><i></i> Cloud engineering</span>
-              <span class="chip"><i></i> DevOps automation</span>
-              <span class="chip"><i></i> Security hardening</span>
-              <span class="chip"><i></i> Managed support</span>
-              <span class="chip"><i></i> AI engineering</span>
-              <span class="chip"><i></i> NAS & storage</span>
-            </div>
+    <div class="card">
+      <h3>DevOps & Automation</h3>
+      <p>CI/CD, Kubernetes, observability, platform engineering.</p>
+    </div>
 
-            <div class="sideActions">
-              <a class="btn btnPrimary" href="#contact">Get support</a>
-              <a class="btn" href="#insights">Read AI insights</a>
-            </div>
+    <div class="card">
+      <h3>AI Engineering</h3>
+      <p>LLM integration, AI prototypes → production systems.</p>
+    </div>
 
-            <div style="margin-top:14px; padding:14px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.03)">
-              <div class="kicker">
-                <span>Operating model</span>
-                <span style="color:rgba(52,211,153,.9)">SLA-ready</span>
-              </div>
-              <ul class="list">
-                <li><span class="tick">✓</span> Discovery → roadmap → delivery with measurable milestones</li>
-                <li><span class="tick">✓</span> Security & reliability baked into every implementation</li>
-                <li><span class="tick">✓</span> Documentation, handoff, and optional ongoing support</li>
-              </ul>
-            </div>
-
-          </div>
-        </div>
-      </div>
+    <div class="card">
+      <h3>Security & Reliability</h3>
+      <p>Hardening, monitoring, compliance, uptime engineering.</p>
     </div>
   </div>
+</section>
 
-  <!-- Services -->
-  <section id="services">
-    <div class="wrap">
-      <div class="secHead">
-        <div>
-          <h2>Services</h2>
-          <p>Professional consulting inspired by high-performance delivery standards (minimal, modern, outcome-driven).</p>
-        </div>
-      </div>
-
-      <div class="grid3">
-        <div class="card">
-          <div class="pad">
-            <div class="kicker"><span>Cloud engineering</span><span>Architecture</span></div>
-            <h3>Build & modernize cloud platforms</h3>
-            <p>Design, migrate, and operate cloud infrastructure with repeatable patterns and strong guardrails.</p>
-            <ul class="list">
-              <li><span class="tick">✓</span> AWS/Azure foundations, landing zones, IAM, networking</li>
-              <li><span class="tick">✓</span> Observability: logs, metrics, alerts, SLOs</li>
-              <li><span class="tick">✓</span> Reliability improvements and cost controls</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="pad">
-            <div class="kicker"><span>DevOps</span><span>Automation</span></div>
-            <h3>CI/CD + infrastructure automation</h3>
-            <p>Automate build, test, and deploy flows with hardened pipelines and environment consistency.</p>
-            <ul class="list">
-              <li><span class="tick">✓</span> GitHub Actions, IaC workflows, release strategy</li>
-              <li><span class="tick">✓</span> Containerization and deployment standardization</li>
-              <li><span class="tick">✓</span> Secure secrets, audit trails, and approvals</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="pad">
-            <div class="kicker"><span>Security</span><span>Hardening</span></div>
-            <h3>Security-first implementations</h3>
-            <p>Reduce risk with practical controls that fit how teams ship and operate software.</p>
-            <ul class="list">
-              <li><span class="tick">✓</span> Baselines: patching, policies, least privilege</li>
-              <li><span class="tick">✓</span> Secure endpoints, encryption, and access models</li>
-              <li><span class="tick">✓</span> Threat-informed reviews and remediation plans</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div style="height:14px"></div>
-
-      <div class="grid3">
-        <div class="card">
-          <div class="pad">
-            <div class="kicker"><span>Managed support</span><span>Operations</span></div>
-            <h3>Support that scales with your team</h3>
-            <p>Monitoring, incident response, and continuous improvements—SLA-ready and documented.</p>
-            <ul class="list">
-              <li><span class="tick">✓</span> Incident runbooks and response workflows</li>
-              <li><span class="tick">✓</span> Proactive reliability + performance tuning</li>
-              <li><span class="tick">✓</span> Monthly health checks and reports</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="pad">
-            <div class="kicker"><span>AI projects</span><span>Build</span></div>
-            <h3>AI initiatives for real business value</h3>
-            <p>Ship AI features with clear scope, evaluation, and guardrails for production readiness.</p>
-            <ul class="list">
-              <li><span class="tick">✓</span> Automation, assistants, workflows, data pipelines</li>
-              <li><span class="tick">✓</span> Quality checks, monitoring, and safe rollouts</li>
-              <li><span class="tick">✓</span> Security + privacy design patterns</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="pad">
-            <div class="kicker"><span>Storage</span><span>NAS</span></div>
-            <h3>NAS systems & edge compute</h3>
-            <p>Design and deploy NAS boxes for backup, media, workloads, and operational storage.</p>
-            <ul class="list">
-              <li><span class="tick">✓</span> Build guidance: hardware, RAID/ZFS strategy</li>
-              <li><span class="tick">✓</span> Network tuning and secure remote access</li>
-              <li><span class="tick">✓</span> Monitoring, backups, and disaster recovery</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
+<!-- PRODUCTS -->
+<section id="products" class="section">
+  <h2>Product Tracks</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>AI Platforms</h3>
+      <p>Custom enterprise AI automation systems.</p>
     </div>
-  </section>
 
-  <!-- Products -->
-  <section id="products">
-    <div class="wrap">
-      <div class="secHead">
-        <div>
-          <h2>Products</h2>
-          <p>Focused build tracks for AI engineering and NAS systems. These are delivered as scoped engagements or pilots.</p>
-        </div>
-      </div>
-
-      <div class="grid2">
-        <div class="card">
-          <div class="pad">
-            <div class="kicker"><span>AI engineering</span><span>Prototype → production</span></div>
-            <h3>Mantanex AI Projects</h3>
-            <p>We design and build AI features that integrate into existing systems with measurable outcomes.</p>
-            <ul class="list">
-              <li><span class="tick">✓</span> Use-case framing + success metrics</li>
-              <li><span class="tick">✓</span> Data pipeline + evaluation approach</li>
-              <li><span class="tick">✓</span> Production rollout strategy and monitoring</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="pad">
-            <div class="kicker"><span>NAS systems</span><span>Reliable storage</span></div>
-            <h3>Mantanex NAS Boxes</h3>
-            <p>Configured for durability and predictable performance with secure access and backup policies.</p>
-            <ul class="list">
-              <li><span class="tick">✓</span> NAS design for SMB + creator workloads</li>
-              <li><span class="tick">✓</span> Backup/DR: snapshots + offsite strategies</li>
-              <li><span class="tick">✓</span> Secure remote access and audit-friendly configs</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
+    <div class="card">
+      <h3>NAS Systems</h3>
+      <p>High-performance storage builds for enterprise & labs.</p>
     </div>
-  </section>
 
-  <!-- Clients / experience -->
-  <section id="clients">
-    <div class="wrap">
-      <div class="secHead">
-        <div>
-          <h2>Experience</h2>
-          <p>Delivery experience across enterprise environments. (You can edit this list any time.)</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="pad">
-          <div class="kicker"><span>Worked with</span><span>Enterprise</span></div>
-          <div class="strip" style="margin-top:12px">
-            <span class="logoPill">AMD</span>
-            <span class="logoPill">AT&amp;T</span>
-            <span class="logoPill">Nokia</span>
-            <span class="logoPill">State Farm</span>
-          </div>
-
-          <div style="height:14px"></div>
-
-          <div class="kicker"><span>Staffing / consulting inspirations</span><span>Delivery standards</span></div>
-          <div class="strip" style="margin-top:12px">
-            <span class="logoPill">Tesla-style minimal UX</span>
-            <span class="logoPill">Insight Global-style recruiting clarity</span>
-            <span class="logoPill">TEKsystems-style enterprise readiness</span>
-          </div>
-
-          <div style="margin-top:14px; color:var(--muted); font-size:14px; line-height:1.7">
-            Mantanex is structured to support consulting engagements, fractional engineering, and implementation projects.
-            We prioritize security, reliability, and documentation so delivery is repeatable and supportable.
-          </div>
-        </div>
-      </div>
+    <div class="card">
+      <h3>Edge & IoT</h3>
+      <p>Telemetry, monitoring, and distributed compute.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- AI Insights -->
-  <section id="insights">
-    <div class="wrap">
-      <div class="insights">
-        <div class="insightsTop">
-          <div class="left">
-            <p class="title">AI Insights (Newsletter)</p>
-            <p class="desc">Curated updates. Fast scanning. Add your own sources and links.</p>
-          </div>
-          <div class="right">
-            <div class="input" title="Filter articles">
-              <span style="color:rgba(255,255,255,.55); font-weight:800;">⌕</span>
-              <input id="filter" placeholder="Filter: agents, security, MLOps, storage, networking..." />
-            </div>
-            <a class="btn btnPrimary" href="#contact">Subscribe / Contact</a>
-          </div>
-        </div>
+<!-- CLIENTS -->
+<section id="clients" class="section">
+  <h2>Experience across enterprise ecosystems</h2>
+  <div class="clients">
+    AMD • AT&T • Nokia • StateFarm • Enterprise IT partners
+  </div>
+</section>
 
-        <div class="insightGrid" id="newsList">
-          <!-- Static curated items. You can edit these easily. -->
-        </div>
+<!-- NEWS -->
+<section id="news" class="section">
+  <h2>AI & Technology Insights</h2>
+  <div id="newsList"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <h2>Contact Mantanex</h2>
+
+  <div class="contact">
+    <div class="card">
+      <h3>Tell us what you need</h3>
+      <p>Consulting, staffing, AI builds, infrastructure, or NAS projects.</p>
+
+      <div style="margin-top:20px">
+        <a class="btn btn-primary" href="mailto:support@mantanex.com">Email Support</a>
+        <a class="btn btn-outline" href="tel:+13527601132">Call</a>
       </div>
 
-      <div style="margin-top:10px; color:var(--muted2); font-size:12px; line-height:1.6">
-        Note: “Live” news feeds usually require a CORS proxy. This page uses curated items by default for reliability on GitHub Pages.
-        If you want truly live feeds, tell me your preferred sources and I’ll give you a Cloudflare Worker proxy setup.
-      </div>
+      <p style="margin-top:20px">support@mantanex.com</p>
+      <p>+1 352 760 1132</p>
     </div>
-  </section>
 
-  <!-- Contact -->
-  <section id="contact">
-    <div class="wrap">
-      <div class="secHead">
-        <div>
-          <h2>Contact</h2>
-          <p>Use this section for consulting inquiries, staffing requests, AI projects, or NAS builds.</p>
-        </div>
-      </div>
-
-      <div class="grid2">
-        <div class="card">
-          <div class="pad">
-            <div class="kicker"><span>Get in touch</span><span>Fast response</span></div>
-            <h3>Tell us what you need</h3>
-            <p>Share scope, timeline, and constraints. We’ll respond with next steps and a simple plan.</p>
-
-            <div style="height:12px"></div>
-
-            <div class="smallLinks">
-              <!-- Replace email below if you want -->
-              <a href="mailto:hr@mantanex.com?subject=Mantanex%20Inquiry&body=Hi%20Mantanex%2C%0A%0AI%20need%20help%20with%3A%20%0A%0ATimeline%3A%20%0ABudget%3A%20%0A%0AThank%20you%2C">Email HR</a>
-              <a href="mailto:anilkr@mantanex.com?subject=Mantanex%20Project%20Request">Email Direct</a>
-              <a href="#services">Services</a>
-              <a href="#products">Products</a>
-            </div>
-
-            <div style="height:14px"></div>
-            <div style="padding:14px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.03)">
-              <div class="kicker"><span>Typical engagement</span><span style="color:rgba(74,163,255,.9)">2–6 weeks</span></div>
-              <ul class="list">
-                <li><span class="tick">✓</span> Discovery call + short assessment</li>
-                <li><span class="tick">✓</span> Roadmap + milestones</li>
-                <li><span class="tick">✓</span> Implementation + handoff documentation</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="pad">
-            <div class="kicker"><span>Company</span><span>Mantanex</span></div>
-            <h3>Professional consulting + product engineering</h3>
-            <p>
-              We support enterprise delivery standards and operate as a consulting company with modern engineering practices.
-              We also build new AI projects and NAS systems as focused product tracks.
-            </p>
-
-            <div style="height:14px"></div>
-
-            <div class="grid2" style="gap:10px">
-              <div style="border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.03); border-radius:16px; padding:12px">
-                <div class="kicker"><span>Focus</span><span>Engineering</span></div>
-                <div style="margin-top:8px; color:rgba(255,255,255,.78); font-size:13px; line-height:1.6">
-                  Cloud, DevOps, security, automation, AI initiatives, managed support.
-                </div>
-              </div>
-              <div style="border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.03); border-radius:16px; padding:12px">
-                <div class="kicker"><span>Focus</span><span>Products</span></div>
-                <div style="margin-top:8px; color:rgba(255,255,255,.78); font-size:13px; line-height:1.6">
-                  AI prototypes → production, NAS builds, storage reliability and backup systems.
-                </div>
-              </div>
-            </div>
-
-            <div style="height:14px"></div>
-            <a class="btn btnPrimary" href="#top">Back to top</a>
-          </div>
-        </div>
-      </div>
+    <div class="card">
+      <h3>How engagements work</h3>
+      <p>Discovery → roadmap → build → operate.</p>
+      <p style="margin-top:10px">Typical timeline: 2–6 weeks</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <div class="wrap">
-      <div class="footGrid">
-        <div class="footCard">
-          <h4>Mantanex</h4>
-          <p>
-            Consulting, cloud, security, automation, managed support, AI initiatives, and NAS systems.
-            Built to deliver secure, production-ready outcomes.
-          </p>
-          <div class="smallLinks">
-            <a href="#services">Services</a>
-            <a href="#insights">Insights</a>
-            <a href="#contact">Contact</a>
-          </div>
-        </div>
-        <div class="footCard">
-          <h4>Notes</h4>
-          <p>
-            If you want the “AI Insights” section to be truly live (auto-fetch), we can add a Cloudflare Worker proxy and point this page to it.
-            GitHub Pages alone often blocks cross-site feed fetches due to CORS.
-          </p>
-          <div style="margin-top:10px; color:var(--muted2)">© <span id="year"></span> Mantanex. All rights reserved.</div>
-        </div>
-      </div>
-    </div>
-  </footer>
+<!-- FOOTER -->
+<div class="footer">
+  © 2026 Mantanex LLC — AI • Cloud • Engineering
+</div>
 
-  <script>
-    // --- Curated AI insights (edit these) ---
-    const curated = [
-      { title: "Operational AI: monitoring, evals, and safe rollouts", source:"Mantanex Playbook", date:"Updated", link:"#contact", tags:["MLOps","Quality","Safety"] },
-      { title: "Security hardening for cloud + CI/CD pipelines", source:"Mantanex Playbook", date:"Updated", link:"#services", tags:["Security","DevOps"] },
-      { title: "NAS reliability: snapshots, backups, and recovery planning", source:"Mantanex Systems", date:"Updated", link:"#products", tags:["NAS","Backup","Reliability"] },
-      { title: "Automation roadmap: reduce toil with repeatable workflows", source:"Mantanex Consulting", date:"Updated", link:"#services", tags:["Automation","Ops"] },
-      { title: "Enterprise delivery: documentation, handoff, and support readiness", source:"Mantanex Standard", date:"Updated", link:"#clients", tags:["Enterprise","Support"] },
-      { title: "AI project scoping: metrics-first approach to real value", source:"Mantanex Standard", date:"Updated", link:"#products", tags:["AI","Strategy"] },
-    ];
+<!-- AI NEWS SCRIPT -->
+<script>
+const curatedNews = [
+  {title:"OpenAI advances enterprise copilots",source:"AI industry",date:"2026"},
+  {title:"New LLM infra reduces cost",source:"Cloud",date:"2026"},
+  {title:"AI automation entering operations stack",source:"Tech",date:"2026"},
+];
 
-    const listEl = document.getElementById('newsList');
-    const filterEl = document.getElementById('filter');
+const list=document.getElementById("newsList");
+curatedNews.forEach(n=>{
+  const div=document.createElement("div");
+  div.className="news-item";
+  div.innerHTML=`
+    <div class="news-title">${n.title}</div>
+    <div class="news-meta">${n.source} • ${n.date}</div>
+  `;
+  list.appendChild(div);
+});
+</script>
 
-    function escapeHtml(s){
-      return String(s).replace(/[&<>"']/g, (m) => ({
-        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
-      }[m]));
-    }
-
-    function render(items){
-      listEl.innerHTML = items.map(item => {
-        const tags = (item.tags || []).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("");
-        return `
-          <div class="newsItem">
-            <a href="${escapeHtml(item.link)}">
-              <p class="newsTitle">${escapeHtml(item.title)}</p>
-              <p class="newsMeta">${escapeHtml(item.source)} • ${escapeHtml(item.date)}</p>
-            </a>
-            <div class="newsTagRow">${tags}</div>
-          </div>
-        `;
-      }).join("");
-    }
-
-    function applyFilter(){
-      const q = (filterEl.value || "").trim().toLowerCase();
-      if(!q){ render(curated); return; }
-      const filtered = curated.filter(x => {
-        const text = [x.title, x.source, (x.tags||[]).join(" ")].join(" ").toLowerCase();
-        return text.includes(q);
-      });
-      render(filtered);
-    }
-
-    filterEl.addEventListener('input', applyFilter);
-
-    render(curated);
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
