@@ -206,6 +206,22 @@
     .formGrid{grid-template-columns:1fr;}
     .navcta{display:none;}
   }
+    .mapWrap{
+    margin-top:16px;
+    grid-column: 1 / -1;
+    width:100%;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:#fff;
+    box-shadow: 0 8px 20px rgba(16,24,40,.05);
+  }
+  .mapWrap iframe{
+    display:block;
+    width:100%;
+    height:320px;
+    border:0;
+  }
 </style>
 </head>
 
@@ -465,8 +481,6 @@
   </iframe>
 </div>
 
-460 <!-- FORM (this was missing before) -->
-
     <!-- FORM (this was missing before) -->
     <div class="formWrap" aria-label="Contact form">
       <form id="contactForm" novalidate>
@@ -594,6 +608,7 @@ ${message}
 
 </body>
 </html>
+
 
 
 
