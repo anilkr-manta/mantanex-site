@@ -1,740 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mantanex | Consulting • AI • Cloud • NAS</title>
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mantanex — Consulting • AI • Cloud • NAS</title>
-  <meta name="description" content="Mantanex is a consulting and engineering company delivering enterprise cloud, DevOps, security, automation, AI projects, and NAS systems." />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Font (clean, modern like Dell/Superhuman style) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{background:#0b1220;color:#e6edf7}
 
-  <style>
-    :root{
-      /* Dell-ish clean light base + richer contrast (not plain white) */
-      --bg0:#ffffff;
-      --bg1:#f4f7ff;
-      --bg2:#eef3ff;
+.container{width:92%;max-width:1200px;margin:auto}
 
-      --card:#ffffff;
-      --text:#0b1220;
-      --muted:#5c6677;
-      --border:rgba(11,18,32,.10);
+/* NAV */
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:#0b1220cc;
+backdrop-filter:blur(8px);
+border-bottom:1px solid #1c2538;
+z-index:999
+}
+.navWrap{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 0
+}
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:600;
+font-size:18px
+}
+.logo img{height:32px}
 
-      /* Accents: Dell blue + Robert Half-inspired deep red */
-      --blue:#0b5fff;
-      --blue2:#2f8bff;
-      --red:#a70925;     /* deep red tone commonly referenced for RH */
-      --gray:#38322d;
+.navLinks{
+display:flex;
+gap:28px;
+font-size:14px;
+opacity:.9
+}
 
-      --shadow: 0 20px 60px rgba(11,18,32,.10);
-      --r:16px;
-      --max:1180px;
-    }
+/* HERO */
+.hero{
+padding-top:120px;
+padding-bottom:90px;
+background:linear-gradient(180deg,#0b1220 0%,#111a2e 100%)
+}
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(900px 520px at 14% 10%, rgba(11,95,255,.12), transparent 55%),
-        radial-gradient(780px 520px at 88% 16%, rgba(167,9,37,.10), transparent 55%),
-        linear-gradient(180deg, var(--bg0), var(--bg1) 45%, var(--bg2));
-      min-height:100vh;
-    }
+.heroGrid{
+display:grid;
+grid-template-columns:1.2fr 1fr;
+gap:60px;
+align-items:center
+}
 
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+.kicker{
+color:#4da3ff;
+font-size:13px;
+margin-bottom:10px
+}
 
-    /* Top nav */
-    .nav{
-      position:sticky; top:0; z-index:50;
-      background: rgba(255,255,255,.78);
-      backdrop-filter: blur(10px);
-      border-bottom:1px solid var(--border);
-    }
-    .navRow{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:16px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight:800;
-      letter-spacing:-0.02em;
-    }
-    .brand img{height:34px;width:auto;border-radius:10px;display:block}
-    .brandSub{font-size:12px;color:var(--muted);font-weight:600;margin-top:2px}
-    .navLinks{
-      display:flex; gap:18px; align-items:center;
-      color:var(--muted);
-      font-size:14px;
-      font-weight:600;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .navLinks a{
-      padding:10px 10px;
-      border-radius:12px;
-    }
-    .navLinks a:hover{background:rgba(11,95,255,.07); color:var(--text)}
+.hero h1{
+font-size:52px;
+line-height:1.1;
+margin-bottom:18px
+}
 
-    /* Buttons */
-    .btnRow{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:12px 14px;
-      border-radius:12px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.78);
-      font-weight:700;
-      font-size:14px;
-      cursor:pointer;
-      transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
-    }
-    .btn:hover{transform:translateY(-1px); box-shadow:0 10px 30px rgba(11,18,32,.10)}
-    .btnPrimary{
-      background: linear-gradient(135deg, var(--blue), var(--blue2));
-      color:white;
-      border-color: rgba(11,95,255,.18);
-    }
-    .btnRed{
-      background: linear-gradient(135deg, var(--red), #d31234);
-      color:white;
-      border-color: rgba(167,9,37,.18);
-    }
-    .btnGhost{background:rgba(255,255,255,.55)}
+.hero p{
+opacity:.75;
+font-size:17px;
+line-height:1.6;
+margin-bottom:30px
+}
 
-    /* Hero */
-    .hero{padding:64px 0 34px}
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:18px;
-      align-items:stretch;
-    }
-    .heroCard{
-      border:1px solid var(--border);
-      border-radius: 24px;
-      background: rgba(255,255,255,.86);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .heroPad{padding:34px}
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(11,95,255,.18);
-      background: rgba(11,95,255,.06);
-      color: rgba(11,95,255,.95);
-      font-weight:800;
-      font-size:12px;
-      letter-spacing:.02em;
-    }
-    h1{
-      margin:14px 0 10px;
-      font-size:52px;
-      letter-spacing:-0.04em;
-      line-height:1.03;
-    }
-    .sub{
-      color:var(--muted);
-      font-size:16px;
-      line-height:1.7;
-      max-width:64ch;
-      margin-bottom:18px;
-    }
-    .mini{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top:14px;
-    }
-    .mini span{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.70);
-      color: rgba(11,18,32,.78);
-      font-weight:700;
-      font-size:13px;
-    }
-    .dot{
-      width:8px;height:8px;border-radius:999px;background:var(--blue);
-      box-shadow:0 0 0 4px rgba(11,95,255,.12);
-      display:inline-block;
-    }
+.btn{
+padding:14px 22px;
+border-radius:10px;
+text-decoration:none;
+font-weight:600;
+display:inline-block
+}
 
-    /* Right hero panel */
-    .sideTitle{
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.10em;
-      color:var(--muted);
-      font-weight:900;
-    }
-    .sideH{
-      margin:10px 0 8px;
-      font-size:18px;
-      font-weight:900;
-      letter-spacing:-0.02em;
-      line-height:1.25;
-    }
-    .sideP{
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.6;
-    }
-    .chipGrid{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
-    .chip{
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid rgba(11,18,32,.10);
-      background: rgba(255,255,255,.70);
-      font-weight:800;
-      font-size:13px;
-      color: rgba(11,18,32,.82);
-    }
-    .chip strong{color:var(--blue)}
-    .sideBox{
-      margin-top:14px;
-      padding:14px;
-      border-radius:16px;
-      border:1px solid rgba(167,9,37,.14);
-      background: linear-gradient(180deg, rgba(167,9,37,.06), rgba(255,255,255,.55));
-    }
-    .sideBox .k{font-weight:900}
-    .sideBox .v{color:var(--muted); margin-top:6px; font-size:13px; line-height:1.6}
+.btnPrimary{
+background:#2563eb;
+color:#fff
+}
 
-    /* Sections */
-    section{padding:30px 0}
-    .secHead{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:18px; flex-wrap:wrap;
-      margin-bottom:14px;
-    }
-    .secHead h2{
-      font-size:22px;
-      letter-spacing:-0.02em;
-    }
-    .secHead p{
-      color:var(--muted);
-      font-size:14px;
-      max-width:72ch;
-    }
-    .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
-    .grid2{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
-    .card{
-      border:1px solid var(--border);
-      border-radius: var(--r);
-      background: rgba(255,255,255,.86);
-      box-shadow: 0 10px 30px rgba(11,18,32,.06);
-      overflow:hidden;
-    }
-    .pad{padding:18px}
-    .kicker{
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      color:var(--muted);
-      font-size:12px;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      font-weight:900;
-    }
-    .card h3{margin:10px 0 8px; font-size:16px; letter-spacing:-0.02em}
-    .card p{color:var(--muted); font-size:14px; line-height:1.65}
+.btnOutline{
+border:1px solid #2b3a55;
+color:#fff;
+margin-left:10px
+}
 
-    .list{margin:12px 0 0; padding:0; list-style:none; display:grid; gap:8px}
-    .list li{display:flex; gap:10px; align-items:flex-start; color:rgba(11,18,32,.86); font-size:13px; line-height:1.55}
-    .tick{
-      width:18px;height:18px;border-radius:6px;
-      border:1px solid rgba(11,18,32,.12);
-      background: rgba(11,95,255,.06);
-      color: var(--blue);
-      display:inline-flex; align-items:center; justify-content:center;
-      font-weight:900; flex:0 0 auto; margin-top:2px;
-    }
+/* SERVICES */
+.section{
+padding:80px 0
+}
 
-    /* Clients chips */
-    .chipsRow{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
-    .clientChip{
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.82);
-      font-weight:900;
-      font-size:13px;
-      color: rgba(11,18,32,.82);
-    }
-    .clientChip .small{font-weight:800;color:var(--muted);margin-left:8px}
+.section h2{
+font-size:34px;
+margin-bottom:14px
+}
 
-    /* Insights */
-    .insights{
-      border:1px solid var(--border);
-      border-radius: 22px;
-      background: rgba(255,255,255,.86);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .insTop{
-      padding:18px;
-      border-bottom:1px solid var(--border);
-      display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap;
-    }
-    .insTitle{font-weight:900; letter-spacing:-0.02em; font-size:18px}
-    .insDesc{color:var(--muted); font-size:13px; margin-top:4px}
-    .input{
-      display:flex; align-items:center; gap:10px;
-      padding:10px 12px;
-      border-radius: 14px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.86);
-      min-width:min(520px, 92vw);
-    }
-    .input input{
-      width:100%;
-      border:none;
-      outline:none;
-      background:transparent;
-      font-size:14px;
-      color:var(--text);
-    }
-    .newsGrid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; padding:18px}
-    .newsItem{
-      border:1px solid var(--border);
-      border-radius: 16px;
-      background: rgba(255,255,255,.90);
-      padding:14px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      min-height:140px;
-    }
-    .newsTitle{margin:0; font-weight:900; font-size:14px; letter-spacing:-0.02em}
-    .newsMeta{margin:0; color:var(--muted); font-size:12px}
-    .tagRow{display:flex; flex-wrap:wrap; gap:8px; margin-top:auto}
-    .tag{
-      font-size:12px;
-      color: rgba(11,18,32,.80);
-      border:1px solid var(--border);
-      background: rgba(11,95,255,.06);
-      padding:7px 10px;
-      border-radius: 999px;
-      font-weight:900;
-    }
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:26px;
+margin-top:40px
+}
 
-    /* Contact */
-    .contactGrid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
-    .contactBox{
-      border:1px solid var(--border);
-      border-radius: 22px;
-      background: rgba(255,255,255,.86);
-      box-shadow: 0 10px 30px rgba(11,18,32,.06);
-      padding:20px;
-    }
-    .contactBox h3{margin:6px 0 8px; font-size:16px; letter-spacing:-0.02em}
-    .contactBox p{color:var(--muted); font-size:14px; line-height:1.7}
-    .contactActions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+.card{
+background:#0f172a;
+padding:28px;
+border-radius:16px;
+border:1px solid #1c2538
+}
 
-    footer{
-      margin-top:22px;
-      padding:28px 0 44px;
-      border-top:1px solid var(--border);
-      color:var(--muted);
-      font-size:13px;
-    }
+.card h3{margin-bottom:10px}
 
-    /* Responsive */
-    @media (max-width: 980px){
-      .heroGrid{grid-template-columns:1fr}
-      h1{font-size:42px}
-      .grid3{grid-template-columns:1fr}
-      .grid2{grid-template-columns:1fr}
-      .newsGrid{grid-template-columns:1fr}
-      .contactGrid{grid-template-columns:1fr}
-      .navLinks{display:none}
-    }
-  </style>
+/* EXPERIENCE */
+.logos{
+display:flex;
+gap:40px;
+flex-wrap:wrap;
+opacity:.8;
+margin-top:30px;
+font-weight:600;
+letter-spacing:.5px
+}
+
+/* CONTACT */
+.contact{
+background:#0f172a;
+padding:60px;
+border-radius:20px;
+border:1px solid #1c2538;
+margin-top:50px
+}
+
+.contactActions{
+margin-top:24px
+}
+
+/* FOOTER */
+footer{
+background:#060c18;
+padding:60px 0;
+margin-top:80px;
+border-top:1px solid #1c2538
+}
+
+.footerGrid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:40px
+}
+
+.footer h4{margin-bottom:10px}
+
+.footer p{opacity:.7;margin-bottom:6px}
+
+.footerLogo{height:40px;margin-bottom:10px}
+
+</style>
 </head>
-    <div class="contactBox">
-  <div class="kicker"><span>Support</span><span>Fast response</span></div>
-  <h3>Reach Mantanex</h3>
-  <p>Consulting inquiries, AI projects, cloud engineering, and NAS builds.</p>
-
-  <div class="contactActions">
-    <a class="btn btnRed" href="mailto:support@mantanex.com">Email support</a>
-    <a class="btn btnGhost" href="tel:+13527601132">Call +1 352 760 1132</a>
-  </div>
-
-  <div style="margin-top:14px;color:var(--muted);font-size:14px;line-height:1.7">
-    <strong>Email:</strong> support@mantanex.com<br/>
-    <strong>Phone:</strong> +1 352 760 1132<br/>
-    <strong>Address:</strong> Mantanex LLC, 7701 Timberlin Pkwy, Jacksonville, FL 32256
-  </div>
-</div>
 
 <body>
-  <!-- NAV -->
-  <div class="nav">
-    <div class="wrap">
-      <div class="navRow">
-        <a class="brand" href="#top">
-          <!-- Upload your logo as: /logo.png -->
-          <img src="logo.png" alt="Mantanex" onerror="this.style.display='none'" />
-          <div>
-            <div>Mantanex</div>
-            <div class="brandSub">Consulting • AI • Cloud • NAS</div>
-          </div>
-        </a>
 
-        <div class="navLinks">
-          <a href="#services">Services</a>
-          <a href="#products">Products</a>
-          <a href="#experience">Experience</a>
-          <a href="#insights">Insights</a>
-          <a href="#contact">Contact</a>
-        </div>
+<nav>
+<div class="container navWrap">
+<div class="logo">
+<img src="assets/mantanex-logo.png">
+Mant an ex
+</div>
 
-        <div class="btnRow">
-          <a class="btn btnGhost" href="#insights">AI newsletter</a>
-          <a class="btn btnPrimary" href="#contact">Start a project</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="navLinks">
+<div>Services</div>
+<div>Products</div>
+<div>Experience</div>
+<div>Insights</div>
+<div>Contact</div>
+</div>
+</div>
+</nav>
 
-  <!-- HERO -->
-  <div id="top" class="hero">
-    <div class="wrap">
-      <div class="heroGrid">
-        <div class="heroCard">
-          <div class="heroPad">
-            <div class="pill"><span class="dot"></span> Enterprise delivery • Product engineering</div>
-            <h1>Professional consulting for modern infrastructure and AI.</h1>
-            <p class="sub">
-              Mantanex delivers cloud engineering, DevOps automation, security hardening, and managed support—
-              and builds new AI initiatives and NAS systems designed for reliability and performance.
-            </p>
 
-            <div class="btnRow">
-              <a class="btn btnPrimary" href="#services">Explore services</a>
-              <a class="btn btnRed" href="#contact">Contact support</a>
-              <a class="btn" href="#products">AI & NAS products</a>
-            </div>
+<section class="hero">
+<div class="container heroGrid">
 
-            <div class="mini" aria-label="Highlights">
-              <span><span class="dot"></span> Cloud & DevOps</span>
-              <span><span class="dot"></span> Security-first delivery</span>
-              <span><span class="dot"></span> AI projects</span>
-              <span><span class="dot"></span> NAS & storage systems</span>
-            </div>
-          </div>
-        </div>
+<div>
+<div class="kicker">Enterprise technology</div>
+<h1>Products and services for modern IT.</h1>
+<p>
+Mant an ex builds AI-inspired systems and delivers enterprise IT services —
+cloud, DevOps, automation, and managed engineering backed by real delivery experience.
+</p>
 
-        <div class="heroCard">
-          <div class="heroPad">
-            <div class="sideTitle">What we do</div>
-            <div class="sideH">Clear scope. Production-ready outcomes. Documentation included.</div>
-            <div class="sideP">
-              Engagements designed for enterprise standards: reliability, security, and measurable delivery.
-            </div>
+<a class="btn btnPrimary">Start a project</a>
+<a class="btn btnOutline">Explore services</a>
+</div>
 
-            <div class="chipGrid">
-              <span class="chip"><strong>Cloud</strong> architecture</span>
-              <span class="chip"><strong>DevOps</strong> automation</span>
-              <span class="chip"><strong>AI</strong> engineering</span>
-              <span class="chip"><strong>NAS</strong> builds</span>
-              <span class="chip"><strong>Support</strong> operations</span>
-            </div>
+<div class="card">
+<h3>What we deliver</h3>
+<p>Clear scope. Secure execution. Production-ready outcomes.</p>
+<br>
+<p>AI automation</p>
+<p>Cloud engineering</p>
+<p>IoT & edge systems</p>
+<p>Security hardening</p>
+<p>Managed support</p>
+</div>
 
-            <div class="sideBox">
-              <div class="k">Support channel</div>
-              <div class="v">
-                Email: <strong>support@mantanex.com</strong><br/>
-                Phone: <strong>+1 352 760 1132</strong>
-              </div>
-            </div>
+</div>
+</section>
 
-            <div class="btnRow" style="margin-top:14px">
-              <a class="btn btnPrimary" href="mailto:support@mantanex.com">Email support</a>
-              <a class="btn" href="tel:+13527601132">Call</a>
-            </div>
-          </div>
-        </div>
 
-      </div>
-    </div>
-  </div>
+<section class="section container">
+<h2>Services</h2>
+<p>Consulting, engineering, and product development across enterprise ecosystems.</p>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="wrap">
-      <div class="secHead">
-        <div>
-          <h2>Services</h2>
-          <p>Consulting delivery inspired by enterprise standards: clear milestones, secure implementations, and operational handoff.</p>
-        </div>
-      </div>
+<div class="cards">
+<div class="card">
+<h3>Cloud & DevOps</h3>
+<p>Architecture, automation, CI/CD, platform reliability.</p>
+</div>
 
-      <div class="grid3">
-        <div class="card"><div class="pad">
-          <div class="kicker"><span>Cloud</span><span>Architecture</span></div>
-          <h3>Cloud engineering</h3>
-          <p>AWS/Azure foundations, networking, IAM, and reliable platform build-outs.</p>
-          <ul class="list">
-            <li><span class="tick">✓</span> Landing zones & guardrails</li>
-            <li><span class="tick">✓</span> Observability & SLOs</li>
-            <li><span class="tick">✓</span> Cost + performance tuning</li>
-          </ul>
-        </div></div>
+<div class="card">
+<h3>AI initiatives</h3>
+<p>Prototype → production AI systems and internal tooling.</p>
+</div>
 
-        <div class="card"><div class="pad">
-          <div class="kicker"><span>DevOps</span><span>Automation</span></div>
-          <h3>CI/CD + platform automation</h3>
-          <p>Repeatable deployment pipelines and infrastructure-as-code workflows.</p>
-          <ul class="list">
-            <li><span class="tick">✓</span> GitHub Actions + release flows</li>
-            <li><span class="tick">✓</span> Kubernetes / container deployment</li>
-            <li><span class="tick">✓</span> Secrets, approvals, auditability</li>
-          </ul>
-        </div></div>
+<div class="card">
+<h3>NAS & edge systems</h3>
+<p>High-reliability storage, compute nodes, and on-site intelligence.</p>
+</div>
+</div>
+</section>
 
-        <div class="card"><div class="pad">
-          <div class="kicker"><span>Security</span><span>Hardening</span></div>
-          <h3>Security & reliability</h3>
-          <p>Practical controls that fit real delivery timelines and operations.</p>
-          <ul class="list">
-            <li><span class="tick">✓</span> Baselines + least privilege</li>
-            <li><span class="tick">✓</span> Encryption + access models</li>
-            <li><span class="tick">✓</span> Monitoring + incident readiness</li>
-          </ul>
-        </div></div>
-      </div>
 
-      <div style="height:14px"></div>
+<section class="section container">
+<h2>Experience across enterprise ecosystems</h2>
 
-      <div class="grid3">
-        <div class="card"><div class="pad">
-          <div class="kicker"><span>Support</span><span>Ops</span></div>
-          <h3>Managed support</h3>
-          <p>Operational support that scales—runbooks, response, and reporting.</p>
-          <ul class="list">
-            <li><span class="tick">✓</span> Incident workflows + runbooks</li>
-            <li><span class="tick">✓</span> Proactive health checks</li>
-            <li><span class="tick">✓</span> Monthly reporting</li>
-          </ul>
-        </div></div>
+<div class="logos">
+<span>AMD</span>
+<span>AT&T</span>
+<span>Nokia</span>
+<span>StateFarm</span>
+<span>Enterprise IT partners</span>
+</div>
+</section>
 
-        <div class="card"><div class="pad">
-          <div class="kicker"><span>AI</span><span>Build</span></div>
-          <h3>AI engineering</h3>
-          <p>Ship AI features with evaluation, safety, and production monitoring.</p>
-          <ul class="list">
-            <li><span class="tick">✓</span> Use-case scoping + metrics</li>
-            <li><span class="tick">✓</span> Integration + monitoring</li>
-            <li><span class="tick">✓</span> Secure rollout patterns</li>
-          </ul>
-        </div></div>
 
-        <div class="card"><div class="pad">
-          <div class="kicker"><span>NAS</span><span>Systems</span></div>
-          <h3>NAS & storage solutions</h3>
-          <p>Design and deployment for backup, media, lab workloads, and operations.</p>
-          <ul class="list">
-            <li><span class="tick">✓</span> ZFS/RAID strategy + hardware guidance</li>
-            <li><span class="tick">✓</span> Secure remote access</li>
-            <li><span class="tick">✓</span> Backup + DR planning</li>
-          </ul>
-        </div></div>
-      </div>
-    </div>
-  </section>
+<section class="section container">
+<div class="contact">
+<h2>Reach Mantanex</h2>
+<p>Consulting inquiries, AI projects, cloud engineering, and NAS builds.</p>
 
-  <!-- PRODUCTS -->
-  <section id="products">
-    <div class="wrap">
-      <div class="secHead">
-        <div>
-          <h2>Product tracks</h2>
-          <p>Focused offerings for AI initiatives and NAS systems—delivered as pilots or scoped implementations.</p>
-        </div>
-      </div>
+<div class="contactActions">
+<a class="btn btnPrimary" href="mailto:support@mantanex.com">Email support</a>
+<a class="btn btnOutline" href="tel:+13527601132">Call +1 352 760 1132</a>
+</div>
+</div>
+</section>
 
-      <div class="grid2">
-        <div class="card"><div class="pad">
-          <div class="kicker"><span>AI</span><span>Prototype → Production</span></div>
-          <h3>Mantanex AI projects</h3>
-          <p>From proof-of-concept to production rollout with quality checks and monitoring.</p>
-          <ul class="list">
-            <li><span class="tick">✓</span> Evaluation plan + rollout strategy</li>
-            <li><span class="tick">✓</span> Guardrails + monitoring</li>
-            <li><span class="tick">✓</span> Documentation + handoff</li>
-          </ul>
-        </div></div>
 
-        <div class="card"><div class="pad">
-          <div class="kicker"><span>NAS</span><span>Reliability</span></div>
-          <h3>Mantanex NAS boxes</h3>
-          <p>Storage systems configured for predictable performance and durable operations.</p>
-          <ul class="list">
-            <li><span class="tick">✓</span> Snapshots + backup strategy</li>
-            <li><span class="tick">✓</span> Network tuning + access control</li>
-            <li><span class="tick">✓</span> Monitoring + maintenance plan</li>
-          </ul>
-        </div></div>
-      </div>
-    </div>
-  </section>
+<footer>
+<div class="container footerGrid">
 
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="wrap">
-      <div class="secHead">
-        <div>
-          <h2>Experience across enterprise ecosystems</h2>
-          <p>Client logos can be shown if you provide permitted brand assets. Otherwise, we present experience in a clean, professional format.</p>
-        </div>
-      </div>
+<div>
+<img src="assets/mantanex-logo.png" class="footerLogo">
+<p>Consulting • AI • Cloud • NAS</p>
+</div>
 
-      <div class="card">
-        <div class="pad">
-          <div class="kicker"><span>Worked with</span><span>Enterprise</span></div>
-          <div class="chipsRow">
-            <span class="clientChip">AMD <span class="small">Semiconductor</span></span>
-            <span class="clientChip">AT&amp;T <span class="small">Telecom</span></span>
-            <span class="clientChip">Nokia <span class="small">Networking</span></span>
-            <span class="clientChip">State Farm <span class="small">Insurance</span></span>
-          </div>
+<div>
+<h4>Company</h4>
+<p>Mantanex LLC</p>
+<p>7701 Timberlin Pkwy</p>
+<p>Jacksonville, FL 32256</p>
+</div>
 
-          <div style="margin-top:14px;color:var(--muted);font-size:14px;line-height:1.7">
-            Mantanex supports enterprise delivery standards with security-first implementations, operational readiness, and clear documentation.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<div>
+<h4>Contact</h4>
+<p>support@mantanex.com</p>
+<p>+1 352 760 1132</p>
+</div>
 
-  <!-- INSIGHTS -->
-  <section id="insights">
-    <div class="wrap">
-      <div class="insights">
-        <div class="insTop">
-          <div>
-            <div class="insTitle">AI Insights (newsletter style)</div>
-            <div class="insDesc">Curated updates you can filter. Add more topics anytime.</div>
-          </div>
+<div>
+<h4>Focus</h4>
+<p>Enterprise consulting</p>
+<p>AI projects</p>
+<p>Cloud engineering</p>
+<p>NAS builds</p>
+</div>
 
-          <div class="btnRow">
-            <div class="input" title="Filter insights">
-              <span style="font-weight:900;color:rgba(11,18,32,.55)">⌕</span>
-              <input id="filter" placeholder="Filter: agents, security, MLOps, NAS, cloud..." />
-            </div>
-            <a class="btn btnPrimary" href="#contact">Work with Mantanex</a>
-          </div>
-        </div>
+</div>
+</footer>
 
-        <div class="newsGrid" id="newsList"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="wrap">
-      <div class="secHead">
-        <div>
-          <h2>Contact</h2>
-          <p>Consulting inquiries, staffing/partner discussions, AI initiatives, or NAS builds.</p>
-        </div>
-      </div>
-
-      <div class="contactGrid">
-        <div class="contactBox">
-          <div class="kicker"><span>Support</span><span>Fast response</span></div>
-          <h3>Reach Mantanex</h3>
-          <p>Send scope + timeline. We’ll reply with next steps and a delivery plan.</p>
-
-          <div class="contactActions">
-            <a class="btn btnRed" href="mailto:support@mantanex.com">Email support</a>
-            <a class="btn btnGhost" href="tel:+13527601132">Call +1 352 760 1132</a>
-          </div>
-
-          <div style="margin-top:12px;color:var(--muted);font-size:14px;line-height:1.7">
-            <strong>Email:</strong> support@mantanex.com<br/>
-            <strong>Phone:</strong> +1 352 760 1132
-          </div>
-        </div>
-
-        <div class="contactBox">
-          <div class="kicker"><span>Engagement model</span><span>2–6 weeks typical</span></div>
-          <h3>How work starts</h3>
-          <ul class="list" style="margin-top:10px">
-            <li><span class="tick">✓</span> Discovery call + requirements</li>
-            <li><span class="tick">✓</span> Roadmap + milestones</li>
-            <li><span class="tick">✓</span> Implementation + documentation</li>
-            <li><span class="tick">✓</span> Optional managed support</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="wrap">
-      © <span id="year"></span> Mantanex LLC • support@mantanex.com • +1 352 760 1132
-    </div>
-  </footer>
-
-  <script>
-    // Curated “newsletter style” items (safe + reliable on GitHub Pages).
-    const curated = [
-      { title:"Operational AI: evaluation, monitoring, and safe rollouts", source:"Mantanex", date:"Updated", link:"#services", tags:["AI","Quality","Safety"] },
-      { title:"Security-first delivery: practical hardening that ships", source:"Mantanex", date:"Updated", link:"#services", tags:["Security","Cloud"] },
-      { title:"NAS reliability: snapshots, backups, and recovery planning", source:"Mantanex", date:"Updated", link:"#products", tags:["NAS","Backup"] },
-      { title:"CI/CD and platform automation: repeatable deployments", source:"Mantanex", date:"Updated", link:"#services", tags:["DevOps","Automation"] },
-      { title:"Enterprise readiness: documentation, handoff, and support", source:"Mantanex", date:"Updated", link:"#contact", tags:["Enterprise","Support"] },
-      { title:"AI project scoping: metrics-first approach to business value", source:"Mantanex", date:"Updated", link:"#products", tags:["AI","Strategy"] }
-    ];
-
-    const listEl = document.getElementById("newsList");
-    const filterEl = document.getElementById("filter");
-
-    function escapeHtml(s){
-      return String(s).replace(/[&<>"']/g, m => ({
-        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
-      }[m]));
-    }
-
-    function render(items){
-      listEl.innerHTML = items.map(item => {
-        const tags = (item.tags||[]).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("");
-        return `
-          <div class="newsItem">
-            <a href="${escapeHtml(item.link)}">
-              <p class="newsTitle">${escapeHtml(item.title)}</p>
-              <p class="newsMeta">${escapeHtml(item.source)} • ${escapeHtml(item.date)}</p>
-            </a>
-            <div class="tagRow">${tags}</div>
-          </div>
-        `;
-      }).join("");
-    }
-
-    function applyFilter(){
-      const q = (filterEl.value || "").trim().toLowerCase();
-      if(!q){ render(curated); return; }
-      const filtered = curated.filter(x => {
-        const text = [x.title, x.source, (x.tags||[]).join(" ")].join(" ").toLowerCase();
-        return text.includes(q);
-      });
-      render(filtered);
-    }
-
-    filterEl.addEventListener("input", applyFilter);
-    render(curated);
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
-
-
