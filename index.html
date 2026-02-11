@@ -5,40 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mantanex — AI • Cloud • Engineering</title>
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- SEO -->
-  <meta name="description" content="Mantanex — Enterprise consulting, AI engineering, NAS systems, cloud, DevOps, and automation.">
 
   <style>
     :root{
-      --bg:#0b1220;
-      --card:#121a2b;
-      --accent:#2563eb;
-      --text:#ffffff;
-      --muted:#9aa4b2;
+      --bg:#f6f8fc;
+      --card:#ffffff;
+      --accent:#0b5fff;
+      --text:#0b1220;
+      --muted:#5b6472;
+      --border:rgba(11,18,32,.10);
     }
 
     *{margin:0;padding:0;box-sizing:border-box}
     body{
       font-family:'Inter',system-ui;
-      background:linear-gradient(180deg,#0b1220,#05070f);
-      color:white;
+      background:linear-gradient(180deg,#ffffff,#f6f8fc);
+      color:var(--text);
     }
 
     a{text-decoration:none;color:inherit}
 
-    /* NAV */
     .nav{
       display:flex;
       justify-content:space-between;
       align-items:center;
       padding:20px 40px;
-      border-bottom:1px solid rgba(255,255,255,.06);
+      border-bottom:1px solid var(--border);
       position:sticky;
       top:0;
-      backdrop-filter: blur(10px);
+      background:white;
+      z-index:10;
     }
 
     .nav-logo{
@@ -53,35 +50,30 @@
       display:flex;
       gap:25px;
       font-size:14px;
-      opacity:.85;
+      color:var(--muted);
     }
 
-    /* HERO */
     .hero{
       max-width:1200px;
       margin:auto;
-      padding:100px 20px 60px;
-      display:flex;
-      gap:60px;
-      align-items:center;
-      flex-wrap:wrap;
+      padding:90px 20px;
     }
 
     .hero h1{
-      font-size:58px;
+      font-size:54px;
       line-height:1.1;
-      margin-bottom:20px;
+      margin-bottom:18px;
     }
 
     .hero p{
       color:var(--muted);
-      max-width:550px;
+      max-width:640px;
       margin-bottom:30px;
     }
 
     .btn{
       padding:14px 20px;
-      border-radius:10px;
+      border-radius:8px;
       font-weight:600;
       display:inline-block;
       margin-right:10px;
@@ -89,55 +81,58 @@
 
     .btn-primary{
       background:var(--accent);
+      color:white;
     }
 
     .btn-outline{
-      border:1px solid rgba(255,255,255,.2);
+      border:1px solid var(--border);
     }
 
-    /* SECTION */
     .section{
       max-width:1200px;
       margin:auto;
-      padding:80px 20px;
+      padding:70px 20px;
     }
 
     .grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:25px;
+      gap:22px;
       margin-top:30px;
     }
 
     .card{
       background:var(--card);
-      padding:28px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.05);
+      padding:26px;
+      border-radius:12px;
+      border:1px solid var(--border);
     }
 
     .card h3{margin-bottom:10px}
     .card p{color:var(--muted)}
 
-    /* CLIENTS */
-    .clients{
-      display:flex;
-      flex-wrap:wrap;
-      gap:25px;
+    .experience-tiles{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:18px;
       margin-top:25px;
-      opacity:.7;
-      font-weight:600;
     }
 
-    /* NEWS */
-    .news-item{
+    .tile{
       padding:18px;
-      border-bottom:1px solid rgba(255,255,255,.05);
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:white;
+    }
+
+    .news-item{
+      padding:16px;
+      border-bottom:1px solid var(--border);
     }
 
     .news-title{
       font-weight:600;
-      margin-bottom:5px;
+      margin-bottom:4px;
     }
 
     .news-meta{
@@ -145,11 +140,10 @@
       color:var(--muted);
     }
 
-    /* CONTACT */
     .contact{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:30px;
+      gap:25px;
     }
 
     .footer{
@@ -166,37 +160,36 @@
 <!-- NAV -->
 <div class="nav">
   <div class="nav-logo">
-    <img src="logo.png" width="36"/>
+    <img src="logo.png" width="34"/>
     Mantanex
   </div>
 
   <div class="nav-links">
     <a href="#services">Services</a>
     <a href="#products">Products</a>
-    <a href="#clients">Clients</a>
-    <a href="#news">AI News</a>
+    <a href="#experience">Experience</a>
+    <a href="#news">AI Insights</a>
     <a href="#contact">Contact</a>
   </div>
 </div>
 
 <!-- HERO -->
 <section class="hero">
-  <div>
-    <h1>Engineering modern IT, AI, and cloud systems.</h1>
-    <p>
-      Mantanex is a consulting and engineering company delivering enterprise cloud,
-      DevOps, AI, security, and infrastructure solutions. We also build AI products
-      and high-performance NAS platforms.
-    </p>
+  <h1>Engineering modern IT, AI, and cloud systems.</h1>
+  <p>
+    Mantanex is a consulting and engineering company delivering enterprise cloud,
+    DevOps, AI, automation, and infrastructure solutions. We also build AI products
+    and NAS storage systems.
+  </p>
 
-    <a class="btn btn-primary" href="#contact">Start engagement</a>
-    <a class="btn btn-outline" href="#services">Explore services</a>
-  </div>
+  <a class="btn btn-primary" href="#contact">Start engagement</a>
+  <a class="btn btn-outline" href="#services">Explore services</a>
 </section>
 
 <!-- SERVICES -->
 <section id="services" class="section">
   <h2>Services</h2>
+
   <div class="grid">
     <div class="card">
       <h3>Cloud Engineering</h3>
@@ -205,17 +198,17 @@
 
     <div class="card">
       <h3>DevOps & Automation</h3>
-      <p>CI/CD, Kubernetes, observability, platform engineering.</p>
+      <p>CI/CD pipelines, Kubernetes, infrastructure automation.</p>
     </div>
 
     <div class="card">
       <h3>AI Engineering</h3>
-      <p>LLM integration, AI prototypes → production systems.</p>
+      <p>LLM integrations, AI systems, enterprise automation.</p>
     </div>
 
     <div class="card">
       <h3>Security & Reliability</h3>
-      <p>Hardening, monitoring, compliance, uptime engineering.</p>
+      <p>Hardening, monitoring, uptime engineering.</p>
     </div>
   </div>
 </section>
@@ -223,33 +216,41 @@
 <!-- PRODUCTS -->
 <section id="products" class="section">
   <h2>Product Tracks</h2>
+
   <div class="grid">
     <div class="card">
       <h3>AI Platforms</h3>
-      <p>Custom enterprise AI automation systems.</p>
+      <p>Enterprise AI systems and automation tools.</p>
     </div>
 
     <div class="card">
       <h3>NAS Systems</h3>
-      <p>High-performance storage builds for enterprise & labs.</p>
+      <p>High-performance storage builds for teams and labs.</p>
     </div>
 
     <div class="card">
       <h3>Edge & IoT</h3>
-      <p>Telemetry, monitoring, and distributed compute.</p>
+      <p>Telemetry and distributed compute infrastructure.</p>
     </div>
   </div>
 </section>
 
-<!-- CLIENTS -->
-<section id="clients" class="section">
+<!-- EXPERIENCE -->
+<section id="experience" class="section">
   <h2>Experience across enterprise ecosystems</h2>
-  <div class="clients">
-    AMD • AT&T • Nokia • StateFarm • Enterprise IT partners
+  <p style="color:var(--muted);margin-top:10px;">
+    Experience supporting programs and delivery standards across large enterprise environments.
+  </p>
+
+  <div class="experience-tiles">
+    <div class="tile"><strong>Semiconductor</strong><p>Enterprise hardware & cloud.</p></div>
+    <div class="tile"><strong>Telecom</strong><p>Network operations & reliability.</p></div>
+    <div class="tile"><strong>Networking</strong><p>Infra engineering & automation.</p></div>
+    <div class="tile"><strong>Insurance</strong><p>Security & compliance systems.</p></div>
   </div>
 </section>
 
-<!-- NEWS -->
+<!-- AI NEWS -->
 <section id="news" class="section">
   <h2>AI & Technology Insights</h2>
   <div id="newsList"></div>
@@ -286,23 +287,20 @@
   © 2026 Mantanex LLC — AI • Cloud • Engineering
 </div>
 
-<!-- AI NEWS SCRIPT -->
 <script>
-const curatedNews = [
-  {title:"OpenAI advances enterprise copilots",source:"AI industry",date:"2026"},
-  {title:"New LLM infra reduces cost",source:"Cloud",date:"2026"},
-  {title:"AI automation entering operations stack",source:"Tech",date:"2026"},
+const curatedNews=[
+ {title:"AI automation entering enterprise operations",source:"Tech",date:"2026"},
+ {title:"Cloud-native AI infra becoming standard",source:"Cloud",date:"2026"},
+ {title:"LLM engineering evolving rapidly",source:"AI",date:"2026"}
 ];
 
 const list=document.getElementById("newsList");
 curatedNews.forEach(n=>{
-  const div=document.createElement("div");
-  div.className="news-item";
-  div.innerHTML=`
-    <div class="news-title">${n.title}</div>
-    <div class="news-meta">${n.source} • ${n.date}</div>
-  `;
-  list.appendChild(div);
+ const div=document.createElement("div");
+ div.className="news-item";
+ div.innerHTML=`<div class="news-title">${n.title}</div>
+                <div class="news-meta">${n.source} • ${n.date}</div>`;
+ list.appendChild(div);
 });
 </script>
 
