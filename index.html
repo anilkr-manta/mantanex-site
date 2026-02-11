@@ -493,12 +493,12 @@
         <div class="formGrid">
           <div>
             <label for="name">Full name</label>
-            <input id="name" name="name" type="text" placeholder="Your name" required maxlength="80">
+            <input id="name" name="name" type="text" placeholder="Your name" required maxlength="80" autocomplete="name">
           </div>
 
           <div>
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="Email address" required maxlength="120">
+            <input id="email" name="email" type="email" placeholder="Email address" required maxlength="120" autocomplete="email">
           </div>
 
           <div>
@@ -521,7 +521,7 @@
 
           <div class="full">
             <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Scope, timeline, constraints, and what success looks like…" required maxlength="2500"></textarea>
+            <textarea id="message" name="message" placeholder="Scope, timeline, constraints, and what success looks like…" required maxlength="2500" autocomplete="off"></textarea>
           </div>
         </div>
 
@@ -540,7 +540,11 @@
 
 <footer>
   © Mantanex LLC — support@mantanex.com • +1 (352) 760-1132
+  <div class="fine">
+    Unauthorized reuse of Mantanex branding, content, or assets is not permitted.
+  </div>
 </footer>
+
 
 <script>
   (function(){
@@ -608,6 +612,7 @@ ${message}
 
 </body>
 </html>
+
 
 
 
