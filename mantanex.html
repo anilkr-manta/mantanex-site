@@ -5,194 +5,202 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mantanex</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Inter',sans-serif;
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
 body{
+  font-family:Inter,system-ui;
   background:#020617;
-  color:white;
+  color:#e6f7ff;
   overflow-x:hidden;
 }
 
 /* ================= NAVBAR ================= */
-
-.navbar{
+.nav{
   position:fixed;
   top:0;
   width:100%;
-  padding:18px 48px;
+  height:70px;
+  backdrop-filter:blur(14px);
+  background:rgba(2,6,23,.55);
+  border-bottom:1px solid rgba(0,234,255,.15);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:50;
+}
+
+.nav-inner{
+  width:1200px;
+  max-width:92%;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  backdrop-filter:blur(14px);
-  background:rgba(2,6,23,.45);
-  border-bottom:1px solid rgba(0,234,255,.12);
-  z-index:1000;
 }
 
 .brand{
   font-weight:700;
-  font-size:20px;
+  font-size:22px;
   letter-spacing:.5px;
-  color:#4fd1c5;
 }
 
-.nav-links a{
-  color:#cbd5f5;
-  text-decoration:none;
-  margin-left:28px;
-  font-weight:500;
-  transition:.25s;
+.brand .manta{
+  color:#7dd3fc;
 }
 
-.nav-links a:hover{
+.brand .nex{
   color:#00eaff;
+  text-shadow:0 0 12px rgba(0,234,255,.6);
 }
 
 /* ================= HERO ================= */
-
 .hero{
-  min-height:100vh;
+  position:relative;
+  height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  position:relative;
   overflow:hidden;
-  padding:120px 20px 40px;
 }
 
-/* ================= TRON GRID ================= */
+/* ocean glow */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(0,234,255,.18), transparent 60%),
+    linear-gradient(to bottom,#020617,#020617 40%,#031a2e);
+  z-index:0;
+}
 
+/* tron grid */
 .grid{
   position:absolute;
   inset:0;
   background-image:
-    linear-gradient(rgba(0,234,255,.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,234,255,.06) 1px, transparent 1px);
-  background-size:80px 80px;
-  opacity:.35;
-  mask-image:radial-gradient(circle at center, black 40%, transparent 75%);
+    linear-gradient(rgba(0,234,255,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,234,255,.08) 1px, transparent 1px);
+  background-size:60px 60px;
+  transform:perspective(600px) rotateX(60deg);
+  transform-origin:top;
+  opacity:.25;
+  z-index:0;
 }
 
-/* ================= LOGO ================= */
-
-.logo{
-  font-size:clamp(56px,8vw,110px);
-  font-weight:800;
-  letter-spacing:-2px;
+/* particles */
+.particles span{
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:#67e8f9;
+  border-radius:50%;
+  opacity:.5;
+  animation:float 12s linear infinite;
 }
 
-/* liquid tech effect — subtle */
-.logo-manta{
-  background:linear-gradient(90deg,#4fd1c5,#00eaff,#4fd1c5);
-  background-size:200% 100%;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation:flow 6s ease-in-out infinite;
-  filter:drop-shadow(0 0 12px rgba(0,234,255,.25));
+@keyframes float{
+  from{transform:translateY(100vh)}
+  to{transform:translateY(-10vh)}
 }
 
-@keyframes flow{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
+/* ================= MANTA ================= */
+.manta-swimmer{
+  position:absolute;
+  top:58%;
+  left:-260px;
+  width:260px;
+  opacity:.28;
+  animation:swim 34s linear infinite;
+  z-index:1;
+  filter:drop-shadow(0 0 22px rgba(0,234,255,.35));
 }
 
-.logo-nex{
-  color:#e6edf7;
-  opacity:.92;
+@keyframes swim{
+  0%{transform:translateX(0) translateY(0)}
+  50%{transform:translateX(60vw) translateY(-28px)}
+  100%{transform:translateX(130vw) translateY(0)}
 }
 
-/* ================= SUBTITLE ================= */
+/* ================= HERO CONTENT ================= */
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:900px;
+  padding:0 20px;
+}
+
+h1{
+  font-size:clamp(48px,7vw,88px);
+  font-weight:700;
+  margin-bottom:18px;
+}
+
+.title-manta{color:#7dd3fc;}
+.title-nex{
+  color:#00eaff;
+  text-shadow:0 0 28px rgba(0,234,255,.6);
+}
 
 .subtitle{
-  margin-top:22px;
   font-size:18px;
-  color:#9fb3c8;
-  max-width:720px;
   line-height:1.6;
-  margin-left:auto;
-  margin-right:auto;
+  color:#cde7f3;
+  margin-bottom:34px;
 }
 
 /* ================= BUTTONS ================= */
-
 .cta{
-  margin-top:44px;
+  display:flex;
+  gap:18px;
+  justify-content:center;
+  flex-wrap:wrap;
 }
 
 .btn{
   padding:14px 28px;
-  border-radius:10px;
-  text-decoration:none;
+  border-radius:12px;
   font-weight:600;
-  margin:0 10px;
-  display:inline-block;
-  transition:.25s ease;
+  text-decoration:none;
+  transition:.25s;
 }
 
 .btn-primary{
-  background:linear-gradient(90deg,#00eaff,#4fd1c5);
+  background:linear-gradient(135deg,#00eaff,#4fd1c5);
   color:#001018;
+  box-shadow:0 0 24px rgba(0,234,255,.35);
 }
 
 .btn-primary:hover{
   transform:translateY(-2px);
-  box-shadow:0 10px 30px rgba(0,234,255,.25);
+  box-shadow:0 0 38px rgba(0,234,255,.6);
 }
 
-.btn-secondary{
-  border:1px solid rgba(0,234,255,.25);
-  color:#cbd5f5;
+.btn-outline{
+  border:1px solid rgba(0,234,255,.35);
+  color:#a5f3fc;
 }
 
-.btn-secondary:hover{
-  border-color:#00eaff;
-  color:#00eaff;
+.btn-outline:hover{
+  background:rgba(0,234,255,.08);
 }
 
-/* ================= MANTA SWIM (SUBTLE) ================= */
-
-.manta{
-  position:absolute;
-  top:60%;
-  left:-220px;
-  width:200px;
-  opacity:.18;
-  filter:blur(.3px);
-  animation:swim 28s linear infinite;
+/* ================= SECTIONS ================= */
+section{
+  padding:120px 20px;
+  text-align:center;
 }
 
-@keyframes swim{
-  0%{transform:translateX(0) translateY(0);}
-  50%{transform:translateX(55vw) translateY(-25px);}
-  100%{transform:translateX(120vw) translateY(0);}
-}
-
-/* ================= WATER PARTICLES ================= */
-
-.particle{
-  position:absolute;
-  width:2px;
-  height:2px;
-  background:#00eaff;
-  border-radius:50%;
-  opacity:.35;
-  animation:floatUp linear infinite;
-}
-
-@keyframes floatUp{
-  from{transform:translateY(0);opacity:0;}
-  20%{opacity:.35;}
-  to{transform:translateY(-110vh);opacity:0;}
+.card{
+  max-width:820px;
+  margin:auto;
+  padding:32px;
+  border-radius:18px;
+  background:rgba(15,23,42,.55);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(0,234,255,.15);
 }
 </style>
 </head>
@@ -200,27 +208,48 @@ body{
 <body>
 
 <!-- NAVBAR -->
-<div class="navbar">
-  <div class="brand">Mantanex</div>
-  <div class="nav-links">
-    <a href="#">Services</a>
-    <a href="#">Contact</a>
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <span class="manta">Manta</span><span class="nex">nex</span>
+    </div>
   </div>
-</div>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
 
   <div class="grid"></div>
 
-  <!-- subtle manta -->
-  <img class="manta"
-       src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Manta_ray.png"
-       alt="manta">
+  <!-- particles -->
+  <div class="particles">
+    <span style="left:10%;animation-delay:0s"></span>
+    <span style="left:30%;animation-delay:3s"></span>
+    <span style="left:55%;animation-delay:6s"></span>
+    <span style="left:75%;animation-delay:2s"></span>
+    <span style="left:90%;animation-delay:5s"></span>
+  </div>
 
-  <div style="position:relative;z-index:2;">
-    <h1 class="logo">
-      <span class="logo-manta">Manta</span><span class="logo-nex">nex</span>
+  <!-- SVG Manta (no external image) -->
+  <svg class="manta-swimmer" viewBox="0 0 600 260">
+    <path d="M40 140
+             C120 40, 240 40, 300 120
+             C360 40, 480 40, 560 140
+             C480 120, 360 140, 300 170
+             C240 140, 120 120, 40 140 Z"
+          fill="url(#mantaGlow)" opacity="0.95"/>
+    <defs>
+      <linearGradient id="mantaGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#4fd1c5"/>
+        <stop offset="50%" stop-color="#00eaff"/>
+        <stop offset="100%" stop-color="#4fd1c5"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <div class="hero-content">
+    <h1>
+      <span class="title-manta">Manta</span><span class="title-nex">nex</span>
     </h1>
 
     <p class="subtitle">
@@ -229,24 +258,28 @@ body{
     </p>
 
     <div class="cta">
-      <a href="mailto:anilclaws@gmail.com" class="btn btn-primary">Request Talent</a>
-      <a href="#" class="btn btn-secondary">Explore Services</a>
+      <a href="#request" class="btn btn-primary">Request Talent</a>
+      <a href="#services" class="btn btn-outline">Explore Services</a>
     </div>
   </div>
-
 </section>
 
-<script>
-// subtle particles
-for(let i=0;i<40;i++){
-  const p=document.createElement('div');
-  p.className='particle';
-  p.style.left=Math.random()*100+'vw';
-  p.style.animationDuration=(10+Math.random()*12)+'s';
-  p.style.animationDelay=Math.random()*10+'s';
-  document.body.appendChild(p);
-}
-</script>
+<!-- SERVICES -->
+<section id="services">
+  <h2>Services</h2>
+  <div class="card">
+    Elite IT staffing across cloud, data, AI, cybersecurity, and enterprise platforms.
+  </div>
+</section>
+
+<!-- REQUEST -->
+<section id="request">
+  <h2>Request Talent</h2>
+  <div class="card">
+    Contact Mantanex to discuss your talent needs.<br>
+    Response within one business day.
+  </div>
+</section>
 
 </body>
 </html>
