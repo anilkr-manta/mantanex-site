@@ -49,7 +49,39 @@
       min-width:220px;
     }
     .brand img{height:34px;width:auto;display:block}
-    .brand span{font-weight:900;font-size:18px;letter-spacing:-.02em}
+    /* Mantanex split style (Manta = organic/ocean, nex = next-gen/engineered) */
+.brandText{
+  font-weight:900;
+  font-size:18px;
+  letter-spacing:-.02em;
+  display:inline-flex;
+  align-items:baseline;
+  gap:0;
+}
+
+.brandText .manta{
+  background:linear-gradient(90deg,#7dd3fc,#38bdf8,#22d3ee);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.brandText .nex{
+  color:#0b0c0f;
+  margin-left:2px;
+  position:relative;
+}
+
+.brandText .nex::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-6px;
+  height:2px;
+  background:linear-gradient(90deg,transparent,#1a73e8,transparent);
+  opacity:.55;
+}
+
     .navLinks{
       display:flex;align-items:center;gap:18px;list-style:none;flex-wrap:wrap;
       justify-content:flex-end;
@@ -638,6 +670,7 @@ ${message}
 
 </body>
 </html>
+
 
 
 
