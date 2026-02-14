@@ -1,185 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mantanex</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
 }
 
-body {
-  background: radial-gradient(circle at 20% 20%, #001a22, #000814 70%);
-  color: white;
-  overflow-x: hidden;
+body{
+  background:#020617;
+  color:white;
+  overflow-x:hidden;
 }
 
 /* ================= NAVBAR ================= */
 
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 16px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  backdrop-filter: blur(14px);
-  background: rgba(0, 20, 30, 0.35);
-  border-bottom: 1px solid rgba(0,255,255,0.15);
-  z-index: 1000;
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:18px 48px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter:blur(14px);
+  background:rgba(2,6,23,.45);
+  border-bottom:1px solid rgba(0,234,255,.12);
+  z-index:1000;
 }
 
-.nav-links a {
-  color: #cfefff;
-  text-decoration: none;
-  margin-left: 28px;
-  font-weight: 500;
+.brand{
+  font-weight:700;
+  font-size:20px;
+  letter-spacing:.5px;
+  color:#4fd1c5;
+}
+
+.nav-links a{
+  color:#cbd5f5;
+  text-decoration:none;
+  margin-left:28px;
+  font-weight:500;
+  transition:.25s;
+}
+
+.nav-links a:hover{
+  color:#00eaff;
 }
 
 /* ================= HERO ================= */
 
-.hero {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  padding:120px 20px 40px;
 }
 
 /* ================= TRON GRID ================= */
 
-.grid {
-  position: absolute;
-  inset: 0;
+.grid{
+  position:absolute;
+  inset:0;
   background-image:
-    linear-gradient(rgba(0,255,255,0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,255,255,0.08) 1px, transparent 1px);
-  background-size: 60px 60px;
-  transform: perspective(600px) rotateX(60deg);
-  animation: gridMove 20s linear infinite;
-}
-
-@keyframes gridMove {
-  from { background-position: 0 0; }
-  to { background-position: 0 60px; }
+    linear-gradient(rgba(0,234,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,234,255,.06) 1px, transparent 1px);
+  background-size:80px 80px;
+  opacity:.35;
+  mask-image:radial-gradient(circle at center, black 40%, transparent 75%);
 }
 
 /* ================= LOGO ================= */
 
-.logo {
-  font-size: clamp(48px, 8vw, 96px);
-  font-weight: 800;
-  letter-spacing: -2px;
+.logo{
+  font-size:clamp(56px,8vw,110px);
+  font-weight:800;
+  letter-spacing:-2px;
 }
 
-/* LIQUID TEXT */
-.logo-manta {
-  background: linear-gradient(90deg, #4fd1c5, #00eaff, #4fd1c5);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: liquidFlow 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 18px rgba(0,234,255,0.4));
+/* liquid tech effect — subtle */
+.logo-manta{
+  background:linear-gradient(90deg,#4fd1c5,#00eaff,#4fd1c5);
+  background-size:200% 100%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:flow 6s ease-in-out infinite;
+  filter:drop-shadow(0 0 12px rgba(0,234,255,.25));
 }
 
-@keyframes liquidFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes flow{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
-.logo-nex {
-  color: #e6f7ff;
+.logo-nex{
+  color:#e6edf7;
+  opacity:.92;
 }
 
 /* ================= SUBTITLE ================= */
 
-.subtitle {
-  margin-top: 18px;
-  font-size: 18px;
-  color: #bfefff;
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
+.subtitle{
+  margin-top:22px;
+  font-size:18px;
+  color:#9fb3c8;
+  max-width:720px;
+  line-height:1.6;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 /* ================= BUTTONS ================= */
 
-.cta {
-  margin-top: 40px;
+.cta{
+  margin-top:44px;
 }
 
-.btn {
-  padding: 14px 28px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 600;
-  margin: 0 10px;
-  display: inline-block;
+.btn{
+  padding:14px 28px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  margin:0 10px;
+  display:inline-block;
+  transition:.25s ease;
 }
 
-.btn-primary {
-  background: linear-gradient(90deg, #00eaff, #4fd1c5);
-  color: #001018;
+.btn-primary{
+  background:linear-gradient(90deg,#00eaff,#4fd1c5);
+  color:#001018;
 }
 
-.btn-secondary {
-  border: 1px solid rgba(0,255,255,0.4);
-  color: #cfefff;
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(0,234,255,.25);
 }
 
-/* ================= SWIMMING MANTA ================= */
-
-.manta {
-  position: absolute;
-  top: 55%;
-  left: -200px;
-  width: 180px;
-  opacity: 0.35;
-  animation: swim 18s linear infinite;
+.btn-secondary{
+  border:1px solid rgba(0,234,255,.25);
+  color:#cbd5f5;
 }
 
-@keyframes swim {
-  from {
-    transform: translateX(0) translateY(0);
-  }
-  to {
-    transform: translateX(120vw) translateY(-40px);
-  }
+.btn-secondary:hover{
+  border-color:#00eaff;
+  color:#00eaff;
 }
 
-/* ================= PARTICLES ================= */
+/* ================= MANTA SWIM (SUBTLE) ================= */
 
-.particle {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  background: #00eaff;
-  border-radius: 50%;
-  opacity: 0.6;
-  animation: floatUp linear infinite;
+.manta{
+  position:absolute;
+  top:60%;
+  left:-220px;
+  width:200px;
+  opacity:.18;
+  filter:blur(.3px);
+  animation:swim 28s linear infinite;
 }
 
-@keyframes floatUp {
-  from {
-    transform: translateY(0);
-    opacity: 0;
-  }
-  30% { opacity: 0.6; }
-  to {
-    transform: translateY(-120vh);
-    opacity: 0;
-  }
+@keyframes swim{
+  0%{transform:translateX(0) translateY(0);}
+  50%{transform:translateX(55vw) translateY(-25px);}
+  100%{transform:translateX(120vw) translateY(0);}
+}
+
+/* ================= WATER PARTICLES ================= */
+
+.particle{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:#00eaff;
+  border-radius:50%;
+  opacity:.35;
+  animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+  from{transform:translateY(0);opacity:0;}
+  20%{opacity:.35;}
+  to{transform:translateY(-110vh);opacity:0;}
 }
 </style>
 </head>
@@ -188,7 +201,7 @@ body {
 
 <!-- NAVBAR -->
 <div class="navbar">
-  <div style="font-weight:700;color:#4fd1c5;">Mantanex</div>
+  <div class="brand">Mantanex</div>
   <div class="nav-links">
     <a href="#">Services</a>
     <a href="#">Contact</a>
@@ -200,8 +213,10 @@ body {
 
   <div class="grid"></div>
 
-  <!-- swimming manta -->
-  <img class="manta" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Manta_ray.png" alt="manta">
+  <!-- subtle manta -->
+  <img class="manta"
+       src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Manta_ray.png"
+       alt="manta">
 
   <div style="position:relative;z-index:2;">
     <h1 class="logo">
@@ -222,13 +237,13 @@ body {
 </section>
 
 <script>
-// water particles generator
-for (let i = 0; i < 60; i++) {
-  const p = document.createElement('div');
-  p.className = 'particle';
-  p.style.left = Math.random() * 100 + 'vw';
-  p.style.animationDuration = (8 + Math.random() * 12) + 's';
-  p.style.animationDelay = Math.random() * 10 + 's';
+// subtle particles
+for(let i=0;i<40;i++){
+  const p=document.createElement('div');
+  p.className='particle';
+  p.style.left=Math.random()*100+'vw';
+  p.style.animationDuration=(10+Math.random()*12)+'s';
+  p.style.animationDelay=Math.random()*10+'s';
   document.body.appendChild(p);
 }
 </script>
