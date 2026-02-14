@@ -1,285 +1,447 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mantanex</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mantanex</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:Inter,system-ui;
-  background:#020617;
-  color:#e6f7ff;
-  overflow-x:hidden;
-}
+  <style>
+    :root{
+      --bg0:#020617;
+      --bg1:#031522;
+      --bg2:#052c38;
 
-/* ================= NAVBAR ================= */
-.nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  height:70px;
-  backdrop-filter:blur(14px);
-  background:rgba(2,6,23,.55);
-  border-bottom:1px solid rgba(0,234,255,.15);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:50;
-}
+      --cyan:#00eaff;
+      --aqua:#4fd1c5;
+      --ice:#7dd3fc;
+      --text:#e6f7ff;
+      --muted:#b7d6e6;
 
-.nav-inner{
-  width:1200px;
-  max-width:92%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
+      --glass: rgba(2,6,23,.55);
+      --line: rgba(0,234,255,.14);
+    }
 
-.brand{
-  font-weight:700;
-  font-size:22px;
-  letter-spacing:.5px;
-}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background: radial-gradient(900px 500px at 50% 28%, rgba(5,44,56,.95), rgba(3,21,34,.95) 55%, rgba(2,6,23,1) 100%);
+      color:var(--text);
+      overflow:hidden;
+    }
 
-.brand .manta{
-  color:#7dd3fc;
-}
+    /* ===== GLASS NAV ===== */
+    .nav{
+      position:fixed; inset:0 0 auto 0;
+      height:72px;
+      display:flex; align-items:center; justify-content:center;
+      backdrop-filter: blur(14px);
+      background: var(--glass);
+      border-bottom:1px solid var(--line);
+      z-index:50;
+    }
+    .nav-inner{
+      width:min(1200px, 92%);
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .brand{
+      display:flex; align-items:baseline;
+      font-weight:800; letter-spacing:-.02em;
+      font-size:18px;
+      user-select:none;
+    }
+    .brand .manta{
+      background: linear-gradient(90deg, var(--ice), var(--cyan), var(--aqua));
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent;
+      text-shadow: 0 0 14px rgba(0,234,255,.18);
+    }
+    .brand .nex{
+      color: rgba(230,247,255,.92);
+      margin-left:2px;
+      position:relative;
+    }
+    .brand .nex::after{
+      content:"";
+      position:absolute;
+      left:0; right:0; bottom:-8px;
+      height:2px;
+      background: linear-gradient(90deg, transparent, rgba(0,234,255,.65), transparent);
+      opacity:.8;
+    }
+    .nav-actions{
+      display:flex; gap:10px; align-items:center;
+    }
+    .nav-btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px;
+      border-radius:12px;
+      font-weight:700;
+      font-size:13px;
+      text-decoration:none;
+      color:rgba(230,247,255,.92);
+      border:1px solid rgba(0,234,255,.18);
+      background: rgba(255,255,255,.02);
+      transition:.2s ease;
+    }
+    .nav-btn:hover{
+      border-color: rgba(0,234,255,.45);
+      box-shadow: 0 0 0 4px rgba(0,234,255,.10);
+    }
+    .nav-btn.primary{
+      background: linear-gradient(135deg, var(--cyan), var(--aqua));
+      color:#001018;
+      border-color: transparent;
+      box-shadow: 0 18px 50px rgba(0,234,255,.14);
+    }
+    .nav-btn.primary:hover{
+      box-shadow: 0 18px 60px rgba(0,234,255,.24);
+    }
 
-.brand .nex{
-  color:#00eaff;
-  text-shadow:0 0 12px rgba(0,234,255,.6);
-}
+    /* ===== HERO ===== */
+    .hero{
+      position:relative;
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding: 110px 18px 40px;
+      overflow:hidden;
+    }
 
-/* ================= HERO ================= */
-.hero{
-  position:relative;
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  overflow:hidden;
-}
+    /* ===== TRON GRID (subtle) ===== */
+    .grid{
+      position:absolute; inset:-20% -20%;
+      background-image:
+        linear-gradient(rgba(0,234,255,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,234,255,.07) 1px, transparent 1px);
+      background-size: 90px 90px;
+      transform: perspective(800px) rotateX(66deg);
+      transform-origin: top;
+      opacity:.20;
+      mask-image: radial-gradient(circle at 50% 30%, black 30%, transparent 70%);
+      pointer-events:none;
+      z-index:0;
+      animation:gridDrift 18s linear infinite;
+    }
+    @keyframes gridDrift{
+      from{background-position: 0 0, 0 0;}
+      to{background-position: 0 90px, 0 90px;}
+    }
 
-/* ocean glow */
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 50% 45%, rgba(0,234,255,.18), transparent 60%),
-    linear-gradient(to bottom,#020617,#020617 40%,#031a2e);
-  z-index:0;
-}
+    /* ===== PARTICLES ===== */
+    canvas#particles{
+      position:absolute; inset:0;
+      z-index:1;
+      pointer-events:none;
+      opacity:.75;
+    }
 
-/* tron grid */
-.grid{
-  position:absolute;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(0,234,255,.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,234,255,.08) 1px, transparent 1px);
-  background-size:60px 60px;
-  transform:perspective(600px) rotateX(60deg);
-  transform-origin:top;
-  opacity:.25;
-  z-index:0;
-}
+    /* ===== PREMIUM MANTA (SVG) ===== */
+    .manta-wrap{
+      position:absolute;
+      inset:0;
+      z-index:2;
+      pointer-events:none;
+    }
+    .manta{
+      position:absolute;
+      top:54%;
+      left:-420px;
+      width:min(520px, 70vw);
+      opacity:.28;
+      filter: drop-shadow(0 0 26px rgba(0,234,255,.22));
+      animation: mantaTraverse 22s linear infinite;
+    }
+    @keyframes mantaTraverse{
+      0%   { transform: translateX(0) translateY(0) rotate(0deg) scale(.98); }
+      45%  { transform: translateX(55vw) translateY(-32px) rotate(1.6deg) scale(1.02); }
+      100% { transform: translateX(140vw) translateY(8px) rotate(0deg) scale(.98); }
+    }
 
-/* particles */
-.particles span{
-  position:absolute;
-  width:3px;
-  height:3px;
-  background:#67e8f9;
-  border-radius:50%;
-  opacity:.5;
-  animation:float 12s linear infinite;
-}
+    /* Wing flap via animated group */
+    .wing{
+      transform-origin: 300px 140px;
+      animation: wingFlap 2.8s ease-in-out infinite;
+    }
+    @keyframes wingFlap{
+      0%,100%{ transform: scaleY(1) skewX(0deg); }
+      50%{ transform: scaleY(0.94) skewX(1.2deg); }
+    }
+    .edge{
+      filter:url(#mxGlow);
+      opacity:.95;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      animation: edgePulse 2.2s ease-in-out infinite;
+    }
+    @keyframes edgePulse{
+      0%,100%{ opacity:.78; }
+      50%{ opacity:1; }
+    }
+    .core{
+      filter:url(#mxGlowStrong);
+      animation: corePulse 1.9s ease-in-out infinite;
+      transform-origin: 300px 120px;
+    }
+    @keyframes corePulse{
+      0%,100%{ transform: scale(1); opacity:.85; }
+      50%{ transform: scale(1.35); opacity:1; }
+    }
 
-@keyframes float{
-  from{transform:translateY(100vh)}
-  to{transform:translateY(-10vh)}
-}
+    /* ===== CENTER CONTENT ===== */
+    .content{
+      position:relative;
+      z-index:3;
+      max-width: 980px;
+      padding: 0 8px;
+    }
+    h1{
+      font-size: clamp(56px, 7.5vw, 96px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+      line-height:1.02;
+    }
+    .title-manta{
+      background: linear-gradient(90deg, var(--ice), var(--cyan), var(--aqua));
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent;
+      text-shadow: 0 0 24px rgba(0,234,255,.18);
+    }
+    .title-nex{
+      color: rgba(230,247,255,.92);
+    }
+    .subtitle{
+      margin: 0 auto;
+      max-width: 820px;
+      font-size: 18px;
+      line-height: 1.65;
+      color: rgba(183,214,230,.92);
+    }
+    .cta{
+      margin-top: 28px;
+      display:flex;
+      gap: 14px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 14px;
+      text-decoration:none;
+      transition: .2s ease;
+      white-space:nowrap;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, var(--cyan), var(--aqua));
+      color:#001018;
+      box-shadow: 0 18px 60px rgba(0,234,255,.18);
+    }
+    .btn.primary:hover{ transform: translateY(-2px); box-shadow: 0 20px 70px rgba(0,234,255,.28); }
+    .btn.ghost{
+      border: 1px solid rgba(0,234,255,.22);
+      background: rgba(255,255,255,.02);
+      color: rgba(230,247,255,.92);
+    }
+    .btn.ghost:hover{
+      border-color: rgba(0,234,255,.45);
+      box-shadow: 0 0 0 4px rgba(0,234,255,.10);
+    }
 
-/* ================= MANTA ================= */
-.manta-swimmer{
-  position:absolute;
-  top:58%;
-  left:-260px;
-  width:260px;
-  opacity:.28;
-  animation:swim 34s linear infinite;
-  z-index:1;
-  filter:drop-shadow(0 0 22px rgba(0,234,255,.35));
-}
-
-@keyframes swim{
-  0%{transform:translateX(0) translateY(0)}
-  50%{transform:translateX(60vw) translateY(-28px)}
-  100%{transform:translateX(130vw) translateY(0)}
-}
-
-/* ================= HERO CONTENT ================= */
-.hero-content{
-  position:relative;
-  z-index:2;
-  max-width:900px;
-  padding:0 20px;
-}
-
-h1{
-  font-size:clamp(48px,7vw,88px);
-  font-weight:700;
-  margin-bottom:18px;
-}
-
-.title-manta{color:#7dd3fc;}
-.title-nex{
-  color:#00eaff;
-  text-shadow:0 0 28px rgba(0,234,255,.6);
-}
-
-.subtitle{
-  font-size:18px;
-  line-height:1.6;
-  color:#cde7f3;
-  margin-bottom:34px;
-}
-
-/* ================= BUTTONS ================= */
-.cta{
-  display:flex;
-  gap:18px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.btn{
-  padding:14px 28px;
-  border-radius:12px;
-  font-weight:600;
-  text-decoration:none;
-  transition:.25s;
-}
-
-.btn-primary{
-  background:linear-gradient(135deg,#00eaff,#4fd1c5);
-  color:#001018;
-  box-shadow:0 0 24px rgba(0,234,255,.35);
-}
-
-.btn-primary:hover{
-  transform:translateY(-2px);
-  box-shadow:0 0 38px rgba(0,234,255,.6);
-}
-
-.btn-outline{
-  border:1px solid rgba(0,234,255,.35);
-  color:#a5f3fc;
-}
-
-.btn-outline:hover{
-  background:rgba(0,234,255,.08);
-}
-
-/* ================= SECTIONS ================= */
-section{
-  padding:120px 20px;
-  text-align:center;
-}
-
-.card{
-  max-width:820px;
-  margin:auto;
-  padding:32px;
-  border-radius:18px;
-  background:rgba(15,23,42,.55);
-  backdrop-filter:blur(10px);
-  border:1px solid rgba(0,234,255,.15);
-}
-</style>
+    /* Mobile tweaks */
+    @media (max-width: 760px){
+      .navbar{padding:0}
+      .nav{height:66px}
+      .nav-inner{width:92%}
+      .nav-actions{display:none}
+      .manta{top:58%; width:78vw; opacity:.24;}
+      .subtitle{font-size:16px}
+    }
+  </style>
 </head>
 
 <body>
-
-<!-- NAVBAR -->
-<nav class="nav">
-  <div class="nav-inner">
-    <div class="brand">
-      <span class="manta">Manta</span><span class="nex">nex</span>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand" aria-label="Mantanex">
+        <span class="manta">Manta</span><span class="nex">nex</span>
+      </div>
+      <div class="nav-actions">
+        <a class="nav-btn" href="index.html">Home</a>
+        <a class="nav-btn primary" href="index.html#contact">Contact</a>
+      </div>
     </div>
   </div>
-</nav>
 
-<!-- HERO -->
-<section class="hero">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="grid"></div>
+    <canvas id="particles"></canvas>
 
-  <div class="grid"></div>
+    <!-- Premium manta (no external images) -->
+    <div class="manta-wrap" aria-hidden="true">
+      <svg class="manta" viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Metallic body gradient -->
+          <linearGradient id="mxMetal" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#0b1222"/>
+            <stop offset="0.35" stop-color="#0c1f32"/>
+            <stop offset="0.65" stop-color="#0a1a2a"/>
+            <stop offset="1" stop-color="#070b17"/>
+          </linearGradient>
 
-  <!-- particles -->
-  <div class="particles">
-    <span style="left:10%;animation-delay:0s"></span>
-    <span style="left:30%;animation-delay:3s"></span>
-    <span style="left:55%;animation-delay:6s"></span>
-    <span style="left:75%;animation-delay:2s"></span>
-    <span style="left:90%;animation-delay:5s"></span>
-  </div>
+          <!-- Energy sheen -->
+          <linearGradient id="mxSheen" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="rgba(0,234,255,.0)"/>
+            <stop offset="0.5" stop-color="rgba(0,234,255,.20)"/>
+            <stop offset="1" stop-color="rgba(79,209,197,.0)"/>
+          </linearGradient>
 
-  <!-- SVG Manta (no external image) -->
-  <svg class="manta-swimmer" viewBox="0 0 600 260">
-    <path d="M40 140
-             C120 40, 240 40, 300 120
-             C360 40, 480 40, 560 140
-             C480 120, 360 140, 300 170
-             C240 140, 120 120, 40 140 Z"
-          fill="url(#mantaGlow)" opacity="0.95"/>
-    <defs>
-      <linearGradient id="mantaGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#4fd1c5"/>
-        <stop offset="50%" stop-color="#00eaff"/>
-        <stop offset="100%" stop-color="#4fd1c5"/>
-      </linearGradient>
-    </defs>
-  </svg>
+          <!-- Neon edge -->
+          <linearGradient id="mxEdge" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#7dd3fc"/>
+            <stop offset="0.5" stop-color="#00eaff"/>
+            <stop offset="1" stop-color="#4fd1c5"/>
+          </linearGradient>
 
-  <div class="hero-content">
-    <h1>
-      <span class="title-manta">Manta</span><span class="title-nex">nex</span>
-    </h1>
+          <filter id="mxGlow">
+            <feGaussianBlur stdDeviation="5" result="b"/>
+            <feMerge>
+              <feMergeNode in="b"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
 
-    <p class="subtitle">
-      Where elite talent meets product-grade engineering standards.<br>
-      Mantanex is built for the systems powering tomorrow’s enterprises.
-    </p>
+          <filter id="mxGlowStrong">
+            <feGaussianBlur stdDeviation="9" result="b2"/>
+            <feMerge>
+              <feMergeNode in="b2"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
 
-    <div class="cta">
-      <a href="#request" class="btn btn-primary">Request Talent</a>
-      <a href="#services" class="btn btn-outline">Explore Services</a>
+        <!-- body group so we can wing-flap -->
+        <g class="wing">
+          <!-- Main body -->
+          <path d="M70 190
+                   C140 70, 250 55, 350 140
+                   C450 55, 560 70, 630 190
+                   C560 170, 460 180, 390 220
+                   C370 230, 360 245, 350 260
+                   C340 245, 330 230, 310 220
+                   C240 180, 140 170, 70 190Z"
+                fill="url(#mxMetal)" opacity="1"/>
+
+          <!-- sheen plate -->
+          <path d="M120 185
+                   C185 95, 265 92, 350 155
+                   C435 92, 515 95, 580 185
+                   C510 176, 445 187, 395 215
+                   C375 226, 362 238, 350 252
+                   C338 238, 325 226, 305 215
+                   C255 187, 190 176, 120 185Z"
+                fill="url(#mxSheen)" opacity=".9"/>
+
+          <!-- Tech panel lines -->
+          <path d="M160 190 C230 120, 285 118, 350 160"
+                fill="none" stroke="rgba(125,211,252,.18)" stroke-width="2"/>
+          <path d="M540 190 C470 120, 415 118, 350 160"
+                fill="none" stroke="rgba(125,211,252,.18)" stroke-width="2"/>
+
+          <!-- Neon edge outline -->
+          <path class="edge"
+                d="M70 190
+                   C140 70, 250 55, 350 140
+                   C450 55, 560 70, 630 190"
+                fill="none" stroke="url(#mxEdge)" stroke-width="4"/>
+
+          <!-- Tail / stabilizer -->
+          <path d="M350 260
+                   C345 275, 330 292, 305 298
+                   C330 302, 348 308, 350 316
+                   C352 308, 370 302, 395 298
+                   C370 292, 355 275, 350 260Z"
+                fill="rgba(230,247,255,.25)"/>
+
+          <!-- Energy core -->
+          <circle class="core" cx="350" cy="155" r="6" fill="#00eaff"/>
+          <circle class="core" cx="350" cy="155" r="2.7" fill="#e6f7ff"/>
+        </g>
+      </svg>
     </div>
-  </div>
-</section>
 
-<!-- SERVICES -->
-<section id="services">
-  <h2>Services</h2>
-  <div class="card">
-    Elite IT staffing across cloud, data, AI, cybersecurity, and enterprise platforms.
-  </div>
-</section>
+    <!-- Center content -->
+    <div class="content">
+      <h1 aria-label="Mantanex">
+        <span class="title-manta">Manta</span><span class="title-nex">nex</span>
+      </h1>
 
-<!-- REQUEST -->
-<section id="request">
-  <h2>Request Talent</h2>
-  <div class="card">
-    Contact Mantanex to discuss your talent needs.<br>
-    Response within one business day.
-  </div>
-</section>
+      <p class="subtitle">
+        Where elite talent meets product-grade engineering standards.<br>
+        Mantanex is built for the systems powering tomorrow’s enterprises.
+      </p>
 
+      <div class="cta">
+        <a class="btn primary" href="index.html#contact">Request Talent</a>
+        <a class="btn ghost" href="index.html#services">Explore Services</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // === Water particles (fast + lightweight) ===
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d', { alpha: true });
+
+    function fit(){
+      canvas.width = Math.floor(window.innerWidth * devicePixelRatio);
+      canvas.height = Math.floor(window.innerHeight * devicePixelRatio);
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
+      ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+    }
+    window.addEventListener('resize', fit);
+    fit();
+
+    const N = Math.min(90, Math.floor(window.innerWidth / 14));
+    const particles = Array.from({length:N}).map(() => ({
+      x: Math.random()*window.innerWidth,
+      y: window.innerHeight + Math.random()*window.innerHeight,
+      r: 1 + Math.random()*1.6,
+      s: 0.35 + Math.random()*0.9,
+      a: 0.10 + Math.random()*0.25
+    }));
+
+    function tick(){
+      ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+
+      for(const p of particles){
+        p.y -= p.s;
+        p.x += Math.sin((p.y + p.x) * 0.004) * 0.18;
+
+        if(p.y < -20){
+          p.y = window.innerHeight + 20;
+          p.x = Math.random()*window.innerWidth;
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+        ctx.fillStyle = `rgba(125,211,252,${p.a})`;
+        ctx.fill();
+      }
+
+      requestAnimationFrame(tick);
+    }
+    tick();
+  </script>
 </body>
 </html>
