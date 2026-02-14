@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mantanex — Precision IT Staffing</title>
 
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -15,44 +14,112 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: radial-gradient(circle at center, #052c38 0%, #031522 45%, #010814 100%);
+    html, body {
+      height: 100%;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #020617;
       color: #e6f7ff;
       overflow-x: hidden;
+    }
+
+    /* ================= NAVBAR ================= */
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(126,249,255,0.15);
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #7ef9ff;
+      text-decoration: none;
+      font-size: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: #cfefff;
+      text-decoration: none;
+      font-size: 14px;
+      opacity: 0.85;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      color: #7ef9ff;
+    }
+
+    /* ================= TRON GRID ================= */
+
+    .tron-grid {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,234,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,234,255,0.08) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(circle at center, black 30%, transparent 75%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ================= PARTICLES ================= */
+
+    #particles {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
     }
 
     /* ================= HERO ================= */
 
     .hero {
-      min-height: 100vh;
+      position: relative;
+      z-index: 2;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 40px 20px;
+      padding: 120px 20px 40px;
+      background:
+        radial-gradient(circle at center, #052c38 0%, #031522 45%, #010814 100%);
     }
 
     .hero-inner {
       max-width: 900px;
     }
 
-    /* ================= MANTA ================= */
-
-    .manta-wrapper {
-      margin-bottom: 30px;
-      perspective: 800px;
-    }
+    /* ================= AI MANTA ================= */
 
     .manta-ai {
-      width: 180px;
-      filter: drop-shadow(0 0 30px rgba(0, 234, 255, 0.45));
-      animation: mantaFloat 6s ease-in-out infinite;
+      width: 220px;
+      margin-bottom: 28px;
+      filter: drop-shadow(0 0 35px rgba(0,234,255,0.55));
+      animation: swim 12s ease-in-out infinite;
     }
 
-    .manta-body {
-      fill: url(#mantaMetal);
-      filter: url(#neonGlow);
+    @keyframes swim {
+      0%   { transform: translateX(-40px) translateY(0); }
+      50%  { transform: translateX(40px) translateY(-12px); }
+      100% { transform: translateX(-40px) translateY(0); }
     }
 
     .manta-core {
@@ -60,20 +127,15 @@
       animation: pulse 2s infinite ease-in-out;
     }
 
-    @keyframes mantaFloat {
-      0%, 100% { transform: translateY(0px) rotateX(0deg); }
-      50% { transform: translateY(-12px) rotateX(8deg); }
-    }
-
     @keyframes pulse {
-      0%, 100% { r: 5; opacity: 0.7; }
-      50% { r: 8; opacity: 1; }
+      0%,100% { r: 5; opacity: .7; }
+      50% { r: 9; opacity: 1; }
     }
 
     /* ================= TEXT ================= */
 
     h1 {
-      font-size: clamp(48px, 7vw, 84px);
+      font-size: clamp(52px, 7vw, 88px);
       font-weight: 800;
       letter-spacing: -1px;
       background: linear-gradient(90deg, #7ef9ff, #00eaff, #5b9dff);
@@ -102,23 +164,23 @@
     .btn-primary {
       background: linear-gradient(90deg, #00eaff, #5b9dff);
       color: #001018;
-      padding: 14px 26px;
+      padding: 14px 28px;
       border-radius: 10px;
       font-weight: 600;
       text-decoration: none;
       transition: all 0.25s ease;
-      box-shadow: 0 0 25px rgba(0, 234, 255, 0.35);
+      box-shadow: 0 0 25px rgba(0,234,255,0.35);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 40px rgba(0, 234, 255, 0.6);
+      box-shadow: 0 0 40px rgba(0,234,255,0.65);
     }
 
     .btn-secondary {
-      border: 1px solid rgba(126, 249, 255, 0.4);
+      border: 1px solid rgba(126,249,255,0.4);
       color: #cfefff;
-      padding: 14px 26px;
+      padding: 14px 28px;
       border-radius: 10px;
       font-weight: 500;
       text-decoration: none;
@@ -128,110 +190,102 @@
 
     .btn-secondary:hover {
       border-color: #7ef9ff;
-      box-shadow: 0 0 25px rgba(126, 249, 255, 0.35);
-    }
-
-    /* ================= SECTIONS ================= */
-
-    section {
-      padding: 80px 20px;
-      max-width: 1100px;
-      margin: auto;
-      text-align: center;
-    }
-
-    section h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(126,249,255,0.15);
-      border-radius: 14px;
-      padding: 30px;
-      margin-top: 20px;
-    }
-
-    /* smooth scroll */
-    html {
-      scroll-behavior: smooth;
+      box-shadow: 0 0 25px rgba(126,249,255,0.35);
     }
   </style>
 </head>
 
 <body>
 
-  <!-- ================= HERO ================= -->
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="/" class="nav-logo">Mantanex</a>
+    <div class="nav-links">
+      <a href="/">Services</a>
+      <a href="/">Talent</a>
+      <a href="/">Contact</a>
+    </div>
+  </nav>
 
+  <!-- TRON GRID -->
+  <div class="tron-grid"></div>
+
+  <!-- PARTICLES -->
+  <canvas id="particles"></canvas>
+
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
 
-      <!-- Manta -->
-      <div class="manta-wrapper">
-        <svg class="manta-ai" viewBox="0 0 400 240">
+      <!-- AI MANTA -->
+      <svg class="manta-ai" viewBox="0 0 400 240">
+        <defs>
+          <linearGradient id="mantaMetal" x1="0" x2="1">
+            <stop offset="0%" stop-color="#7ef9ff"/>
+            <stop offset="50%" stop-color="#00eaff"/>
+            <stop offset="100%" stop-color="#5b9dff"/>
+          </linearGradient>
+        </defs>
 
-          <defs>
-            <linearGradient id="mantaMetal" x1="0" x2="1">
-              <stop offset="0%" stop-color="#7ef9ff"/>
-              <stop offset="50%" stop-color="#00eaff"/>
-              <stop offset="100%" stop-color="#5b9dff"/>
-            </linearGradient>
-
-            <filter id="neonGlow">
-              <feGaussianBlur stdDeviation="5" result="blur"/>
-              <feMerge>
-                <feMergeNode in="blur"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
-          </defs>
-
-          <path
-            class="manta-body"
-            d="M40 140
-               Q200 20 360 140
-               Q260 120 200 170
-               Q140 120 40 140Z"
-          />
-
-          <circle class="manta-core" cx="200" cy="120" r="6" />
-        </svg>
-      </div>
+        <path
+          fill="url(#mantaMetal)"
+          d="M40 140 Q200 20 360 140 Q260 120 200 170 Q140 120 40 140Z"
+        />
+        <circle class="manta-core" cx="200" cy="120" r="6" />
+      </svg>
 
       <h1>Mantanex</h1>
 
       <p class="subtitle">
-        Precision IT staffing powered by the focus, speed, and depth of the Manta.
-        Built for enterprise teams that demand signal over noise.
+        Where elite talent meets product-grade engineering standards.<br>
+        Mantanex is built for the systems powering tomorrow’s enterprises.
       </p>
 
       <div class="cta-row">
-        <a href="#contact" class="btn-primary">Request Talent</a>
-        <a href="#services" class="btn-secondary">Explore Services</a>
+        <a href="/" class="btn-primary">Request Talent</a>
+        <a href="/" class="btn-secondary">Explore Services</a>
       </div>
 
     </div>
   </section>
 
-  <!-- ================= SERVICES ================= -->
+  <!-- PARTICLE SCRIPT -->
+  <script>
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
 
-  <section id="services">
-    <h2>Services</h2>
-    <div class="card">
-      Elite IT staffing across cloud, data, AI, cybersecurity, and enterprise platforms.
-    </div>
-  </section>
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
 
-  <!-- ================= CONTACT ================= -->
+    const particles = Array.from({length: 60}).map(() => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2 + 1,
+      s: Math.random() * 0.4 + 0.2
+    }));
 
-  <section id="contact">
-    <h2>Request Talent</h2>
-    <div class="card">
-      Email: <strong>anilclaws@gmail.com</strong><br><br>
-      Mantanex will respond within one business day.
-    </div>
-  </section>
+    function animate() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+
+      particles.forEach(p => {
+        p.y -= p.s;
+        if (p.y < 0) p.y = canvas.height;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(126,249,255,0.6)";
+        ctx.fill();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
 
 </body>
 </html>
