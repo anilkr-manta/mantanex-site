@@ -1,168 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mantanex — The Power of Manta</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mantanex</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --deep:#020617;
-  --ocean:#041a2b;
-  --aqua:#00e5ff;
-  --aqua-soft:#4cc9f0;
-  --gold:#f5b942;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-*{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',system-ui,sans-serif;}
-body{
-  background: radial-gradient(1200px 600px at 50% 10%, #05263a 0%, #020617 60%, #000 100%);
-  color:#e6f7ff;
-  overflow-x:hidden;
-}
+    body {
+      font-family: "Inter", sans-serif;
+      background: radial-gradient(circle at 50% 40%, #073b4c 0%, #020617 55%, #000 100%);
+      color: #e6faff;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-/* FULLSCREEN HERO */
-.hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  padding:40px 20px;
-}
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+    }
 
-/* animated glow background */
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 30% 40%, rgba(0,229,255,.18), transparent 40%),
-    radial-gradient(circle at 70% 60%, rgba(76,201,240,.14), transparent 45%);
-  animation: floatGlow 8s ease-in-out infinite alternate;
-}
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(0, 234, 255, 0.15), transparent 40%),
+        radial-gradient(circle at 70% 80%, rgba(91, 157, 255, 0.15), transparent 40%);
+      pointer-events: none;
+    }
 
-@keyframes floatGlow{
-  from{transform:scale(1) translateY(0);}
-  to{transform:scale(1.08) translateY(-20px);}
-}
+    .hero-content {
+      max-width: 900px;
+      position: relative;
+      z-index: 2;
+    }
 
-.hero-inner{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  max-width:1100px;
-}
+    /* MANTA WRAPPER */
+    .manta-wrapper {
+      margin-bottom: 30px;
+      perspective: 800px;
+    }
 
-/* MANTA MARK */
-.manta{
-  width:220px;
-  margin:0 auto 28px;
-  filter: drop-shadow(0 0 30px rgba(0,229,255,.35));
-  animation: mantaFloat 5s ease-in-out infinite;
-}
+    .manta-ai {
+      width: 190px;
+      filter: drop-shadow(0 0 30px rgba(0, 234, 255, 0.45));
+      animation: mantaSwim 6s ease-in-out infinite;
+    }
 
-@keyframes mantaFloat{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-14px);}
-}
+    .manta-body {
+      filter: url(#neonGlow);
+    }
 
-/* TITLE */
-h1{
-  font-size: clamp(44px, 6vw, 86px);
-  font-weight:900;
-  letter-spacing:-.03em;
-  background: linear-gradient(90deg,#e6f7ff,#00e5ff,#4cc9f0);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  margin-bottom:18px;
-}
+    .manta-core {
+      fill: #7ef9ff;
+      filter: drop-shadow(0 0 10px #00eaff);
+      animation: corePulse 2.4s ease-in-out infinite;
+    }
 
-.tag{
-  font-size: clamp(16px, 2vw, 22px);
-  color:#9fdfff;
-  line-height:1.6;
-  max-width:760px;
-  margin:0 auto 34px;
-}
+    /* TITLE */
+    .brand-title {
+      font-size: clamp(48px, 7vw, 84px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(90deg, #7ef9ff, #00eaff, #5b9dff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 18px;
+    }
 
-/* BUTTONS */
-.cta-row{
-  display:flex;
-  gap:16px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
+    .tagline {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #b6e6f2;
+      max-width: 640px;
+      margin: 0 auto 36px;
+    }
 
-.btn{
-  padding:14px 22px;
-  border-radius:14px;
-  font-weight:800;
-  text-decoration:none;
-  font-size:15px;
-  transition:.25s ease;
-}
+    /* BUTTONS */
+    .cta-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
-.btn.primary{
-  background:linear-gradient(135deg,var(--aqua),var(--aqua-soft));
-  color:#001018;
-  box-shadow:0 10px 30px rgba(0,229,255,.35);
-}
+    .btn-primary {
+      background: linear-gradient(90deg, #00eaff, #5b9dff);
+      color: #001018;
+      padding: 14px 26px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(0, 234, 255, 0.35);
+      transition: all 0.25s ease;
+    }
 
-.btn.primary:hover{
-  transform:translateY(-2px) scale(1.03);
-}
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(0, 234, 255, 0.5);
+    }
 
-.btn.ghost{
-  border:1px solid rgba(255,255,255,.18);
-  color:#dff7ff;
-  backdrop-filter:blur(6px);
-}
+    .btn-secondary {
+      border: 1px solid rgba(126, 249, 255, 0.35);
+      color: #dffcff;
+      padding: 14px 26px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      backdrop-filter: blur(6px);
+      transition: all 0.25s ease;
+    }
 
-.btn.ghost:hover{
-  border-color:var(--aqua);
-  color:#fff;
-}
+    .btn-secondary:hover {
+      border-color: #00eaff;
+      box-shadow: 0 0 20px rgba(0, 234, 255, 0.25);
+    }
 
-/* subtle enterprise trust bar */
-.trust{
-  margin-top:60px;
-  font-size:13px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:#6aaec7;
-}
+    /* ANIMATIONS */
+    @keyframes mantaSwim {
+      0%, 100% {
+        transform: translateY(0px) rotateX(0deg);
+      }
+      50% {
+        transform: translateY(-10px) rotateX(8deg);
+      }
+    }
 
-</style>
+    @keyframes corePulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.9;
+      }
+      50% {
+        transform: scale(1.6);
+        opacity: 1;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <section class="hero">
+    <div class="hero-content">
 
-<section class="hero">
-  <div class="hero-inner">
+      <!-- FUTURISTIC AI MANTA -->
+      <div class="manta-wrapper">
+        <svg class="manta-ai" viewBox="0 0 400 240">
+          <defs>
+            <linearGradient id="mantaMetal" x1="0" x2="1">
+              <stop offset="0%" stop-color="#7ef9ff"/>
+              <stop offset="50%" stop-color="#00eaff"/>
+              <stop offset="100%" stop-color="#5b9dff"/>
+            </linearGradient>
 
-    <!-- YOUR MANTA MARK -->
-    <img class="manta" src="logo.png" alt="Mantanex Manta">
+            <filter id="neonGlow">
+              <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
 
-    <h1>Mantanex</h1>
+          <path
+            class="manta-body"
+            d="M40 140
+               Q200 20 360 140
+               Q260 120 200 170
+               Q140 120 40 140Z"
+            fill="url(#mantaMetal)"
+          />
 
-    <p class="tag">
-      Precision IT staffing powered by the focus, speed, and depth of the Manta.
-      Built for enterprise teams that demand signal over noise.
-    </p>
+          <circle class="manta-core" cx="200" cy="120" r="6"/>
+        </svg>
+      </div>
 
-    <div class="cta-row">
-      <a class="btn primary" href="index.html#contact">Request Talent</a>
-      <a class="btn ghost" href="index.html#services">Explore Services</a>
+      <h1 class="brand-title">Mantanex</h1>
+
+      <p class="tagline">
+        Precision IT staffing powered by the focus, speed, and depth of the Manta.
+        Built for enterprise teams that demand signal over noise.
+      </p>
+
+      <div class="cta-group">
+        <a href="#" class="btn-primary">Request Talent</a>
+        <a href="#" class="btn-secondary">Explore Services</a>
+      </div>
+
     </div>
-
-    <div class="trust">
-      ENTERPRISE • CLOUD • AI • SECURITY
-    </div>
-
-  </div>
-</section>
-
+  </section>
 </body>
 </html>
