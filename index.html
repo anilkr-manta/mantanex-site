@@ -28,11 +28,12 @@
     html{scroll-behavior:smooth;}
     body{background:var(--bg);color:var(--text);}
     a{color:inherit}
-
-    .wrap{max-width:1180px;margin:0 auto;padding:0 56px;}
     section{scroll-margin-top:90px;}
 
-    /* NAV (simple, professional; logo never hidden) */
+    /* Make container padding responsive */
+    .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(14px, 3vw, 56px);}
+
+    /* NAV */
     nav{
       position:sticky;top:0;z-index:1000;
       background:rgba(255,255,255,.92);
@@ -43,48 +44,55 @@
       display:flex;align-items:center;justify-content:space-between;
       padding:14px 0;
       gap:18px;
+      position:relative; /* for mobile dropdown positioning */
     }
+
     .brand{
       display:flex;align-items:center;gap:12px;text-decoration:none;
       min-width:220px;
     }
     .brand img{height:34px;width:auto;display:block}
-    /* Mantanex split style (Manta = organic/ocean, nex = next-gen/engineered) */
-.brandText{
-  font-weight:900;
-  font-size:18px;
-  letter-spacing:-.02em;
-  display:inline-flex;
-  align-items:baseline;
-  gap:0;
-}
 
-.brandText .manta{
-  background:linear-gradient(90deg,#7dd3fc,#38bdf8,#22d3ee);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
+    /* Mantanex split style */
+    .brandText{
+      font-weight:900;
+      font-size:18px;
+      letter-spacing:-.02em;
+      display:inline-flex;
+      align-items:baseline;
+      gap:0;
+    }
+    .brandText .manta{
+      background:linear-gradient(90deg,#7dd3fc,#38bdf8,#22d3ee);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .brandText .nex{
+      color:#0b0c0f;
+      margin-left:2px;
+      position:relative;
+    }
+    .brandText .nex::after{
+      content:"";
+      position:absolute;
+      left:0;right:0;bottom:-6px;
+      height:2px;
+      background:linear-gradient(90deg,transparent,#1a73e8,transparent);
+      opacity:.55;
+    }
 
-.brandText .nex{
-  color:#0b0c0f;
-  margin-left:2px;
-  position:relative;
-}
-
-.brandText .nex::after{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:-6px;
-  height:2px;
-  background:linear-gradient(90deg,transparent,#1a73e8,transparent);
-  opacity:.55;
-}
+    .navRight{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      justify-content:flex-end;
+      flex:1;
+    }
 
     .navLinks{
-      display:flex;align-items:center;gap:18px;list-style:none;flex-wrap:wrap;
+      display:flex;align-items:center;gap:18px;list-style:none;
       justify-content:flex-end;
+      flex-wrap:nowrap;
     }
     .navLinks a{
       text-decoration:none;
@@ -93,10 +101,14 @@
       color:#2b3240;
       padding:8px 10px;
       border-radius:10px;
-      transition: .15s ease;
+      transition:.15s ease;
+      white-space:nowrap;
+      display:block;
     }
     .navLinks a:hover{background:var(--bg-soft);}
+
     .navCtas{display:flex;align-items:center;gap:10px;margin-left:10px;flex:0 0 auto;}
+
     .btn{
       display:inline-flex;align-items:center;justify-content:center;gap:10px;
       padding:10px 14px;border-radius:12px;font-weight:800;
@@ -109,6 +121,25 @@
     .btn.primary:hover{background:var(--brand-dark);}
     .btn.ghost{border-color:var(--line);background:#fff;color:#0b0c0f;}
     .btn.ghost:hover{background:var(--bg-soft);}
+
+    /* CSS-only hamburger */
+    .navToggle{display:none;}
+    .hamburger{
+      display:none;
+      cursor:pointer;
+      padding:10px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#fff;
+      user-select:none;
+    }
+    .hamburger span{
+      display:block;
+      width:22px;height:2px;
+      background:#0b0c0f;
+      margin:5px 0;
+      border-radius:2px;
+    }
 
     /* HERO */
     .hero{
@@ -278,15 +309,46 @@
       border-top:1px solid var(--line);background:#fff;
     }
 
+    /* Responsive */
     @media(max-width: 980px){
-      .wrap{padding:0 18px;}
-      .brand{min-width:auto;}
       .hero h1{font-size:40px;}
       .heroGrid{grid-template-columns:1fr;}
       .grid{grid-template-columns:1fr;}
       .contactGrid{grid-template-columns:1fr;}
       .formGrid{grid-template-columns:1fr;}
+
+      /* MOBILE NAV */
       .navCtas{display:none;}
+      .hamburger{display:block;}
+
+      .navRight{
+        position:absolute;
+        left:clamp(14px, 3vw, 18px);
+        right:clamp(14px, 3vw, 18px);
+        top:62px;
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+        gap:10px;
+        padding:12px;
+        background:#fff;
+        border:1px solid var(--line);
+        border-radius:var(--radius);
+        box-shadow: 0 18px 40px rgba(0,0,0,.10);
+        z-index:1001;
+      }
+
+      .navLinks{
+        flex-direction:column;
+        align-items:stretch;
+        gap:6px;
+      }
+      .navLinks a{
+        padding:14px 12px;
+        font-size:15px;
+      }
+
+      .navToggle:checked ~ .navRight{display:flex;}
     }
   </style>
 </head>
@@ -294,20 +356,25 @@
 <body>
 
 <nav>
- <a class="brand" href="mantanex.html" aria-label="Mantanex Home">
-  <img src="logo.png" alt="Mantanex logo">
-  <span class="brandText">
-    <span class="manta">Manta</span><span class="nex">nex</span>
-  </span>
-</a>
+  <div class="wrap navRow">
 
+    <a class="brand" href="mantanex.html" aria-label="Mantanex Home">
+      <img src="logo.png" alt="Mantanex logo">
+      <span class="brandText">
+        <span class="manta">Manta</span><span class="nex">nex</span>
+      </span>
+    </a>
 
+    <!-- CSS-only toggle -->
+    <input id="navToggle" class="navToggle" type="checkbox">
+    <label for="navToggle" class="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </label>
 
-
-    <div style="display:flex;align-items:center;gap:12px;justify-content:flex-end;flex:1;">
+    <div class="navRight">
       <ul class="navLinks" aria-label="Primary navigation">
         <li><a href="#clients">For Clients</a></li>
-        <li><a href="#candidates">For Job Seekers</a></li>
+        <li><a href="#candidates">Careers</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#expertise">Expertise</a></li>
         <li><a href="#partners">Partners</a></li>
@@ -321,6 +388,7 @@
         <a class="btn primary" href="#contact">Request talent</a>
       </div>
     </div>
+
   </div>
 </nav>
 
@@ -674,11 +742,3 @@ ${message}
 
 </body>
 </html>
-
-
-
-
-
-
-
-
