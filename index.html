@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mantanex — IT Staffing & Enterprise Consulting</title>
+  <title>Mantanex — IT Staffing, Consulting & E-Commerce</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,10 +16,8 @@
       --line:#e9edf3;
       --bg:#ffffff;
       --bg-soft:#f7f9fc;
-
       --brand:#1a73e8;
       --brand-dark:#145ec0;
-
       --radius:16px;
       --shadow: 0 10px 30px rgba(16,24,40,.08);
     }
@@ -27,127 +25,76 @@
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
     html{scroll-behavior:smooth;}
     body{background:var(--bg);color:var(--text);}
-    a{color:inherit}
+    a{color:inherit;}
     section{scroll-margin-top:90px;}
 
-    /* Make container padding responsive */
-    .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(14px, 3vw, 56px);}
+    .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(14px,3vw,56px);}
 
     /* NAV */
     nav{
       position:sticky;top:0;z-index:1000;
       background:rgba(255,255,255,.92);
-      backdrop-filter: blur(10px);
+      backdrop-filter:blur(10px);
       border-bottom:1px solid var(--line);
     }
     .navRow{
       display:flex;align-items:center;justify-content:space-between;
-      padding:14px 0;
-      gap:18px;
-      position:relative; /* for mobile dropdown positioning */
+      padding:14px 0;gap:18px;position:relative;
     }
-
-    .brand{
-      display:flex;align-items:center;gap:12px;text-decoration:none;
-      min-width:220px;
-    }
-    .brand img{height:34px;width:auto;display:block}
-
-    /* Mantanex split style */
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:220px;}
+    .brand img{height:34px;width:auto;display:block;}
     .brandText{
-      font-weight:900;
-      font-size:18px;
-      letter-spacing:-.02em;
-      display:inline-flex;
-      align-items:baseline;
-      gap:0;
+      font-weight:900;font-size:18px;letter-spacing:-.02em;
+      display:inline-flex;align-items:baseline;
     }
     .brandText .manta{
       background:linear-gradient(90deg,#7dd3fc,#38bdf8,#22d3ee);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
     }
-    .brandText .nex{
-      color:#0b0c0f;
-      margin-left:2px;
-      position:relative;
-    }
+    .brandText .nex{color:#0b0c0f;margin-left:2px;position:relative;}
     .brandText .nex::after{
-      content:"";
-      position:absolute;
-      left:0;right:0;bottom:-6px;
-      height:2px;
-      background:linear-gradient(90deg,transparent,#1a73e8,transparent);
-      opacity:.55;
+      content:"";position:absolute;left:0;right:0;bottom:-6px;
+      height:2px;background:linear-gradient(90deg,transparent,#1a73e8,transparent);opacity:.55;
     }
 
-    .navRight{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      justify-content:flex-end;
-      flex:1;
-    }
-
-    .navLinks{
-      display:flex;align-items:center;gap:18px;list-style:none;
-      justify-content:flex-end;
-      flex-wrap:nowrap;
-    }
+    .navRight{display:flex;align-items:center;gap:12px;justify-content:flex-end;flex:1;}
+    .navLinks{display:flex;align-items:center;gap:18px;list-style:none;justify-content:flex-end;flex-wrap:nowrap;}
     .navLinks a{
-      text-decoration:none;
-      font-weight:600;
-      font-size:14px;
-      color:#2b3240;
-      padding:8px 10px;
-      border-radius:10px;
-      transition:.15s ease;
-      white-space:nowrap;
-      display:block;
+      text-decoration:none;font-weight:600;font-size:14px;color:#2b3240;
+      padding:8px 10px;border-radius:10px;transition:.15s ease;white-space:nowrap;display:block;
     }
     .navLinks a:hover{background:var(--bg-soft);}
-
     .navCtas{display:flex;align-items:center;gap:10px;margin-left:10px;flex:0 0 auto;}
 
     .btn{
       display:inline-flex;align-items:center;justify-content:center;gap:10px;
       padding:10px 14px;border-radius:12px;font-weight:800;
       text-decoration:none;font-size:14px;line-height:1;
-      border:1px solid transparent;
-      cursor:pointer;
-      white-space:nowrap;
+      border:1px solid transparent;cursor:pointer;white-space:nowrap;
+      transition:.15s ease;
     }
     .btn.primary{background:var(--brand);color:#fff;}
     .btn.primary:hover{background:var(--brand-dark);}
     .btn.ghost{border-color:var(--line);background:#fff;color:#0b0c0f;}
     .btn.ghost:hover{background:var(--bg-soft);}
 
-    /* CSS-only hamburger */
     .navToggle{display:none;}
     .hamburger{
-      display:none;
-      cursor:pointer;
-      padding:10px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:#fff;
-      user-select:none;
+      display:none;cursor:pointer;padding:10px;
+      border-radius:12px;border:1px solid var(--line);background:#fff;user-select:none;
     }
-    .hamburger span{
-      display:block;
-      width:22px;height:2px;
-      background:#0b0c0f;
-      margin:5px 0;
-      border-radius:2px;
-    }
+    .hamburger span{display:block;width:22px;height:2px;background:#0b0c0f;margin:5px 0;border-radius:2px;transition:.2s;}
+    .navToggle:checked ~ .hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .navToggle:checked ~ .hamburger span:nth-child(2){opacity:0;}
+    .navToggle:checked ~ .hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
     /* HERO */
     .hero{
       padding:58px 0 34px;
       background:
-        linear-gradient(180deg, rgba(247,249,252,.85) 0%, rgba(255,255,255,1) 60%),
-        radial-gradient(900px 380px at 18% 0%, rgba(26,115,232,.14), rgba(26,115,232,0) 60%),
-        radial-gradient(900px 380px at 80% 10%, rgba(20,94,192,.10), rgba(20,94,192,0) 60%);
+        linear-gradient(180deg,rgba(247,249,252,.85) 0%,rgba(255,255,255,1) 60%),
+        radial-gradient(900px 380px at 18% 0%,rgba(26,115,232,.14),rgba(26,115,232,0) 60%),
+        radial-gradient(900px 380px at 80% 10%,rgba(20,94,192,.10),rgba(20,94,192,0) 60%);
       border-bottom:1px solid var(--line);
     }
     .kicker{
@@ -157,43 +104,25 @@
       font-weight:800;font-size:12px;
     }
     .hero h1{
-      margin-top:16px;
-      font-size:52px;
-      line-height:1.06;
-      letter-spacing:-.03em;
-      font-weight:900;
-      max-width:980px;
+      margin-top:16px;font-size:52px;line-height:1.06;
+      letter-spacing:-.03em;font-weight:900;max-width:980px;
     }
     .hero p{
-      margin-top:14px;
-      color:var(--muted);
-      font-size:18px;
-      line-height:1.7;
-      max-width:860px;
+      margin-top:14px;color:var(--muted);font-size:18px;line-height:1.7;max-width:860px;
     }
     .heroActions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;}
 
     .heroGrid{
-      margin-top:26px;
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:16px;
-      align-items:stretch;
+      margin-top:26px;display:grid;
+      grid-template-columns:1.2fr .8fr;gap:16px;align-items:stretch;
     }
     .heroCard{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:#fff;
-      box-shadow: var(--shadow);
-      padding:18px;
+      border:1px solid var(--line);border-radius:var(--radius);
+      background:#fff;box-shadow:var(--shadow);padding:18px;
     }
     .heroCard h3{
-      font-size:12px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:#7a8394;
-      font-weight:900;
-      margin-bottom:10px;
+      font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+      color:#7a8394;font-weight:900;margin-bottom:10px;
     }
     .bullets{display:grid;gap:10px;}
     .bullet{display:flex;gap:10px;align-items:flex-start;color:#2b3240;font-size:14px;line-height:1.55;}
@@ -207,11 +136,9 @@
 
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
     .card{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:#fff;
-      padding:20px;
-      box-shadow: 0 8px 20px rgba(16,24,40,.05);
+      border:1px solid var(--line);border-radius:var(--radius);
+      background:#fff;padding:20px;
+      box-shadow:0 8px 20px rgba(16,24,40,.05);
     }
     .card h4{font-size:16px;margin-bottom:8px;letter-spacing:-.01em;}
     .card p{color:var(--muted);font-size:14px;line-height:1.7;}
@@ -219,44 +146,29 @@
 
     /* LOGOS */
     .logosBand{
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
-      background:#fff;
-      padding:26px 0;
+      border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+      background:#fff;padding:26px 0;
     }
     .logosTitle{
       font-size:12px;letter-spacing:.14em;text-transform:uppercase;
       color:#7a8394;font-weight:900;margin-bottom:14px;text-align:center;
     }
-    .logos{
-      display:flex;justify-content:center;align-items:center;gap:42px;
-      flex-wrap:wrap;
-    }
-    .logos img{
-      height:26px;width:auto;max-width:140px;
-      opacity:.8;filter:grayscale(100%);
-      transition: .2s ease;
-    }
+    .logos{display:flex;justify-content:center;align-items:center;gap:42px;flex-wrap:wrap;}
+    .logos img{height:26px;width:auto;max-width:140px;opacity:.8;filter:grayscale(100%);transition:.2s ease;}
     .logos img:hover{opacity:1;filter:none;}
 
     /* PARTNERS LIST */
     .pillList{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;}
     .pill{
-      border:1px solid var(--line);
-      background:#fff;
-      border-radius:999px;
-      padding:9px 12px;
-      font-weight:800;
-      font-size:12px;
-      color:#2b3240;
+      border:1px solid var(--line);background:#fff;border-radius:999px;
+      padding:9px 12px;font-weight:800;font-size:12px;color:#2b3240;
     }
 
     /* CONTACT */
     .contact{background:var(--bg-soft);border-top:1px solid var(--line);}
     .contactGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px;}
     .info{
-      background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-      padding:18px;
+      background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;
     }
     .info b{display:block;margin-bottom:6px;}
     .info a{color:var(--brand);text-decoration:none;font-weight:800;}
@@ -264,42 +176,27 @@
     .fine{color:#7a8394;font-size:13px;line-height:1.6;margin-top:10px;}
 
     .mapWrap{
-      margin-top:16px;
-      grid-column: 1 / -1;
-      width:100%;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      overflow:hidden;
-      background:#fff;
-      box-shadow: 0 8px 20px rgba(16,24,40,.05);
+      margin-top:16px;grid-column:1/-1;width:100%;
+      border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+      background:#fff;box-shadow:0 8px 20px rgba(16,24,40,.05);
     }
     .mapWrap iframe{display:block;width:100%;height:320px;border:0;}
 
-    /* SIMPLE CONTACT FORM (mailto) */
     .formWrap{
-      margin-top:16px;
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:18px;
-      box-shadow: 0 8px 20px rgba(16,24,40,.05);
+      margin-top:16px;background:#fff;border:1px solid var(--line);
+      border-radius:var(--radius);padding:18px;
+      box-shadow:0 8px 20px rgba(16,24,40,.05);
     }
     .formGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px;}
     .formGrid .full{grid-column:1/-1;}
     label{display:block;font-weight:800;font-size:13px;color:#2b3240;margin-bottom:8px;}
-    input, select, textarea{
-      width:100%;
-      padding:12px 12px;
-      border:1px solid #d9dee7;
-      border-radius:12px;
-      background:#fff;
-      font-size:14px;
-      outline:none;
+    input,select,textarea{
+      width:100%;padding:12px;border:1px solid #d9dee7;border-radius:12px;
+      background:#fff;font-size:14px;font-family:'Inter',sans-serif;outline:none;color:var(--text);
     }
     textarea{min-height:140px;resize:vertical;}
-    input:focus, select:focus, textarea:focus{
-      border-color: rgba(26,115,232,.55);
-      box-shadow: 0 0 0 4px rgba(26,115,232,.12);
+    input:focus,select:focus,textarea:focus{
+      border-color:rgba(26,115,232,.55);box-shadow:0 0 0 4px rgba(26,115,232,.12);
     }
     .formActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center;}
     .hint{color:#7a8394;font-size:13px;line-height:1.6;}
@@ -310,44 +207,22 @@
     }
 
     /* Responsive */
-    @media(max-width: 980px){
+    @media(max-width:980px){
       .hero h1{font-size:40px;}
       .heroGrid{grid-template-columns:1fr;}
       .grid{grid-template-columns:1fr;}
       .contactGrid{grid-template-columns:1fr;}
       .formGrid{grid-template-columns:1fr;}
-
-      /* MOBILE NAV */
       .navCtas{display:none;}
       .hamburger{display:block;}
-
       .navRight{
-        position:absolute;
-        left:clamp(14px, 3vw, 18px);
-        right:clamp(14px, 3vw, 18px);
-        top:62px;
-        display:none;
-        flex-direction:column;
-        align-items:stretch;
-        gap:10px;
-        padding:12px;
-        background:#fff;
-        border:1px solid var(--line);
-        border-radius:var(--radius);
-        box-shadow: 0 18px 40px rgba(0,0,0,.10);
-        z-index:1001;
+        position:absolute;left:clamp(14px,3vw,18px);right:clamp(14px,3vw,18px);
+        top:62px;display:none;flex-direction:column;align-items:stretch;gap:10px;
+        padding:12px;background:#fff;border:1px solid var(--line);
+        border-radius:var(--radius);box-shadow:0 18px 40px rgba(0,0,0,.10);z-index:1001;
       }
-
-      .navLinks{
-        flex-direction:column;
-        align-items:stretch;
-        gap:6px;
-      }
-      .navLinks a{
-        padding:14px 12px;
-        font-size:15px;
-      }
-
+      .navLinks{flex-direction:column;align-items:stretch;gap:6px;}
+      .navLinks a{padding:14px 12px;font-size:15px;}
       .navToggle:checked ~ .navRight{display:flex;}
     }
   </style>
@@ -357,15 +232,13 @@
 
 <nav>
   <div class="wrap navRow">
-
-    <a class="brand" href="mantanex.html" aria-label="Mantanex Home">
+    <a class="brand" href="/" aria-label="Mantanex Home">
       <img src="logo.png" alt="Mantanex logo">
       <span class="brandText">
         <span class="manta">Manta</span><span class="nex">nex</span>
       </span>
     </a>
 
-    <!-- CSS-only toggle -->
     <input id="navToggle" class="navToggle" type="checkbox">
     <label for="navToggle" class="hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -382,27 +255,24 @@
         <li><a href="#contact">Contact</a></li>
         <li><a href="https://app.gusto.com/login" target="_blank" rel="noopener noreferrer">Payroll</a></li>
       </ul>
-
       <div class="navCtas">
         <a class="btn ghost" href="#candidates">View roles</a>
         <a class="btn primary" href="#contact">Request talent</a>
       </div>
     </div>
-
   </div>
 </nav>
 
-<div id="top"></div>
-
 <header class="hero">
   <div class="wrap">
-    <div class="kicker">IT staffing • enterprise consulting • delivery support</div>
+    <div class="kicker">IT staffing • enterprise consulting • e-commerce • delivery support</div>
 
     <h1>Specialized IT talent for enterprise teams.</h1>
 
     <p>
       Mantanex supports clients with contract staffing, contract-to-hire, and delivery teams across cloud, DevOps,
-      software engineering, data, and security. We focus on quality screening, fast turnaround, and professional consultant care.
+      software engineering, data, and security — as well as e-commerce operations for businesses buying and selling online.
+      We focus on quality screening, fast turnaround, and professional consultant care.
     </p>
 
     <div class="heroActions">
@@ -417,6 +287,7 @@
           <div class="bullet"><span class="dot"></span><span><b>Hard-to-find skill sets</b> with structured screening and role alignment.</span></div>
           <div class="bullet"><span class="dot"></span><span><b>Transparent communication</b> from kickoff through placement and handoff.</span></div>
           <div class="bullet"><span class="dot"></span><span><b>Enterprise-ready delivery</b> with documentation, reliability mindset, and accountability.</span></div>
+          <div class="bullet"><span class="dot"></span><span><b>E-commerce operations</b> for businesses sourcing and selling across online channels.</span></div>
         </div>
       </div>
 
@@ -426,6 +297,7 @@
           <div class="bullet"><span class="dot"></span><span><b>Contract</b> staffing for immediate delivery needs</span></div>
           <div class="bullet"><span class="dot"></span><span><b>Contract-to-hire</b> for risk-reduced conversions</span></div>
           <div class="bullet"><span class="dot"></span><span><b>Statement of work</b> for scoped outcomes and milestones</span></div>
+          <div class="bullet"><span class="dot"></span><span><b>E-commerce</b> sourcing and B2B resale support</span></div>
         </div>
         <div class="fine">Fast turnaround when requirements are clear. Nationwide support.</div>
       </div>
@@ -449,14 +321,14 @@
   <div class="sectionHeader">
     <div>
       <h2>Services</h2>
-      <p>Staffing-first, enterprise-aligned. Built to support modern delivery teams with speed, accountability, and clear communication.</p>
+      <p>Staffing-first, enterprise-aligned — with e-commerce capabilities built for businesses operating across online channels.</p>
     </div>
   </div>
 
   <div class="grid">
     <div class="card">
       <h4>IT staffing</h4>
-      <p>Contract staffing and augmentation across enterprise environments—aligned to your stack, delivery model, and timelines.</p>
+      <p>Contract staffing and augmentation across enterprise environments — aligned to your stack, delivery model, and timelines.</p>
       <div class="mini">Models</div>
       <p>Contract • contract-to-hire • direct hire support</p>
     </div>
@@ -469,10 +341,10 @@
     </div>
 
     <div class="card">
-      <h4>Consulting support</h4>
-      <p>Architecture and modernization support across cloud, DevOps, and platform reliability—pragmatic and production-minded.</p>
-      <div class="mini">Focus</div>
-      <p>Modernization • reliability • secure delivery</p>
+      <h4>E-commerce</h4>
+      <p>Procurement, sourcing, and resale support for businesses operating across online marketplaces and B2B channels.</p>
+      <div class="mini">Channels</div>
+      <p>B2B resale • surplus sourcing • marketplace operations</p>
     </div>
   </div>
 </section>
@@ -481,7 +353,7 @@
   <div class="sectionHeader">
     <div>
       <h2>Our expertise</h2>
-      <p>Coverage across key enterprise skill areas—focused on the roles clients struggle to hire quickly and confidently.</p>
+      <p>Coverage across key enterprise skill areas — focused on the roles clients struggle to hire quickly and confidently.</p>
     </div>
   </div>
 
@@ -560,7 +432,7 @@
 
     <div class="card">
       <h4>Tech-forward mindset</h4>
-      <p>Staffing first, with ongoing investment in automation and internal tooling for speed and quality.</p>
+      <p>Staffing first, with ongoing investment in automation, e-commerce operations, and internal tooling for speed and quality.</p>
       <div class="mini">Focus</div>
       <p>Process automation • structured templates • delivery standards</p>
     </div>
@@ -578,7 +450,7 @@
   <div class="grid">
     <div class="card">
       <h4>Fast feedback</h4>
-      <p>Clear next steps and consistent follow-ups—no guessing where you stand.</p>
+      <p>Clear next steps and consistent follow-ups — no guessing where you stand.</p>
     </div>
     <div class="card">
       <h4>Role alignment</h4>
@@ -595,7 +467,7 @@
   <div class="sectionHeader">
     <div>
       <h2>About</h2>
-      <p>Mantanex is building a staffing-led services company with an enterprise delivery standard—reliability, documentation, and strong communication.</p>
+      <p>Mantanex is a staffing-led services company operating across IT staffing, enterprise consulting, and e-commerce — built on reliability, documentation, and strong communication.</p>
     </div>
   </div>
 
@@ -610,7 +482,7 @@
     </div>
     <div class="card">
       <h4>Long-term vision</h4>
-      <p>Staffing today; continuing investment in AI and modern tooling as a tech-forward company.</p>
+      <p>Staffing and e-commerce today — with continuing investment in AI and modern tooling as a tech-forward company.</p>
     </div>
   </div>
 </section>
@@ -620,7 +492,7 @@
     <div class="sectionHeader">
       <div>
         <h2>Contact</h2>
-        <p>Client requests, staffing inquiries, and partnerships. For payroll support, email HR.</p>
+        <p>Client requests, staffing inquiries, e-commerce partnerships, and general questions. For payroll support, email HR.</p>
       </div>
     </div>
 
@@ -628,7 +500,7 @@
       <div class="info">
         <b>Email</b>
         <a href="mailto:contact@mantanex.com">contact@mantanex.com</a>
-        <div class="fine">Best for client requests and staffing inquiries.</div>
+        <div class="fine">Best for client requests, staffing, and e-commerce inquiries.</div>
       </div>
 
       <div class="info">
@@ -679,6 +551,7 @@
             <option value="" selected disabled>Select</option>
             <option>Client request</option>
             <option>Staffing</option>
+            <option>E-commerce inquiry</option>
             <option>Partnership</option>
             <option>Candidate inquiry</option>
             <option>Other</option>
@@ -687,7 +560,7 @@
 
         <div class="full">
           <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Role details, skill requirements, timeline, location, and interview process…" maxlength="2500" required></textarea>
+          <textarea id="message" name="message" placeholder="Role details, skill requirements, timeline, location, e-commerce needs…" maxlength="2500" required></textarea>
         </div>
 
         <div class="full formActions">
@@ -701,43 +574,39 @@
 </section>
 
 <footer>
-  © Mantanex LLC — <a href="mailto:contact@mantanex.com" style="text-decoration:none;color:inherit;">contact@mantanex.com</a> •
+  © Mantanex LLC — IT Staffing, Consulting &amp; E-Commerce &nbsp;•&nbsp;
+  <a href="mailto:contact@mantanex.com" style="text-decoration:none;color:inherit;">contact@mantanex.com</a> •
   <a href="tel:+13527601132" style="text-decoration:none;color:inherit;">+1 (352) 760-1132</a>
 </footer>
 
 <script>
-  (function(){
-    const form = document.getElementById('mxForm');
-    function enc(s){ return encodeURIComponent(s).replace(/%0A/g, "%0D%0A"); }
+(function(){
+  const form = document.getElementById('mxForm');
+  function enc(s){ return encodeURIComponent(s).replace(/%0A/g,'%0D%0A'); }
 
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){ form.reportValidity(); return; }
 
-      if(!form.checkValidity()){
-        form.reportValidity();
-        return;
-      }
+    const name    = form.name.value.trim();
+    const email   = form.email.value.trim();
+    const company = form.company.value.trim();
+    const topic   = form.topic.value;
+    const message = form.message.value.trim();
 
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      const company = form.company.value.trim();
-      const topic = form.topic.value;
-      const message = form.message.value.trim();
-
-      const subject = `[Mantanex] ${topic} — ${name}`;
-      const body =
+    const subject = `[Mantanex] ${topic} — ${name}`;
+    const body =
 `Name: ${name}
 Email: ${email}
-Company: ${company || "-"}
+Company: ${company || '-'}
 Topic: ${topic}
 
 Message:
-${message}
-`;
+${message}`;
 
-      window.location.href = `mailto:support@mantanex.com?subject=${enc(subject)}&body=${enc(body)}`;
-    });
-  })();
+    window.location.href = `mailto:contact@mantanex.com?subject=${enc(subject)}&body=${enc(body)}`;
+  });
+})();
 </script>
 
 </body>
