@@ -3,229 +3,240 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mantanex — IT Staffing, Consulting & E-Commerce</title>
+  <title>Mantanex — Websites &amp; E-Commerce Operations</title>
+  <meta name="description" content="Mantanex LLC builds websites and online stores and runs e-commerce operations for small businesses. Jacksonville, FL.">
+  <meta property="og:title" content="Mantanex — Websites & E-Commerce Operations">
+  <meta property="og:description" content="Websites, online stores, and marketplace operations for small businesses.">
+  <meta property="og:image" content="https://mantanex.com/logo.png">
+  <meta property="og:url" content="https://mantanex.com/">
+  <link rel="icon" type="image/png" href="logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --text:#0b0c0f;
-      --muted:#5b6270;
-      --line:#e9edf3;
-      --bg:#ffffff;
-      --bg-soft:#f7f9fc;
-      --brand:#1a73e8;
-      --brand-dark:#145ec0;
-      --radius:16px;
-      --shadow: 0 10px 30px rgba(16,24,40,.08);
-    }
-
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
-    html{scroll-behavior:smooth;}
-    body{background:var(--bg);color:var(--text);}
-    a{color:inherit;}
-    section{scroll-margin-top:90px;}
-
-    .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(14px,3vw,56px);}
-
-    /* NAV */
-    nav{
-      position:sticky;top:0;z-index:1000;
-      background:rgba(255,255,255,.92);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--line);
-    }
-    .navRow{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:14px 0;gap:18px;position:relative;
-    }
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:220px;}
-    .brand img{height:34px;width:auto;display:block;}
-    .brandText{
-      font-weight:900;font-size:18px;letter-spacing:-.02em;
-      display:inline-flex;align-items:baseline;
-    }
-    .brandText .manta{
-      background:linear-gradient(90deg,#7dd3fc,#38bdf8,#22d3ee);
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-    }
-    .brandText .nex{color:#0b0c0f;margin-left:2px;position:relative;}
-    .brandText .nex::after{
-      content:"";position:absolute;left:0;right:0;bottom:-6px;
-      height:2px;background:linear-gradient(90deg,transparent,#1a73e8,transparent);opacity:.55;
-    }
-
-    .navRight{display:flex;align-items:center;gap:12px;justify-content:flex-end;flex:1;}
-    .navLinks{display:flex;align-items:center;gap:18px;list-style:none;justify-content:flex-end;flex-wrap:nowrap;}
-    .navLinks a{
-      text-decoration:none;font-weight:600;font-size:14px;color:#2b3240;
-      padding:8px 10px;border-radius:10px;transition:.15s ease;white-space:nowrap;display:block;
-    }
-    .navLinks a:hover{background:var(--bg-soft);}
-    .navCtas{display:flex;align-items:center;gap:10px;margin-left:10px;flex:0 0 auto;}
-
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      padding:10px 14px;border-radius:12px;font-weight:800;
-      text-decoration:none;font-size:14px;line-height:1;
-      border:1px solid transparent;cursor:pointer;white-space:nowrap;
-      transition:.15s ease;
-    }
-    .btn.primary{background:var(--brand);color:#fff;}
-    .btn.primary:hover{background:var(--brand-dark);}
-    .btn.ghost{border-color:var(--line);background:#fff;color:#0b0c0f;}
-    .btn.ghost:hover{background:var(--bg-soft);}
-
-    .navToggle{display:none;}
-    .hamburger{
-      display:none;cursor:pointer;padding:10px;
-      border-radius:12px;border:1px solid var(--line);background:#fff;user-select:none;
-    }
-    .hamburger span{display:block;width:22px;height:2px;background:#0b0c0f;margin:5px 0;border-radius:2px;transition:.2s;}
-    .navToggle:checked ~ .hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-    .navToggle:checked ~ .hamburger span:nth-child(2){opacity:0;}
-    .navToggle:checked ~ .hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-
-    /* HERO */
-    .hero{
-      padding:58px 0 34px;
-      background:
-        linear-gradient(180deg,rgba(247,249,252,.85) 0%,rgba(255,255,255,1) 60%),
-        radial-gradient(900px 380px at 18% 0%,rgba(26,115,232,.14),rgba(26,115,232,0) 60%),
-        radial-gradient(900px 380px at 80% 10%,rgba(20,94,192,.10),rgba(20,94,192,0) 60%);
-      border-bottom:1px solid var(--line);
-    }
-    .kicker{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:8px 12px;border:1px solid var(--line);
-      border-radius:999px;background:#fff;color:var(--brand);
-      font-weight:800;font-size:12px;
-    }
-    .hero h1{
-      margin-top:16px;font-size:52px;line-height:1.06;
-      letter-spacing:-.03em;font-weight:900;max-width:980px;
-    }
-    .hero p{
-      margin-top:14px;color:var(--muted);font-size:18px;line-height:1.7;max-width:860px;
-    }
-    .heroActions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;}
-
-    .heroGrid{
-      margin-top:26px;display:grid;
-      grid-template-columns:1.2fr .8fr;gap:16px;align-items:stretch;
-    }
-    .heroCard{
-      border:1px solid var(--line);border-radius:var(--radius);
-      background:#fff;box-shadow:var(--shadow);padding:18px;
-    }
-    .heroCard h3{
-      font-size:12px;letter-spacing:.14em;text-transform:uppercase;
-      color:#7a8394;font-weight:900;margin-bottom:10px;
-    }
-    .bullets{display:grid;gap:10px;}
-    .bullet{display:flex;gap:10px;align-items:flex-start;color:#2b3240;font-size:14px;line-height:1.55;}
-    .dot{height:10px;width:10px;border-radius:50%;background:var(--brand);margin-top:5px;flex:0 0 10px;}
-
-    /* SECTIONS */
-    .section{padding:70px 0;}
-    .sectionHeader{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:22px;}
-    .sectionHeader h2{font-size:36px;letter-spacing:-.02em;}
-    .sectionHeader p{color:var(--muted);max-width:720px;line-height:1.7;}
-
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-    .card{
-      border:1px solid var(--line);border-radius:var(--radius);
-      background:#fff;padding:20px;
-      box-shadow:0 8px 20px rgba(16,24,40,.05);
-    }
-    .card h4{font-size:16px;margin-bottom:8px;letter-spacing:-.01em;}
-    .card p{color:var(--muted);font-size:14px;line-height:1.7;}
-    .mini{margin-top:12px;color:#2b3240;font-weight:900;font-size:12px;letter-spacing:.12em;text-transform:uppercase;}
-
-    /* LOGOS */
-    .logosBand{
-      border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-      background:#fff;padding:26px 0;
-    }
-    .logosTitle{
-      font-size:12px;letter-spacing:.14em;text-transform:uppercase;
-      color:#7a8394;font-weight:900;margin-bottom:14px;text-align:center;
-    }
-    .logos{display:flex;justify-content:center;align-items:center;gap:42px;flex-wrap:wrap;}
-    .logos img{height:26px;width:auto;max-width:140px;opacity:.8;filter:grayscale(100%);transition:.2s ease;}
-    .logos img:hover{opacity:1;filter:none;}
-
-    /* PARTNERS LIST */
-    .pillList{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;}
-    .pill{
-      border:1px solid var(--line);background:#fff;border-radius:999px;
-      padding:9px 12px;font-weight:800;font-size:12px;color:#2b3240;
-    }
-
-    /* CONTACT */
-    .contact{background:var(--bg-soft);border-top:1px solid var(--line);}
-    .contactGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px;}
-    .info{
-      background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;
-    }
-    .info b{display:block;margin-bottom:6px;}
-    .info a{color:var(--brand);text-decoration:none;font-weight:800;}
-    .info a:hover{text-decoration:underline;}
-    .fine{color:#7a8394;font-size:13px;line-height:1.6;margin-top:10px;}
-
-    .mapWrap{
-      margin-top:16px;grid-column:1/-1;width:100%;
-      border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
-      background:#fff;box-shadow:0 8px 20px rgba(16,24,40,.05);
-    }
-    .mapWrap iframe{display:block;width:100%;height:320px;border:0;}
-
-    .formWrap{
-      margin-top:16px;background:#fff;border:1px solid var(--line);
-      border-radius:var(--radius);padding:18px;
-      box-shadow:0 8px 20px rgba(16,24,40,.05);
-    }
-    .formGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px;}
-    .formGrid .full{grid-column:1/-1;}
-    label{display:block;font-weight:800;font-size:13px;color:#2b3240;margin-bottom:8px;}
-    input,select,textarea{
-      width:100%;padding:12px;border:1px solid #d9dee7;border-radius:12px;
-      background:#fff;font-size:14px;font-family:'Inter',sans-serif;outline:none;color:var(--text);
-    }
-    textarea{min-height:140px;resize:vertical;}
-    input:focus,select:focus,textarea:focus{
-      border-color:rgba(26,115,232,.55);box-shadow:0 0 0 4px rgba(26,115,232,.12);
-    }
-    .formActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center;}
-    .hint{color:#7a8394;font-size:13px;line-height:1.6;}
-
-    footer{
-      padding:30px 0;text-align:center;color:#7a8394;font-size:13px;
-      border-top:1px solid var(--line);background:#fff;
-    }
-
-    /* Responsive */
-    @media(max-width:980px){
-      .hero h1{font-size:40px;}
-      .heroGrid{grid-template-columns:1fr;}
-      .grid{grid-template-columns:1fr;}
-      .contactGrid{grid-template-columns:1fr;}
-      .formGrid{grid-template-columns:1fr;}
-      .navCtas{display:none;}
-      .hamburger{display:block;}
-      .navRight{
-        position:absolute;left:clamp(14px,3vw,18px);right:clamp(14px,3vw,18px);
-        top:62px;display:none;flex-direction:column;align-items:stretch;gap:10px;
-        padding:12px;background:#fff;border:1px solid var(--line);
-        border-radius:var(--radius);box-shadow:0 18px 40px rgba(0,0,0,.10);z-index:1001;
+<style>
+      :root{
+        --text:#0b0c0f;
+        --muted:#5b6270;
+        --line:#e9edf3;
+        --bg:#ffffff;
+        --bg-soft:#f7f9fc;
+        --brand:#1a73e8;
+        --brand-dark:#145ec0;
+        --radius:16px;
+        --shadow: 0 10px 30px rgba(16,24,40,.08);
       }
-      .navLinks{flex-direction:column;align-items:stretch;gap:6px;}
-      .navLinks a{padding:14px 12px;font-size:15px;}
-      .navToggle:checked ~ .navRight{display:flex;}
-    }
-  </style>
+  
+      *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+      html{scroll-behavior:smooth;}
+      body{background:var(--bg);color:var(--text);}
+      a{color:inherit;}
+      section{scroll-margin-top:90px;}
+  
+      .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(14px,3vw,56px);}
+  
+      /* NAV */
+      nav{
+        position:sticky;top:0;z-index:1000;
+        background:rgba(255,255,255,.92);
+        backdrop-filter:blur(10px);
+        border-bottom:1px solid var(--line);
+      }
+      .navRow{
+        display:flex;align-items:center;justify-content:space-between;
+        padding:14px 0;gap:18px;position:relative;
+      }
+      .brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:220px;}
+      .brand img{height:34px;width:auto;display:block;}
+      .brandText{
+        font-weight:900;font-size:18px;letter-spacing:-.02em;
+        display:inline-flex;align-items:baseline;
+      }
+      .brandText .manta{
+        background:linear-gradient(90deg,#7dd3fc,#38bdf8,#22d3ee);
+        -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      }
+      .brandText .nex{color:#0b0c0f;margin-left:2px;position:relative;}
+      .brandText .nex::after{
+        content:"";position:absolute;left:0;right:0;bottom:-6px;
+        height:2px;background:linear-gradient(90deg,transparent,#1a73e8,transparent);opacity:.55;
+      }
+  
+      .navRight{display:flex;align-items:center;gap:12px;justify-content:flex-end;flex:1;}
+      .navLinks{display:flex;align-items:center;gap:18px;list-style:none;justify-content:flex-end;flex-wrap:nowrap;}
+      .navLinks a{
+        text-decoration:none;font-weight:600;font-size:14px;color:#2b3240;
+        padding:8px 10px;border-radius:10px;transition:.15s ease;white-space:nowrap;display:block;
+      }
+      .navLinks a:hover{background:var(--bg-soft);}
+      .navCtas{display:flex;align-items:center;gap:10px;margin-left:10px;flex:0 0 auto;}
+  
+      .btn{
+        display:inline-flex;align-items:center;justify-content:center;gap:10px;
+        padding:10px 14px;border-radius:12px;font-weight:800;
+        text-decoration:none;font-size:14px;line-height:1;
+        border:1px solid transparent;cursor:pointer;white-space:nowrap;
+        transition:.15s ease;
+      }
+      .btn.primary{background:var(--brand);color:#fff;}
+      .btn.primary:hover{background:var(--brand-dark);}
+      .btn.ghost{border-color:var(--line);background:#fff;color:#0b0c0f;}
+      .btn.ghost:hover{background:var(--bg-soft);}
+  
+      .navToggle{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none;}
+      .navToggle:focus-visible ~ .hamburger{outline:3px solid rgba(26,115,232,.45);outline-offset:2px;}
+      .hamburger{
+        display:none;cursor:pointer;padding:10px;
+        border-radius:12px;border:1px solid var(--line);background:#fff;user-select:none;
+      }
+      .hamburger span{display:block;width:22px;height:2px;background:#0b0c0f;margin:5px 0;border-radius:2px;transition:.2s;}
+      .navToggle:checked ~ .hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+      .navToggle:checked ~ .hamburger span:nth-child(2){opacity:0;}
+      .navToggle:checked ~ .hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  
+      /* HERO */
+      .hero{
+        padding:58px 0 34px;
+        background:
+          linear-gradient(180deg,rgba(247,249,252,.85) 0%,rgba(255,255,255,1) 60%),
+          radial-gradient(900px 380px at 18% 0%,rgba(26,115,232,.14),rgba(26,115,232,0) 60%),
+          radial-gradient(900px 380px at 80% 10%,rgba(20,94,192,.10),rgba(20,94,192,0) 60%);
+        border-bottom:1px solid var(--line);
+      }
+      .kicker{
+        display:inline-flex;align-items:center;gap:10px;
+        padding:8px 12px;border:1px solid var(--line);
+        border-radius:999px;background:#fff;color:var(--brand);
+        font-weight:800;font-size:12px;
+      }
+      .hero h1{
+        margin-top:16px;font-size:52px;line-height:1.06;
+        letter-spacing:-.03em;font-weight:900;max-width:980px;
+      }
+      .hero p{
+        margin-top:14px;color:var(--muted);font-size:18px;line-height:1.7;max-width:860px;
+      }
+      .heroActions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;}
+  
+      .heroGrid{
+        margin-top:26px;display:grid;
+        grid-template-columns:1.2fr .8fr;gap:16px;align-items:stretch;
+      }
+      .heroCard{
+        border:1px solid var(--line);border-radius:var(--radius);
+        background:#fff;box-shadow:var(--shadow);padding:18px;
+      }
+      .heroCard h3{
+        font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+        color:#7a8394;font-weight:900;margin-bottom:10px;
+      }
+      .bullets{display:grid;gap:10px;}
+      .bullet{display:flex;gap:10px;align-items:flex-start;color:#2b3240;font-size:14px;line-height:1.55;}
+      .dot{height:10px;width:10px;border-radius:50%;background:var(--brand);margin-top:5px;flex:0 0 10px;}
+  
+      /* SECTIONS */
+      .section{padding:70px 0;}
+      .sectionHeader{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:22px;}
+      .sectionHeader h2{font-size:36px;letter-spacing:-.02em;}
+      .sectionHeader p{color:var(--muted);max-width:720px;line-height:1.7;}
+  
+      .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+      .card{
+        border:1px solid var(--line);border-radius:var(--radius);
+        background:#fff;padding:20px;
+        box-shadow:0 8px 20px rgba(16,24,40,.05);
+      }
+      .card h4{font-size:16px;margin-bottom:8px;letter-spacing:-.01em;}
+      .card p{color:var(--muted);font-size:14px;line-height:1.7;}
+      .mini{margin-top:12px;color:#2b3240;font-weight:900;font-size:12px;letter-spacing:.12em;text-transform:uppercase;}
+  
+      /* LOGOS */
+      .logosBand{
+        border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+        background:#fff;padding:26px 0;
+      }
+      .logosTitle{
+        font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+        color:#7a8394;font-weight:900;margin-bottom:14px;text-align:center;
+      }
+      .logos{display:flex;justify-content:center;align-items:center;gap:42px;flex-wrap:wrap;}
+      .logos img{height:26px;width:auto;max-width:140px;opacity:.8;filter:grayscale(100%);transition:.2s ease;}
+      .logos img:hover{opacity:1;filter:none;}
+  
+      /* PARTNERS LIST */
+      .pillList{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;}
+      .pill{
+        border:1px solid var(--line);background:#fff;border-radius:999px;
+        padding:9px 12px;font-weight:800;font-size:12px;color:#2b3240;
+      }
+  
+      /* CONTACT */
+      .contact{background:var(--bg-soft);border-top:1px solid var(--line);}
+      .contactGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px;}
+      .info{
+        background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;
+      }
+      .info b{display:block;margin-bottom:6px;}
+      .info a{color:var(--brand);text-decoration:none;font-weight:800;}
+      .info a:hover{text-decoration:underline;}
+      .fine{color:#7a8394;font-size:13px;line-height:1.6;margin-top:10px;}
+  
+      .mapWrap{
+        margin-top:16px;grid-column:1/-1;width:100%;
+        border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+        background:#fff;box-shadow:0 8px 20px rgba(16,24,40,.05);
+      }
+      .mapWrap iframe{display:block;width:100%;height:320px;border:0;}
+  
+      .formWrap{
+        margin-top:16px;background:#fff;border:1px solid var(--line);
+        border-radius:var(--radius);padding:18px;
+        box-shadow:0 8px 20px rgba(16,24,40,.05);
+      }
+      .formGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px;}
+      .formGrid .full{grid-column:1/-1;}
+      label{display:block;font-weight:800;font-size:13px;color:#2b3240;margin-bottom:8px;}
+      input,select,textarea{
+        width:100%;padding:12px;border:1px solid #d9dee7;border-radius:12px;
+        background:#fff;font-size:14px;font-family:'Inter',sans-serif;outline:none;color:var(--text);
+      }
+      textarea{min-height:140px;resize:vertical;}
+      input:focus,select:focus,textarea:focus{
+        border-color:rgba(26,115,232,.55);box-shadow:0 0 0 4px rgba(26,115,232,.12);
+      }
+      .formActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center;}
+      .hint{color:#7a8394;font-size:13px;line-height:1.6;}
+  
+      .card a.visit{display:inline-block;margin-top:12px;color:var(--brand);font-weight:800;text-decoration:none;font-size:14px;}
+      .card a.visit:hover{text-decoration:underline;}
+      .notice{margin-top:16px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;color:#2b3240;font-size:14px;line-height:1.6;}
+  
+      footer{
+        padding:30px 0;text-align:center;color:#7a8394;font-size:13px;
+        border-top:1px solid var(--line);background:#fff;
+      }
+  
+      /* Responsive */
+      @media(max-width:980px){
+        .hero h1{font-size:40px;}
+        .heroGrid{grid-template-columns:1fr;}
+        .grid{grid-template-columns:1fr;}
+        .contactGrid{grid-template-columns:1fr;}
+        .formGrid{grid-template-columns:1fr;}
+        .navCtas{display:none;}
+        .hamburger{display:block;}
+        .navRight{
+          position:absolute;left:clamp(14px,3vw,18px);right:clamp(14px,3vw,18px);
+          top:62px;display:none;flex-direction:column;align-items:stretch;gap:10px;
+          padding:12px;background:#fff;border:1px solid var(--line);
+          border-radius:var(--radius);box-shadow:0 18px 40px rgba(0,0,0,.10);z-index:1001;
+        }
+        .navLinks{flex-direction:column;align-items:stretch;gap:6px;}
+        .navLinks a{padding:14px 12px;font-size:15px;}
+        .navToggle:checked ~ .navRight{display:flex;}
+      }
+    </style>
 </head>
 
 <body>
@@ -233,31 +244,27 @@
 <nav>
   <div class="wrap navRow">
     <a class="brand" href="/" aria-label="Mantanex Home">
-      <img src="logo.png" alt="Mantanex logo">
+      <img src="logo.png" alt="Mantanex logo" height="34">
       <span class="brandText">
         <span class="manta">Manta</span><span class="nex">nex</span>
       </span>
     </a>
 
-    <input id="navToggle" class="navToggle" type="checkbox">
-    <label for="navToggle" class="hamburger" aria-label="Open menu">
+    <input id="navToggle" class="navToggle" type="checkbox" aria-label="Toggle menu">
+    <label for="navToggle" class="hamburger" aria-hidden="true">
       <span></span><span></span><span></span>
     </label>
 
     <div class="navRight">
       <ul class="navLinks" aria-label="Primary navigation">
-        <li><a href="#clients">For Clients</a></li>
-        <li><a href="#candidates">Careers</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#expertise">Expertise</a></li>
-        <li><a href="#partners">Partners</a></li>
+        <li><a href="#work">Our Brands</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="https://app.gusto.com/login" target="_blank" rel="noopener noreferrer">Payroll</a></li>
       </ul>
       <div class="navCtas">
-        <a class="btn ghost" href="#candidates">View roles</a>
-        <a class="btn primary" href="#contact">Request talent</a>
+        <a class="btn ghost" href="#work">See our work</a>
+        <a class="btn primary" href="#contact">Start a project</a>
       </div>
     </div>
   </div>
@@ -265,200 +272,100 @@
 
 <header class="hero">
   <div class="wrap">
-    <div class="kicker">IT staffing • enterprise consulting • e-commerce • delivery support</div>
+    <div class="kicker">Websites • e-commerce operations • brand support</div>
 
-    <h1>Specialized IT talent for enterprise teams.</h1>
+    <h1>Websites and online stores that actually run.</h1>
 
     <p>
-      Mantanex supports clients with contract staffing, contract-to-hire, and delivery teams across cloud, DevOps,
-      software engineering, data, and security — as well as e-commerce operations for businesses buying and selling online.
-      We focus on quality screening, fast turnaround, and professional consultant care.
+      Mantanex builds and operates websites and e-commerce for small businesses — from the first page to
+      listings, payments, and day-to-day store operations. We run our own brands the same way we run yours.
     </p>
 
     <div class="heroActions">
-      <a class="btn primary" href="#contact">Build your team</a>
+      <a class="btn primary" href="#contact">Start a project</a>
       <a class="btn ghost" href="#services">Explore services</a>
     </div>
 
     <div class="heroGrid">
       <div class="heroCard">
-        <h3>What we deliver</h3>
+        <h3>What we do</h3>
         <div class="bullets">
-          <div class="bullet"><span class="dot"></span><span><b>Hard-to-find skill sets</b> with structured screening and role alignment.</span></div>
-          <div class="bullet"><span class="dot"></span><span><b>Transparent communication</b> from kickoff through placement and handoff.</span></div>
-          <div class="bullet"><span class="dot"></span><span><b>Enterprise-ready delivery</b> with documentation, reliability mindset, and accountability.</span></div>
-          <div class="bullet"><span class="dot"></span><span><b>E-commerce operations</b> for businesses sourcing and selling across online channels.</span></div>
+          <div class="bullet"><span class="dot"></span><span><b>Website builds</b> — fast, mobile-friendly sites with clear calls to action.</span></div>
+          <div class="bullet"><span class="dot"></span><span><b>Online stores</b> — Shopify and custom storefronts with payments set up.</span></div>
+          <div class="bullet"><span class="dot"></span><span><b>Marketplace operations</b> — listings and orders across Amazon, Etsy, eBay, and Walmart.</span></div>
+          <div class="bullet"><span class="dot"></span><span><b>Ongoing support</b> — updates, product changes, ads, and fixes after launch.</span></div>
         </div>
       </div>
 
       <div class="heroCard">
-        <h3>Engagement options</h3>
+        <h3>How we work</h3>
         <div class="bullets">
-          <div class="bullet"><span class="dot"></span><span><b>Contract</b> staffing for immediate delivery needs</span></div>
-          <div class="bullet"><span class="dot"></span><span><b>Contract-to-hire</b> for risk-reduced conversions</span></div>
-          <div class="bullet"><span class="dot"></span><span><b>Statement of work</b> for scoped outcomes and milestones</span></div>
-          <div class="bullet"><span class="dot"></span><span><b>E-commerce</b> sourcing and B2B resale support</span></div>
+          <div class="bullet"><span class="dot"></span><span><b>Scoped projects</b> with a clear price and timeline</span></div>
+          <div class="bullet"><span class="dot"></span><span><b>Monthly support</b> for stores that need hands-on operations</span></div>
+          <div class="bullet"><span class="dot"></span><span><b>You own everything</b> — domain, code, and accounts</span></div>
         </div>
-        <div class="fine">Fast turnaround when requirements are clear. Nationwide support.</div>
+        <div class="fine">Based in Jacksonville, FL. Working with businesses nationwide.</div>
       </div>
     </div>
   </div>
 </header>
 
-<section class="logosBand" id="clients">
-  <div class="wrap">
-    <div class="logosTitle">Experience across enterprise ecosystems</div>
-    <div class="logos" aria-label="Client logos">
-      <img src="amd.svg" alt="AMD">
-      <img src="att.svg" alt="AT&T">
-      <img src="nokia.svg" alt="Nokia">
-      <img src="statefarm.svg" alt="State Farm">
-    </div>
-  </div>
-</section>
-
 <section id="services" class="wrap section">
   <div class="sectionHeader">
     <div>
       <h2>Services</h2>
-      <p>Staffing-first, enterprise-aligned — with e-commerce capabilities built for businesses operating across online channels.</p>
+      <p>Everything a small brand needs to get online and keep selling.</p>
     </div>
   </div>
 
   <div class="grid">
     <div class="card">
-      <h4>IT staffing</h4>
-      <p>Contract staffing and augmentation across enterprise environments — aligned to your stack, delivery model, and timelines.</p>
-      <div class="mini">Models</div>
-      <p>Contract • contract-to-hire • direct hire support</p>
+      <h4>Website development</h4>
+      <p>Business sites, landing pages, and event pages — designed for mobile and built to load fast.</p>
+      <div class="mini">Includes</div>
+      <p>Design • build • domain &amp; hosting setup • basic SEO</p>
     </div>
 
     <div class="card">
-      <h4>Delivery teams</h4>
-      <p>Small, focused teams for project delivery and operational support with clear scope, milestones, and reporting.</p>
-      <div class="mini">Delivery</div>
-      <p>Sprints • runbooks • handoff documentation</p>
+      <h4>E-commerce setup</h4>
+      <p>Storefronts with product catalogs, payment links, and checkout ready to take orders.</p>
+      <div class="mini">Platforms</div>
+      <p>Shopify • Stripe • custom HTML stores</p>
     </div>
 
     <div class="card">
-      <h4>E-commerce</h4>
-      <p>Procurement, sourcing, and resale support for businesses operating across online marketplaces and B2B channels.</p>
+      <h4>Store operations</h4>
+      <p>Hands-on help running the store: listings, pricing, inventory updates, and marketplace accounts.</p>
       <div class="mini">Channels</div>
-      <p>B2B resale • surplus sourcing • marketplace operations</p>
+      <p>Amazon • Etsy • eBay • Walmart Marketplace</p>
     </div>
   </div>
 </section>
 
-<section id="expertise" class="wrap section">
+<section id="work" class="wrap section">
   <div class="sectionHeader">
     <div>
-      <h2>Our expertise</h2>
-      <p>Coverage across key enterprise skill areas — focused on the roles clients struggle to hire quickly and confidently.</p>
+      <h2>Our brands &amp; projects</h2>
+      <p>Businesses we build, run, and support.</p>
     </div>
   </div>
 
   <div class="grid">
     <div class="card">
-      <h4>AI (interest track)</h4>
-      <p>ML / data roles aligned to real-world delivery and governance expectations.</p>
-      <div class="mini">Roles</div>
-      <p>ML Engineer • Data Scientist • AI Developer • AI Security</p>
+      <h4>Akhada Crafts</h4>
+      <p>Handcrafted traditional Indian training equipment — Indian clubs, mugdar, and more. Custom storefront with Stripe checkout.</p>
+      <a class="visit" href="https://akhadacrafts.com" target="_blank" rel="noopener">Visit akhadacrafts.com →</a>
     </div>
 
     <div class="card">
-      <h4>Cloud</h4>
-      <p>Engineers and architects supporting AWS, Azure, and GCP programs.</p>
-      <div class="mini">Skills</div>
-      <p>Cloud engineering • platform ops • modernization</p>
+      <h4>Arkawave Ionics</h4>
+      <p>Holiday lights, smart RGBIC lighting, and sleep sound machines. Shopify store with social ad campaigns.</p>
+      <a class="visit" href="https://arkawave.com" target="_blank" rel="noopener">Visit arkawave.com →</a>
     </div>
 
     <div class="card">
-      <h4>Software development</h4>
-      <p>Backend, frontend, and full-stack engineers built for production environments.</p>
-      <div class="mini">Stacks</div>
-      <p>Java • .NET • Python • Web • Mobile • QA</p>
-    </div>
-
-    <div class="card">
-      <h4>DevOps & SRE</h4>
-      <p>Automation, CI/CD, reliability engineering, and operational excellence.</p>
-      <div class="mini">Focus</div>
-      <p>CI/CD • IaC • observability • incident response</p>
-    </div>
-
-    <div class="card">
-      <h4>Data</h4>
-      <p>Data engineers and analysts supporting analytics and platform initiatives.</p>
-      <div class="mini">Roles</div>
-      <p>Data Engineer • Data Analyst • Data Architect</p>
-    </div>
-
-    <div class="card">
-      <h4>Cybersecurity</h4>
-      <p>Security talent aligned to enterprise controls, audits, and modern defensive practices.</p>
-      <div class="mini">Roles</div>
-      <p>Security Analyst • Engineer • Architect • GRC</p>
-    </div>
-  </div>
-</section>
-
-<section id="partners" class="wrap section">
-  <div class="sectionHeader">
-    <div>
-      <h2>Partners</h2>
-      <p>We collaborate with staffing and delivery partners to support enterprise programs at scale.</p>
-    </div>
-  </div>
-
-  <div class="grid">
-    <div class="card">
-      <h4>Staffing partners</h4>
-      <p>Partner ecosystem for candidate flow, delivery alignment, and enterprise procurement support.</p>
-      <div class="mini">Examples</div>
-      <div class="pillList" aria-label="Staffing partner examples">
-        <span class="pill">TekSystems</span>
-        <span class="pill">Kforce</span>
-        <span class="pill">Apex Systems</span>
-        <span class="pill">Randstad Technologies</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <h4>Compliance-ready workflow</h4>
-      <p>Structured intake, documentation-first communication, and clean handoffs for enterprise teams.</p>
-      <div class="mini">Ops</div>
-      <p>Role intake • screening notes • interview coordination • onboarding support</p>
-    </div>
-
-    <div class="card">
-      <h4>Tech-forward mindset</h4>
-      <p>Staffing first, with ongoing investment in automation, e-commerce operations, and internal tooling for speed and quality.</p>
-      <div class="mini">Focus</div>
-      <p>Process automation • structured templates • delivery standards</p>
-    </div>
-  </div>
-</section>
-
-<section id="candidates" class="wrap section">
-  <div class="sectionHeader">
-    <div>
-      <h2>For job seekers</h2>
-      <p>We focus on clear expectations, responsive communication, and roles that match your skills and goals.</p>
-    </div>
-  </div>
-
-  <div class="grid">
-    <div class="card">
-      <h4>Fast feedback</h4>
-      <p>Clear next steps and consistent follow-ups — no guessing where you stand.</p>
-    </div>
-    <div class="card">
-      <h4>Role alignment</h4>
-      <p>We prioritize matching skill set, environment, and delivery expectations.</p>
-    </div>
-    <div class="card">
-      <h4>Consultant care</h4>
-      <p>Professional support through onboarding and throughout the engagement.</p>
+      <h4>Velvet Luxe Events</h4>
+      <p>Event business supported with web presence and operations help.</p>
     </div>
   </div>
 </section>
@@ -467,22 +374,22 @@
   <div class="sectionHeader">
     <div>
       <h2>About</h2>
-      <p>Mantanex is a staffing-led services company operating across IT staffing, enterprise consulting, and e-commerce — built on reliability, documentation, and strong communication.</p>
+      <p>Mantanex LLC is a Jacksonville, Florida company building and operating websites and online stores. Our own brands are our proving ground.</p>
     </div>
   </div>
 
   <div class="grid">
     <div class="card">
-      <h4>People-centric</h4>
-      <p>We treat consultants and clients like long-term relationships, not transactions.</p>
+      <h4>Operator mindset</h4>
+      <p>We sell online ourselves, so we build for orders and operations, not just looks.</p>
     </div>
     <div class="card">
-      <h4>Enterprise expectations</h4>
-      <p>We understand delivery standards, stakeholder communication, and clean handoffs.</p>
+      <h4>Engineering background</h4>
+      <p>Over a decade of enterprise software experience applied to small-business sites.</p>
     </div>
     <div class="card">
-      <h4>Long-term vision</h4>
-      <p>Staffing and e-commerce today — with continuing investment in AI and modern tooling as a tech-forward company.</p>
+      <h4>Straight communication</h4>
+      <p>Clear scope, clear pricing, and direct contact with the person doing the work.</p>
     </div>
   </div>
 </section>
@@ -492,7 +399,7 @@
     <div class="sectionHeader">
       <div>
         <h2>Contact</h2>
-        <p>Client requests, staffing inquiries, e-commerce partnerships, and general questions. For payroll support, email HR.</p>
+        <p>New websites, store setup, e-commerce operations, and partnerships.</p>
       </div>
     </div>
 
@@ -500,7 +407,7 @@
       <div class="info">
         <b>Email</b>
         <a href="mailto:contact@mantanex.com">contact@mantanex.com</a>
-        <div class="fine">Best for client requests, staffing, and e-commerce inquiries.</div>
+        <div class="fine">Best for project inquiries.</div>
       </div>
 
       <div class="info">
@@ -512,61 +419,52 @@
       <div class="info">
         <b>Location</b>
         Mantanex LLC<br>
-        Timberlin Park Blvd (Southside / Deerwood)<br>
-        Jacksonville, FL 32256 <span style="color:#7a8394;">(By appointment)</span>
-      </div>
-
-      <div class="mapWrap" aria-label="Map to Mantanex location">
-        <iframe
-          src="https://www.google.com/maps?q=Timberlin%20Park%20Blvd%20Jacksonville%20FL%2032256&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen>
-        </iframe>
+        Jacksonville, FL 32256<br>
+        <span style="color:#7a8394;">Meetings by appointment</span>
       </div>
     </div>
 
+    <div class="notice"><b>We are not hiring.</b> Mantanex has no open positions. Please don't send resumes — unsolicited resumes are not reviewed or kept.</div>
+
     <div class="formWrap" aria-label="Contact form">
-      <div class="fine">This form opens your email client (no data is stored on the website).</div>
+      <div class="fine">This form opens your email app. Nothing is stored on this website.</div>
 
       <form id="mxForm" class="formGrid" style="margin-top:10px;">
         <div>
-          <label for="name">Full name</label>
-          <input id="name" name="name" type="text" placeholder="Your name" maxlength="80" autocomplete="name" required>
+          <label for="f-name">Full name</label>
+          <input id="f-name" name="fullname" type="text" placeholder="Your name" maxlength="80" autocomplete="name" required>
         </div>
 
         <div>
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="Email address" maxlength="120" autocomplete="email" required>
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" placeholder="Email address" maxlength="120" autocomplete="email" required>
         </div>
 
         <div>
-          <label for="company">Company</label>
-          <input id="company" name="company" type="text" placeholder="Company / client" maxlength="120" autocomplete="organization">
+          <label for="f-company">Business</label>
+          <input id="f-company" name="company" type="text" placeholder="Business name" maxlength="120" autocomplete="organization">
         </div>
 
         <div>
-          <label for="topic">Topic</label>
-          <select id="topic" name="topic" required>
+          <label for="f-topic">Topic</label>
+          <select id="f-topic" name="topic" required>
             <option value="" selected disabled>Select</option>
-            <option>Client request</option>
-            <option>Staffing</option>
-            <option>E-commerce inquiry</option>
+            <option>New website</option>
+            <option>Online store setup</option>
+            <option>E-commerce operations</option>
             <option>Partnership</option>
-            <option>Candidate inquiry</option>
             <option>Other</option>
           </select>
         </div>
 
         <div class="full">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Role details, skill requirements, timeline, location, e-commerce needs…" maxlength="2500" required></textarea>
+          <label for="f-message">Message</label>
+          <textarea id="f-message" name="message" placeholder="What you sell, what you need built, and your timeline…" maxlength="2500" required></textarea>
         </div>
 
         <div class="full formActions">
           <button class="btn primary" type="submit">Send message</button>
           <a class="btn ghost" href="mailto:contact@mantanex.com">Email instead</a>
-          <span class="hint">HR: <a href="mailto:contact@mantanex.com" style="color:var(--brand);text-decoration:none;font-weight:800;">contact@mantanex.com</a></span>
         </div>
       </form>
     </div>
@@ -574,31 +472,38 @@
 </section>
 
 <footer>
-  © Mantanex LLC — IT Staffing, Consulting &amp; E-Commerce &nbsp;•&nbsp;
+  © <span id="yr">2026</span> Mantanex LLC — Websites &amp; E-Commerce &nbsp;•&nbsp;
   <a href="mailto:contact@mantanex.com" style="text-decoration:none;color:inherit;">contact@mantanex.com</a> •
   <a href="tel:+13527601132" style="text-decoration:none;color:inherit;">+1 (352) 760-1132</a>
 </footer>
 
 <script>
 (function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Close mobile menu after tapping a link
+  const toggle = document.getElementById('navToggle');
+  document.querySelectorAll('.navRight a').forEach(a => a.addEventListener('click', () => { toggle.checked = false; }));
+
   const form = document.getElementById('mxForm');
+  const f = form.elements;
   function enc(s){ return encodeURIComponent(s).replace(/%0A/g,'%0D%0A'); }
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
     if(!form.checkValidity()){ form.reportValidity(); return; }
 
-    const name    = form.name.value.trim();
-    const email   = form.email.value.trim();
-    const company = form.company.value.trim();
-    const topic   = form.topic.value;
-    const message = form.message.value.trim();
+    const name    = f.fullname.value.trim();
+    const email   = f.email.value.trim();
+    const company = f.company.value.trim();
+    const topic   = f.topic.value;
+    const message = f.message.value.trim();
 
     const subject = `[Mantanex] ${topic} — ${name}`;
     const body =
 `Name: ${name}
 Email: ${email}
-Company: ${company || '-'}
+Business: ${company || '-'}
 Topic: ${topic}
 
 Message:
